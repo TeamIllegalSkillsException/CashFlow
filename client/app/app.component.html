@@ -1,5 +1,9 @@
-<div id="page" class="container">
-  <main id="content">
+<div id="page">
+  <router-outlet name="header"></router-outlet>
+
+  <main id="content" class="container">
     <router-outlet></router-outlet>
   </main>
+
+  <router-outlet name="footer"></router-outlet>
 </div>
