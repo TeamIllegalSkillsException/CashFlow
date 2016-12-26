@@ -112,3 +112,29 @@
 .hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
   right: 0;
 }
+
+/* ken-burns animation */
+@keyframes slidein {
+  25% {
+    -webkit-transform: scale(1.6) translate3d(-400px, 0px, 0px);
+    -moz-transform: scale(1.6) translate3d(-400px, 0px, 0px);
+    -o-transform: scale(1.6) translate3d(-400px, 0px, 0px);
+    -ms-transform: scale(1.6) translate3d(-400px, 0px, 0px);
+    transform: scale(1.6) translate3d(-400px, 0px, 0px);
+  }
+  50% {
+    -webkit-transform: scale(1) translate3d(0px, 0px, 0px);
+    -moz-transform: scale(1) translate3d(0px, 0px, 0px);
+    -o-transform: scale(1) translate3d(0px, 0px, 0px);
+    -ms-transform: scale(1) translate3d(0px, 0px, 0px);
+    transform: scale(1) translate3d(0px, 0px, 0px);
+  }
+  75% {
+    -webkit-transform: scale(1.6) translate3d(+400px, 0px, 0px);
+    -moz-transform: scale(1.6) translate3d(+400px, 0px, 0px);
+    -o-transform: scale(1.6) translate3d(+400px, 0px, 0px);
+    -ms-transform: scale(1.6) translate3d(+400px, 0px, 0px);
+    transform: scale(1.6) translate3d(+400px, 0px, 0px);
+  }
+
+}
