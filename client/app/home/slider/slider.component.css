@@ -1,0 +1,32 @@
+.homepage-slider,
+.homepage-slider > div{
+  padding:0;
+}
+.homepage-slider img{
+  /*position: absolute;*/
+  /*width:100%;*/
+}
+.carousel-control{
+  display: none;
+}
+.homepage-slider-overlay{
+  z-index: 5;
+  position: absolute;
+  background: transparent linear-gradient(-140deg, rgba(169, 70, 253, 0.4), rgba(8, 43, 174, 0.6), rgba(0, 240, 255, 0.6)) repeat scroll 0% 0%;
+  visibility: inherit;
+  transition: none 0s ease 0s;
+  text-align: left;
+  line-height: 23px;
+  border-width: 0px;
+  margin: 0px;
+  padding: 0px;
+  letter-spacing: 0px;
+  font-weight: 400;
+  font-size: 12px;
+  white-space: nowrap;
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 1;
+  transform: translate3d(0px, 0px, 0px);
+  transform-origin: 50% 50% 0px;
+}

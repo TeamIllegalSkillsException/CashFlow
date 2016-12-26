@@ -21,6 +21,7 @@ module.exports = function(config){
     resave: true,
     saveUninitialized: true
   }));
+  
 
   app.start = function(){
     const port = config.port;

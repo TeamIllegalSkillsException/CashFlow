@@ -1,0 +1,22 @@
+<div class="homepage-slider-overlay"></div>
+<!--<div class="homepage-slider-captions">
+    <div class="container">
+        <div>
+            <h1>CASH FLOW</h1>
+        </div>
+        <p>The most advanced personal expense tracker and statistics tool on the web</p>
+    </div>
+</div>-->
+<div class="homepage-slider container-fluid">
+    <div class="col-md-12">
+        <carousel [interval]="myInterval" [noWrap]="noWrapSlides">
+            <slide *ngFor="let slidez of slides; let index=index"
+                   [active]="slidez.active"
+                   [style.height.px]="slideHeight"
+                   (window:resize)="onResize($event)">
+                <img class="center-block" [src]="slidez.image">
+            </slide>
+        </carousel>
+    </div>
+</div>
+
