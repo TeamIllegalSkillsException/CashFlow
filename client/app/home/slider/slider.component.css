@@ -30,3 +30,54 @@
   transform: translate3d(0px, 0px, 0px);
   transform-origin: 50% 50% 0px;
 }
+.homepage-slider-captions{
+  min-height: 100%;
+  min-height: 100vh;
+  background: transparent;
+  position: absolute;
+  z-index: 9999;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+#homepage-slider-title{
+  white-space: nowrap;
+  font-size: 93px;
+  line-height: 102px;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  font-family: Oswald;
+  visibility: inherit;
+  text-align: center;
+  letter-spacing: 0px;
+}
+#homepage-slider-subtitle{
+  font-size: 52px;
+  line-height: 61px;
+  font-weight: 300;
+  font-family: Roboto;
+  visibility: inherit;
+  text-align: left;
+  letter-spacing: 0px;
+  text-align: center;
+  color:#fff;
+}
+#homepage-slider-buttons{
+  margin-top:50px;
+}
+#homepage-slider-buttons .btn-ghost{
+  margin: 0 auto;
+  float: none;
+  display: block;
+}

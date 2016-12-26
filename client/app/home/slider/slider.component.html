@@ -1,12 +1,20 @@
 <div class="homepage-slider-overlay"></div>
-<!--<div class="homepage-slider-captions">
+<div class="homepage-slider-captions">
     <div class="container">
         <div>
-            <h1>CASH FLOW</h1>
+            <h1 id="homepage-slider-title">CASH FLOW</h1>
         </div>
-        <p>The most advanced personal expense tracker and statistics tool on the web</p>
+        <p id="homepage-slider-subtitle">The most advanced personal expense tracker</p>
+        <div id="homepage-slider-buttons">
+            <a href="/login" class="btn-ghost hvr-sweep-to-right">
+                <span>Login or Register</span>
+            </a>
+        </div>
+        <div class="homepage-slider-scroll">
+            <span id="scroll-icon"></span>
+        </div>
     </div>
-</div>-->
+</div>
 <div class="homepage-slider container-fluid">
     <div class="col-md-12">
         <carousel [interval]="myInterval" [noWrap]="noWrapSlides">

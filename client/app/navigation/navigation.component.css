@@ -1,24 +1,53 @@
 header{
   position: absolute;
   width: 100%;
-  z-index: 102;
+  z-index: 99999;
+  padding:0 50px;
+}
+header .container{
+  position: relative;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  align-content: stretch;
+  -ms-flex-line-pack: stretch;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -ms-flex-pack: justify;
+  -webkit-flex-flow: row nowrap;
+  -moz-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
 }
 #primary-menu{
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-content: stretch;
+  -moz-align-content: stretch;
+  -ms-align-content: stretch;
+  align-content: stretch;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
   -webkit-flex-grow: 1;
   -moz-flex-grow: 1;
   -ms-flex-positive: 1;
   -ms-flex-grow: 1;
   flex-grow: 1;
-
-  -webkit-align-content: stretch;
-  -moz-align-content: stretch;
-  -ms-align-content: stretch;
-  align-content: stretch;
-
-  -webkit-justify-content: flex-start;
-  -moz-justify-content: flex-start;
-  -ms-justify-content: flex-start;
-  justify-content: flex-start;
 
   -ms-flex-pack: start;
   display: -webkit-flex;
@@ -32,8 +61,10 @@ header{
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
 
+
   list-style-type: none;
   padding:0;
+  margin:0;
 }
 #primary-menu li{
   display: flex;
@@ -81,9 +112,23 @@ header{
   cursor: pointer;
   margin: 5px 16px 5px 16px;
   padding: 5px 0px 5px 0px;
-  font: normal 16px / 25px "PT Sans", Helvetica, Arial, Verdana, sans-serif;
+  font: normal bold 16px / 19px "Open Sans",Helvetica,Arial,Verdana,sans-serif;
   word-spacing: normal;
   text-transform: uppercase;
+}
+#menu{
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  padding:0;
+  margin:0;
+  flex:2.6;
+}
+
+#menu li:hover a{
+  color: #fff;
 }
 
 .branding{
@@ -97,6 +142,7 @@ header{
   -ms-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  flex:1;
 }
 .branding a{
   padding: 0px 50px 0px 50px;
@@ -104,5 +150,5 @@ header{
   text-decoration: none;
 }
 .branding a img{
-  width:85px;
+  width:120px;
 }
