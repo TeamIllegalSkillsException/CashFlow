@@ -1,10 +1,8 @@
 <preloader></preloader>
 <div id="page">
-    <router-outlet name="header"></router-outlet>
-    <router-outlet name="presentation"></router-outlet>
+    <app-navigation></app-navigation>
 
-    <main id="content" class="container">
-        <router-outlet></router-outlet>
-    </main>
+    <router-outlet></router-outlet>
+
     <router-outlet name="footer"></router-outlet>
 </div>
