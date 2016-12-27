@@ -13,6 +13,7 @@ import { ContactUsModule } from './contact-us/contact-us.module';
 /* Components */
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { PreloaderComponent } from './shared/components/preloader/preloader.component';
 
 /* Services */
 import { PreloaderService } from './shared/services/preloader';
@@ -22,6 +23,7 @@ import { SpinnerService } from './shared/services/spinner';
   declarations: [
     AppComponent,
     NavigationComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule,
