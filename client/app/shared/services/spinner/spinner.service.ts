@@ -1,23 +1,23 @@
 import {Injectable} from '@angular/core';
+import {Observable, Subject} from "rxjs/Rx";
 
 @Injectable()
 export class SpinnerService {
+  isLoading$: Observable<boolean>;
+  private boolSubject: Subject<boolean>;
 
-  private _active: boolean = false;
-
-  constructor() {}
-
-  public get active(): boolean {
-    return this._active;
+  constructor() {
+    this.boolSubject = new Subject<boolean>();
+    this.isLoading$ = this.boolSubject.asObservable();
   }
 
-  public show():void {
-    this._active = true;
+  public show() {
+    this.boolSubject.next(true);
   }
 
   public hide(delay:number = 0):void {
     setTimeout(() => {
-      this._active = false;
+      this.boolSubject.next(false);
     }, delay);
   }
 }

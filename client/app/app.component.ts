@@ -1,20 +1,21 @@
-import {Component, HostBinding} from '@angular/core';
-import {PreloaderService, SpinnerService } from './shared/services';
+import {Component, HostBinding, OnInit} from '@angular/core';
+import {SpinnerService} from './shared/services';
 
 @Component({
   selector: 'body',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   @HostBinding('class') public cssClass = 'homepage';
 
-  constructor(private spinner: SpinnerService){}
+  constructor(private spinnerService:SpinnerService){}
+
+  ngOnInit():void {
+    this.spinnerService.show();
+  }
 
   public ngAfterViewInit(): void {
-    PreloaderService.load()
-      .then((values) => {
-        this.spinner.hide(1500);
-      })
+    this.spinnerService.hide(1500);
   }
 }

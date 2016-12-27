@@ -11,6 +11,7 @@ import { HomeModule } from './home/home.module';
 /* Components */
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { PreloaderComponent } from './shared/components/preloader/preloader.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 
 /* Services */
@@ -20,6 +21,7 @@ import { SpinnerService } from './shared/services/spinner';
 @NgModule({
   declarations: [
     AppComponent,
+    PreloaderComponent,
     NavigationComponent,
     ContactUsComponent
   ],
