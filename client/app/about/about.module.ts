@@ -3,6 +3,7 @@ import { AboutRouterModule } from './about.router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AboutComponent } from './about.component';
 
+
 @NgModule({
     imports: [
         AboutRouterModule,
@@ -12,4 +13,4 @@ import { AboutComponent } from './about.component';
         AboutComponent
     ]
 })
-export class AboutModue {}
+export class AboutModule {}
