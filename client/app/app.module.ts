@@ -21,9 +21,7 @@ import { SpinnerService } from './shared/services/spinner';
 @NgModule({
   declarations: [
     AppComponent,
-    PreloaderComponent,
     NavigationComponent,
-    ContactUsComponent
   ],
   imports: [
     BrowserModule,
