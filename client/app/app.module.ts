@@ -7,12 +7,15 @@ import { RouterModule, Router } from '@angular/router';
 
 /* Custom Modules */
 import { HomeModule } from './home/home.module';
+<<<<<<< Updated upstream
 import { AboutModule } from './about/about.module';
+=======
+import { ContactUsModule } from './contact-us/contact-us.module';
+>>>>>>> Stashed changes
 
 /* Components */
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
 
 /* Services */
 import { PreloaderService } from './shared/services/preloader';
@@ -21,15 +24,23 @@ import { SpinnerService } from './shared/services/spinner';
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< Updated upstream
     NavigationComponent,
     ContactUsComponent,
+=======
+    NavigationComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     HomeModule,
+<<<<<<< Updated upstream
     AboutModule,
+=======
+    ContactUsModule,
+>>>>>>> Stashed changes
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: '**', redirectTo: '/', pathMatch: 'full' }
