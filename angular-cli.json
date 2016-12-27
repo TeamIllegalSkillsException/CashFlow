@@ -19,7 +19,7 @@
       "mobile": false,
       "styles": [
         "assets/css/fonts.css",
-        "styles.css",
+        "styles.scss",
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/animate.css/animate.min.css"
       ],
@@ -47,7 +47,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "prefixInterfaces": false,
     "inline": {
       "style": false,
