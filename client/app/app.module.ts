@@ -7,6 +7,7 @@ import { RouterModule, Router } from '@angular/router';
 
 /* Custom Modules */
 import { HomeModule } from './home/home.module';
+import { AboutModue } from './about/about.module';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -21,13 +22,14 @@ import { SpinnerService } from './shared/services/spinner';
   declarations: [
     AppComponent,
     NavigationComponent,
-    ContactUsComponent
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     HomeModule,
+    AboutModue,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: '**', redirectTo: '/', pathMatch: 'full' }
