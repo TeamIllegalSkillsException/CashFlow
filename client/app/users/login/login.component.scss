@@ -1,1 +1,25 @@
-@import '../../shared/sass/auth';
+.title{
+  margin:40px 0 30px;
+}
+.title h1{
+  font-size: 50px;
+  line-height: 60px;
+  color: black;
+  margin-bottom: 15px;
+  font-family:Roboto;
+  font-weight:bold;
+  text-align: center;
+}
+.title  .border{
+  display: block;
+  border-style: solid;
+  border-bottom: 3px solid rgb(204, 204, 204);
+  border-color: rgb(204, 204, 204);
+  width: 150px;
+  margin: 0px auto;
+  border-color: transparent;
+  -moz-border-image: -moz-linear-gradient(top right,#37a0fe 30%,#8846fd 100%);
+  -webkit-border-image: -webkit-linear-gradient(top right,#37a0fe 30%,#8846fd 100%);
+  border-image: linear-gradient(to bottom right,#37a0fe 30%,#8846fd 100%);
+  border-image-slice: 1;
+}
