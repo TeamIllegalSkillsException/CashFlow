@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public ngAfterViewInit(): void {
-    this.spinnerService.hide(500);
+    this.spinnerService.hide(1000);
   }
 
   public onSubmit(values:Object):void {
