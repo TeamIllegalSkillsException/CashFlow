@@ -9,6 +9,7 @@ require('./config/database')(config.connectionString);
 require('./auth')(app, data);
 require('./router')(app, data);
 
+
 // let user = {
 //     firstName: 'admin',
 //     lastName: 'adminski',
@@ -31,3 +32,4 @@ let about = {
 data.createAboutData(about);
 
 app.start();
+

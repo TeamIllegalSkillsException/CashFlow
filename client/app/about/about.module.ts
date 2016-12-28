@@ -3,17 +3,19 @@ import { AboutRouterModule } from './about.router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AboutComponent } from './about.component';
 import { AboutUsService } from '../services/about.service';
+import { BannerModule } from '../shared/components/banner/banner.module';
 
 @NgModule({
     imports: [
-        AboutRouterModule,
-        BrowserModule
+      AboutRouterModule,
+      BrowserModule,
+      BannerModule
     ],
     declarations: [
-        AboutComponent
+      AboutComponent
     ],
     providers: [
-        AboutUsService
+      AboutUsService
     ],
 })
 export class AboutModule {}
