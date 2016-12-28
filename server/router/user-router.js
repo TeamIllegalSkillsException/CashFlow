@@ -5,7 +5,8 @@ module.exports = function(app, express, data) {
         userController = require('../controllers/user-controller')(data);
 
     userRouter
-        .get('/login', userController.getLogin);
+        .get('/api/login', userController.getLogin)
+        .get('/api/users', userController.getAll);
 
     app.use(userRouter);
 };

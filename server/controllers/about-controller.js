@@ -2,18 +2,14 @@
 
 module.exports = function(data) {
     return {
-        getDetails(req, res) {
-            const details = req.params;
-            return Promise.resolve()
-                .then(() => {
-                    data.getAll()
-                })
-                .then((details) => {
-                    if (!details) {
-                        res.json({ message: 'No details found!' });
-                    }
 
-                    return res.status(200).json(details);
+        getDetails(req, res) {
+            return data.getAll()
+                .then((listings) => {
+                    if (!listings) {
+                        throw new Error('No items available');
+                    }
+                    res.status(200).json(listings);
                 })
                 .catch((err) => {
                     res.status(400).json({ message: err.message });

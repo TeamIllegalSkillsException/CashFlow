@@ -19,6 +19,8 @@ import { PreloaderComponent } from './shared/components/preloader/preloader.comp
 /* Services */
 import { PreloaderService } from './shared/services/preloader';
 import { SpinnerService } from './shared/services/spinner';
+import { HttpRequesterOptionsFactoryService } from './services/http-requester-options-factory.service';
+import { HttpRequester } from './services/http-requester.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { SpinnerService } from './shared/services/spinner';
   ],
   providers: [
     PreloaderService,
-    SpinnerService
+    SpinnerService,
+    HttpRequesterOptionsFactoryService,
+    HttpRequester
   ],
   bootstrap: [AppComponent]
 })

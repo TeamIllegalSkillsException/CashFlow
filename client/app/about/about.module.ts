@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { AboutRouterModule } from './about.router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AboutComponent } from './about.component';
+import { AboutUsService } from '../services/about.service';
 
 
 @NgModule({
@@ -11,6 +12,9 @@ import { AboutComponent } from './about.component';
     ],
     declarations: [
         AboutComponent
-    ]
+    ],
+    providers: [
+        AboutUsService
+    ],
 })
 export class AboutModule {}

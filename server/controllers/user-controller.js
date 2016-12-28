@@ -1,5 +1,7 @@
 'use strict';
 
+const User = require('../models/user-model');
+
 module.exports = function(data) {
     return {
         getLogin(req, res) {
@@ -132,6 +134,18 @@ module.exports = function(data) {
                 .catch(err => {
                     res.status(400)
                         .send(JSON.stringify({ validationErrors: helpers.errorHelper(err) }));
+                });
+        },
+        getAll(req, res) {
+            return data.getAllUsers()
+                .then((listings) => {
+                    if (!listings) {
+                        throw new Error('No items available');
+                    }
+                    res.status(200).json(listings);
+                })
+                .catch((err) => {
+                    res.status(400).json({ message: err.message });
                 });
         }
     };
