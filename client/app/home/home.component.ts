@@ -21,6 +21,6 @@ export class HomeComponent implements OnInit {
   }
 
   public ngAfterViewInit(): void {
-    this.spinnerService.hide(1500);
+    this.spinnerService.hide(1000);
   }
 }

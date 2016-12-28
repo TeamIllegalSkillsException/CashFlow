@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {EmailValidator, EqualPasswordsValidator} from '../../shared/validators';
+import {SpinnerService} from "../../shared/services/spinner/spinner.service";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
   public form:FormGroup;
   public name:AbstractControl;
@@ -18,8 +19,7 @@ export class RegisterComponent {
 
   public submitted:boolean = false;
 
-  constructor(fb:FormBuilder) {
-
+  constructor(fb:FormBuilder, private spinnerService: SpinnerService) {
     this.form = fb.group({
       'name': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'email': ['', Validators.compose([Validators.required, EmailValidator.validate])],
@@ -36,12 +36,20 @@ export class RegisterComponent {
     this.repeatPassword = this.passwords.controls['repeatPassword'];
   }
 
+  ngOnInit():void {
+    this.spinnerService.show();
+  }
+
+  public ngAfterViewInit(): void {
+    this.spinnerService.hide(500);
+  }
+
   public onSubmit(values:Object):void {
     this.submitted = true;
     if (this.form.valid) {
       // your code goes here
        console.log(values);
-        
+
 
     }
   }
