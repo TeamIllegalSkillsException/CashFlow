@@ -7,6 +7,7 @@ import { RouterModule, Router } from '@angular/router';
 
 /* Custom Modules */
 import { HomeModule } from './home/home.module';
+import { UsersModule } from './users/users.module';
 import { AboutModule } from './about/about.module';
 import { ContactUsModule } from './contact-us/contact-us.module';
 
@@ -30,6 +31,7 @@ import { SpinnerService } from './shared/services/spinner';
     FormsModule,
     HttpModule,
     HomeModule,
+    UsersModule,
     AboutModule,
     ContactUsModule,
     RouterModule.forRoot([
