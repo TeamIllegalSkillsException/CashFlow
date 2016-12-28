@@ -1,0 +1,36 @@
+<main id="content">
+    <div class="auth-main container">
+        <div class="auth-block forgotten-password-component">
+            <div class="title col-sm-12">
+                <h1>CashFlow Forgotten Password</h1>
+                <span class="border"></span>
+            </div>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal col-sm-6">
+                <div class="form-group row" [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched)}">
+                    <label for="inputEmail3" class="col-sm-12 control-label">Email</label>
+
+                    <div class="col-sm-12">
+                        <input [formControl]="email" type="email" class="form-control" id="inputEmail3" >
+                        <span *ngIf="!email.valid && email.touched" class="help-block sub-little-text">Invalid Email!</span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button [disabled]="!form.valid" type="submit" class="btn-purple btn-auth">Send</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="col-sm-12 login-block">
+                <h2>Already have a CashFlow account? Sign in!</h2>
+                <a routerLink="/login">
+                    <i class="fa fa-arrow-circle-o-left fa-fw"></i>
+                    Back to Login
+                </a>
+            </div>
+
+        </div>
+    </div>
+</main>

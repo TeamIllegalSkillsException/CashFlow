@@ -8,6 +8,7 @@ import { UsersRouterModule } from './users.router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ForgottenComponent } from './forgotten/forgotten.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { LogoutComponent } from './logout/logout.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    ForgottenComponent
   ]
 })
 export class UsersModule { }

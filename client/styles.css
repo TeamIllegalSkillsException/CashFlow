@@ -34,6 +34,87 @@ main{
   text-decoration: none;
 }
 
+.btn-purple{
+  width:100%;
+  display: block;
+  text-align: center;
+  padding-left: 17.333333333333px;
+  padding-right: 17.333333333333px;
+  font: normal bold 18px / 52px "Open Sans", Helvetica, Arial, Verdana, sans-serif;
+  text-transform: none;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border:2px solid #37a0fe;
+  color:#fff;
+  position: relative;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #37a0fe;
+  background-image: none;
+  background: #37a0fe;
+  background: -webkit-linear-gradient(135deg,#37a0fe 30%,#8846fd 100%);
+  background: linear-gradient(135deg,#37a0fe 30%,#8846fd 100%);
+  -webkit-box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+  -webkit-transition: -webkit-box-shadow 0.2s ease-out, background-color 0.2s ease;
+  transition: box-shadow 0.2s ease-out, background-color 0.2s ease;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+}
+.btn-purple:hover{
+  text-decoration: none;
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+
+.btn-simple{
+  ransition: .2s ease color,.2s ease background;
+  background: #fff;
+  outline: 0;
+  text-decoration: none;
+  padding: .44em .9em .52em;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -.025em;
+  display: block;
+  line-height: 1.2;
+  border-radius: 2px;
+  text-align: center;
+  border:1px solid transparent;
+}
+
+.btn-simple-google{
+  border: 1px solid #d54f50;
+  color: #d54f50;
+}
+.btn-simple-google:hover,
+.btn-simple-google:focus{
+  color: #fff;
+  background-color: #d54f50;
+  text-decoration: none;
+}
+
+.btn-simple-facebook{
+  color: #3e86b4;
+  background: #fff;
+  border: 1px solid #3e86b4;
+}
+.btn-simple-facebook:hover{
+  color: #fff;
+  background-color: #3e86b4;
+  text-decoration: none;
+}
+
+.btn-simple-twitter{
+  color: #13b8d5;
+  background: #fff;
+  border: 1px solid #13b8d5;
+}
+.btn-simple-twitter:hover{
+  color: #fff;
+  background-color: #13b8d5;
+  text-decoration: none;
+}
 
 /* Sweep To Right */
 .hvr-sweep-to-right {
