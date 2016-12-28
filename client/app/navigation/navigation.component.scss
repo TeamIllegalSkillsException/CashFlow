@@ -162,11 +162,23 @@ header .container{
   align-items: center;
   flex:1;
 }
+.homepage .branding a{
+  padding: 0px 50px 0px 50px;
+  color:#fff;
+  text-decoration: none;
+  background:url("../../assets/images/logo.png");
+  height: 120px;
+  background-size: cover;
+}
 .branding a{
   padding: 0px 50px 0px 50px;
   color:#fff;
   text-decoration: none;
+  height: 120px;
+  background:url("../../assets/images/logo_pu.png");
+  background-size: cover;
 }
+
 .branding a img{
   width:120px;
 }
