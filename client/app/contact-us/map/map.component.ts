@@ -7,14 +7,14 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
-  title: string = 'OUR PLACE';
+  title: string = 'Our place';
   lat: number = 42.650847;
   lng: number = 23.3772423;
   zoom: number = 16;
 
   constructor() { }
 
-  ngOnInit() {    
+  ngOnInit() {
   }
 
 }

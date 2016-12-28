@@ -2,12 +2,18 @@
     <banner [banner]="{imgUrl: '../../assets/images/banners/contact-us-background.jpg', caption: 'Contact'}"></banner>
 
     <div class="contact-us-page container">
-        <div id="location-map" class="location">
-            <location-map></location-map>
-        </div>
+        <div class="row-contact">
+            <div id="location-map" class="location col-sm-6">
+                <div class="inner">
+                    <location-map></location-map>
+                </div>
+            </div>
 
-        <div class="contact-form">
-           <contact-form></contact-form>
+            <div class="contact-form col-sm-6">
+                <div class="inner">
+                    <contact-form></contact-form>
+                </div>
+            </div>
         </div>
     </div>
 </main>
