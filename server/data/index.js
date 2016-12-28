@@ -1,9 +1,9 @@
 'use strict';
 
 const fs = require('fs'),
-  path = require('path'),
-  modelFileNamesPattern = '-model.js',
-  dataFileNamesPattern = '-data.js';
+    path = require('path'),
+    modelFileNamesPattern = '-model.js',
+    dataFileNamesPattern = '-data.js';
 
 module.exports = function() {
     let models = {};
