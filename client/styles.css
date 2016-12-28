@@ -2,6 +2,11 @@
 .carousel-control{
   display: none;
 }
+main{
+  float: left;
+  position: relative;
+  width:100%;
+}
 
 /* Buttons */
 .btn-ghost{
@@ -93,6 +98,9 @@
   position: relative;
   overflow: hidden;
 }
+.homepage .hvr-underline-from-left:before{
+  background-color: #fff;
+}
 .hvr-underline-from-left:before {
   content: "";
   position: absolute;
@@ -100,7 +108,10 @@
   left: 0;
   right: 100%;
   bottom: 0;
-  background-color: #fff;
+  background-color: #1ebbf0;
+  background: #1ebbf0;
+  background: -webkit-linear-gradient(135deg,#1ebbf0 30%,#39dfaa 100%);
+  background: linear-gradient(135deg,#1ebbf0 30%,#39dfaa 100%);
   height: 4px;
   -webkit-transition-property: right;
   transition-property: right;
@@ -137,4 +148,3 @@
     transform: scale(1.6) translate3d(+400px, 0px, 0px);
   }
 }
-

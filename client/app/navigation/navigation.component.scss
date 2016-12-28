@@ -1,9 +1,20 @@
-header{
+.homepage header{
   position: absolute;
   width: 100%;
   z-index: 99999;
   padding:0 50px;
+  float: none;
+  background: transparent;
+  border:none;
 }
+header{
+  position: relative;
+  width:100%;
+  float: left;
+  border-bottom: 1px solid rgba(173,176,182,0.3);
+  background: #fff;
+}
+
 header .container{
   position: relative;
   display: -webkit-flex;
@@ -74,9 +85,16 @@ header .container{
   display: -ms-flex;
   position: relative;
 }
-#primary-menu li a{
-  color: #fff !important;
+.homepage #primary-menu li a{
+  color:#fff;
   -webkit-text-fill-color: #fff;
+}
+.homepage #primary-menu li:hover a{
+  color:#fff;
+}
+#primary-menu li a{
+  color: #3b3f4a;
+  -webkit-text-fill-color: #3b3f4a;
   background: none;
   display: -webkit-flex;
   display: -moz-flex;
@@ -110,7 +128,7 @@ header .container{
   position: relative;
   text-decoration: none;
   cursor: pointer;
-  margin: 5px 16px 5px 16px;
+  margin: 30px 16px 30px 16px;
   padding: 5px 0px 5px 0px;
   font: normal bold 16px / 19px "Open Sans",Helvetica,Arial,Verdana,sans-serif;
   word-spacing: normal;
@@ -128,7 +146,7 @@ header .container{
 }
 
 #menu li:hover a{
-  color: #fff;
+  color: #3b3f4a;
 }
 
 .branding{

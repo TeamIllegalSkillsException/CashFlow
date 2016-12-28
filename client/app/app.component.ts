@@ -7,7 +7,7 @@ import {SpinnerService} from './shared/services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  @HostBinding('class') public cssClass = 'homepage';
+  @HostBinding('class') public cssClass = '';
 
   constructor(private spinnerService:SpinnerService){}
 
