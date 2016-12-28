@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import { SpinnerService } from '../shared/services';
 import { AboutUsService } from './../services/about.service';
 
