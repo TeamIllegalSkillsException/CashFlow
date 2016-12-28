@@ -1,9 +1,11 @@
 'use strict';
 
+const environment = process.env.NODE_ENV || 'development',
+    config = require('../config/config')(environment);
+
 const User = require('../models/user-model');
 
 const nodemailer = require('nodemailer');
-const supportEmail = 'eventsys.sup@gmail.com';
 
 const settings = {
     host: 'smtp.sendgrid.net',
@@ -11,8 +13,8 @@ const settings = {
     port: parseInt(587, 10),
     requiresAuth: true,
     auth: {
-        user: 'eventsys.sup@gmail.com',
-        pass: 'ninjas123456'
+        user: config.email,
+        pass: config.password
     }
 };
 const transporter = nodemailer.createTransport(settings);
@@ -173,8 +175,8 @@ module.exports = function(data) {
                         message = req.body.message;
 
                     const mailOptions = {
-                        to: supportEmail,
-                        from: supportEmail,
+                        to: config.email,
+                        from: config.email,
                         subject: subject,
                         text: message,
                         html: `useremail: ${userEmail}, messages ${message}`

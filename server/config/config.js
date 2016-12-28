@@ -6,13 +6,17 @@ module.exports = function(environment) {
       cookieName: '',
       sessionSecret: 'secret ala bala',
       connectionString: 'mongodb://localhost:27017/cash-flow-db',
-      port: 3003
+      port: 3003,
+      email: 'eventsys.sup@gmail.com',
+      password: 'ninjas123456'
     },
     production: {
       cookieName: process.env.COOKIE_NAME,
       sessionSecret: process.env.SESSION_SECRET,
       connectionString: process.env.CONNECTION_STRING,
-      port: process.env.PORT
+      port: process.env.PORT,
+      email: process.env.EMAIL,
+      password: process.env.PASSWORD
     }
   };
 
