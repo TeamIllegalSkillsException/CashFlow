@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { SpinnerService } from '../shared/services';
 import { AboutUsService } from './../services/about.service';
+import { Banner } from '../models/banner';
 
 @Component({
   selector: 'app-about',
@@ -12,11 +13,13 @@ import { AboutUsService } from './../services/about.service';
 export class AboutComponent implements OnInit {
   aboutDetails: any[];
   result:Array<Object>;
+  bannerModel: Banner;
   
   constructor(private spinnerService:SpinnerService,private aboutService: AboutUsService) { }
 
   ngOnInit() {
     this.spinnerService.show();
+
     this.aboutService.getAboutDetails()
     .map(res => res.json())
       .subscribe(response => {      

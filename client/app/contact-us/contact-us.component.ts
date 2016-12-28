@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BannerComponent } from '../shared/components/banner/banner.component';
+import { Banner } from '../models/banner';
+import { SpinnerService } from '../shared/services';
 
 @Component({
   selector: 'contact-us',
@@ -7,12 +8,18 @@ import { BannerComponent } from '../shared/components/banner/banner.component';
   styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent implements OnInit {
-  banner: BannerComponent;
-
-  constructor() { }
+  public bannerModel: Banner;
+  constructor(private spinnerService:SpinnerService) { 
+  }
 
   ngOnInit() {
-    // this.banner = new BannerComponent('../../assets/images/banners/contact-us-background.jpg','Contact');
+    this.spinnerService.show();
+
+    this.bannerModel = new Banner('../../assets/images/banners/contact-us-background.jpg','CONTACT');
+  }
+
+  public ngAfterViewInit(): void {
+    this.spinnerService.hide(1000);
   }
 
 }

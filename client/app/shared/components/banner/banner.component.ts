@@ -1,18 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Banner } from '../../../models/banner';
 
 @Component({
-  moduleId: module.id,
-  selector: 'page-banner',
+  selector: 'banner',
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent implements OnInit {
-  public imgUrl: string;
-  public caption: string;
+  @Input() public banner: Banner;
 
-  constructor(imgUrl: string, caption: string) {
-    this.imgUrl = imgUrl;
-    this.caption = caption;
+  constructor() {
   }
 
   ngOnInit() {

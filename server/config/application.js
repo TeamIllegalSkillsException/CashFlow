@@ -21,8 +21,15 @@ module.exports = function(config){
     resave: true,
     saveUninitialized: true
   }));
-  
 
+  app.use((req, res, next) => {      
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'POST, PUT, DELETE, GET');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+      
+      res.setHeader('Cache-Control', 'no-cache');
+      next();
+  });
   app.start = function(){
     const port = config.port;
     app.listen(port, () => console.log(`App running at: http://localhost:${port}`));

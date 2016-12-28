@@ -15,6 +15,7 @@ import { ContactUsModule } from './contact-us/contact-us.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PreloaderComponent } from './shared/components/preloader/preloader.component';
+// import { BannerComponent } from './shared/components/banner/banner.component';
 
 /* Services */
 import { PreloaderService } from './shared/services/preloader';
@@ -27,6 +28,7 @@ import { HttpRequester } from './services/http-requester.service';
     AppComponent,
     NavigationComponent,
     PreloaderComponent
+    // BannerComponent
   ],
   imports: [
     BrowserModule,

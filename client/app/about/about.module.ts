@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AboutComponent } from './about.component';
 import { AboutUsService } from '../services/about.service';
 
-
 @NgModule({
     imports: [
         AboutRouterModule,

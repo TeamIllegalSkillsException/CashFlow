@@ -2,6 +2,21 @@
 
 const User = require('../models/user-model');
 
+const nodemailer = require('nodemailer');
+const supportEmail = 'eventsys.sup@gmail.com';
+
+const settings = {
+    host: 'smtp.sendgrid.net',
+    service: 'Gmail',
+    port: parseInt(587, 10),
+    requiresAuth: true,
+    auth: {
+        user: 'eventsys.sup@gmail.com',
+        pass: 'ninjas123456'
+    }
+};
+const transporter = nodemailer.createTransport(settings);
+
 module.exports = function(data) {
     return {
         getLogin(req, res) {
@@ -146,6 +161,38 @@ module.exports = function(data) {
                 })
                 .catch((err) => {
                     res.status(400).json({ message: err.message });
+                });
+        },
+        sendEmail(req, res) {
+            return Promise.resolve()
+                .then(() => {
+                    console.log(req.body);
+
+                    let userEmail = req.body.email,
+                        subject = req.body.subject,
+                        message = req.body.message;
+
+                    const mailOptions = {
+                        to: supportEmail,
+                        from: supportEmail,
+                        subject: subject,
+                        text: message,
+                        html: `useremail: ${userEmail}, messages ${message}`
+                    };
+
+                    transporter.sendMail(mailOptions, (err) => {
+                        if (err) {
+                            console.log(err.message);
+                            //return res.redirect('/contact');
+                        }
+
+                        // res.redirect('/contact');
+                        return res;
+                    });
+                })
+                .catch(err => {
+                    res.status(400)
+                        .send(JSON.stringify({ validationErrors: helpers.errorHelper(err) }));
                 });
         }
     };
