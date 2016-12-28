@@ -10,7 +10,7 @@ module.exports = function(data) {
                 })
                 .then((details) => {
                     if (!details) {
-                        throw new Error('No details found!');
+                        res.json({ message: 'No details found!' });
                     }
 
                     return res.status(200).json(details);
