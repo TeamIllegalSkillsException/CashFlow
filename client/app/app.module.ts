@@ -23,6 +23,8 @@ import { PreloaderService } from './shared/services/preloader';
 import { SpinnerService } from './shared/services/spinner';
 import { HttpRequesterOptionsFactoryService } from './services/http-requester-options-factory.service';
 import { HttpRequester } from './services/http-requester.service';
+import { AboutUsService } from './services/about.service';
+import { TestimonialService } from './testimonials/services/testimonial.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { HttpRequester } from './services/http-requester.service';
     PreloaderService,
     SpinnerService,
     HttpRequesterOptionsFactoryService,
-    HttpRequester
+    HttpRequester,
+    AboutUsService,
+    TestimonialService
   ],
   bootstrap: [AppComponent]
 })
