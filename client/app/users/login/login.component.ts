@@ -1,11 +1,14 @@
+/* Modules */
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 
+/* Services */
 import {SpinnerService} from "../../shared/services/spinner/spinner.service";
 import {UserService} from '../services/user.service';
 import {User} from './../models/user.model';
+import {AuthService} from '../../shared/services/auth';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +24,7 @@ export class LoginComponent implements OnInit {
   public submitted:boolean = false;
 
   constructor(fb:FormBuilder,
+              private authService: AuthService,
               private appRouter: Router,
               private spinnerService:SpinnerService,
               private userService: UserService) {
@@ -35,6 +39,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit():void {
     this.spinnerService.show();
+    
+    if(this.authService.isLoggedIn()){
+      this.appRouter.navigateByUrl('/dashboard');
+    }
   }
 
   public ngAfterViewInit(): void {

@@ -1,12 +1,15 @@
+/* Modules */
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {EmailValidator, EqualPasswordsValidator} from '../../shared/validators';
 
+/* Services */
 import {SpinnerService} from "../../shared/services/spinner/spinner.service";
 import {UserService} from '../services/user.service';
 import {UserFactoryService} from './../services/user.factory.service';
 import {User} from './../models/user.model';
+import {AuthService} from '../../shared/services/auth';
 
 @Component({
   selector: 'app-register',
@@ -26,6 +29,7 @@ export class RegisterComponent implements OnInit {
   public submitted:boolean = false;
 
   constructor(fb:FormBuilder,
+              private authService: AuthService,
               private appRouter: Router,
               private spinnerService: SpinnerService,
               private userService: UserService,
@@ -48,6 +52,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit():void {
     this.spinnerService.show();
+    
+    if(this.authService.isLoggedIn()){
+      this.appRouter.navigateByUrl('/dashboard');
+    }
   }
 
   public ngAfterViewInit(): void {
