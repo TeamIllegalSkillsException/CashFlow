@@ -1,6 +1,14 @@
-<div class="address-info">
-  <i class="fa fa-{{icon}}"></i>
-  <h5>Address</h5>
-  <p></p>
+<div class="settings-list">
+  <ul>
+    <li *ngFor="let setting of settings">
+      <div>
+        <i class="{{setting.icon}}"></i>
+        <h5>{{setting.key}}</h5>
+        <p>{{setting.value}}</p>
+      </div>
+    </li>
+  </ul>
 </div>
+
+
 

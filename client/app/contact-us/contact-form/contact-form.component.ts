@@ -50,7 +50,7 @@ export class ContactFormComponent implements OnInit {
     this.contactModel = new Contact(this.firstName.value.trim(), 
                   this.lastName.value.trim(), this.email.value.trim(), this.subject.value.trim(), this.message.value.trim());
 
-    contactOperation =  this.contactService.send(this.contactModel);
+    contactOperation = this.contactService.send(this.contactModel);
 
     this.form.reset();     
   

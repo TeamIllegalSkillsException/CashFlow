@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ContactUsRouterModule } from './contact-us.router';
 import { BannerModule } from '../shared/components/banner/banner.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { ContactService } from './services/contact.service';
+import { ContactService, SiteSettingsService } from './services';
 import { AgmCoreModule } from '../../../node_modules/angular2-google-maps/core';
 import { MapComponent } from './map/map.component';
 import { ContactInfoComponent } from './contact-info/contact-info.component';
@@ -30,7 +30,8 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
     ContactInfoComponent
   ],
   providers: [
-    ContactService
+    ContactService,
+    SiteSettingsService
   ]
 })
 export class ContactUsModule { }
