@@ -1,6 +1,10 @@
 <div class="page-banner">
-  <img [src]="banner.imgUrl">
-  <div>
-    <caption>{{banner.caption}}</caption>
-  </div>
+  <img [src]="banner.imgUrl" />
+
+    <div class="overlay"></div>
+
+    <div class="caption">
+        {{banner.caption}}
+        <span class="underline"></span>
+    </div>
 </div>

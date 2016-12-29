@@ -1,13 +1,45 @@
-img {
-    width: 1280px;
-    height: 400px;
+.page-banner{
+    position: relative;
+    width: 100%;
+    background-attachment: scroll;
+    background-position: 50% -27px;
+    height:505px;
+    overflow: hidden;
 }
-caption {
+.page-banner img{
+    width:100%;
+}
+
+.caption {
     position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    font-size: 60px;
     color: white;
+    font: normal 500 60px / 44px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+}
+
+.page-banner .overlay{
+    color: inherit;
+    position: absolute;
+    width: 100%;
+    height: 100% !important;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.page-banner .underline{
+    display: block;
+    border-style: solid;
+    border-bottom: 3px solid rgb(204, 204, 204);
+    border-color: rgb(204, 204, 204);
+    width: 150px;
+    margin: 20px auto;
+    border-color: transparent;
+    -moz-border-image: -moz-linear-gradient(top right,#37a0fe 30%,#8846fd 100%);
+    -webkit-border-image: -webkit-linear-gradient(top right,#37a0fe 30%,#8846fd 100%);
+    border-image: linear-gradient(to bottom right,#37a0fe 30%,#8846fd 100%);
+    border-image-slice: 1;
 }
