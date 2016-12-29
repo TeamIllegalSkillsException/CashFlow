@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Contact } from '../../models/contact';
-import { ContactService } from '../../services/contact.service';
+import { ContactService } from '../services/contact.service';
 import { Observable } from 'rxjs/Rx';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { EmailValidator, StringValidator } from '../../shared/validators';

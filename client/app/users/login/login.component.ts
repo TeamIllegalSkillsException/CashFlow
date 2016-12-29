@@ -43,11 +43,11 @@ export class LoginComponent implements OnInit {
     
     if (this.form.valid) {
       this.userService.loginUser(values)
-        .subscribe(response => {
-          if (!response.username || !response.auth_token) {
-            throw new Error('Incorrect response');
-          }
-        });
+        // .subscribe(response => {
+        //   if (!response.username || !response.auth_token) {
+        //     throw new Error('Incorrect response');
+        //   }
+        // });
     }
   }
 

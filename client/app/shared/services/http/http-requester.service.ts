@@ -1,5 +1,5 @@
 import { Headers, Http, Response, } from '@angular/http';
-import { HttpRequest } from '../shared/models/http-requester.model';
+import { HttpRequest } from '../../models/http-requester.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 

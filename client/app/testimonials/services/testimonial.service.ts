@@ -1,7 +1,7 @@
 import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HttpRequester } from '../../services/http-requester.service';
-import { HttpRequesterOptionsFactoryService } from '../../services/http-requester-options-factory.service';
+import { HttpRequester } from '../../shared/services/http/http-requester.service';
+import { HttpRequesterOptionsFactoryService } from '../../shared/services/http/http-requester-options-factory.service';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 

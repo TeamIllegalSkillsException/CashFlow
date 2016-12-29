@@ -21,9 +21,9 @@ import { PreloaderComponent } from './shared/components/preloader/preloader.comp
 /* Services */
 import { PreloaderService } from './shared/services/preloader';
 import { SpinnerService } from './shared/services/spinner';
-import { HttpRequesterOptionsFactoryService } from './services/http-requester-options-factory.service';
-import { HttpRequester } from './services/http-requester.service';
-import { AboutUsService } from './services/about.service';
+import { HttpRequesterOptionsFactoryService } from './shared/services/http/http-requester-options-factory.service';
+import { HttpRequester } from './shared/services/http/http-requester.service';
+import { AboutUsService } from './about/services/about.service';
 import { TestimonialService } from './testimonials/services/testimonial.service';
 
 @NgModule({
