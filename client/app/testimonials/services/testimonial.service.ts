@@ -1,21 +1,19 @@
 import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HttpRequester } from '../services/http-requester.service';
-import { HttpRequesterOptionsFactoryService } from '../services/http-requester-options-factory.service';
+import { HttpRequester } from '../../shared/services/http/http-requester.service';
+import { HttpRequesterOptionsFactoryService } from '../../shared/services/http/http-requester-options-factory.service';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AboutUsService{
-    //private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
-    //private options = new RequestOptions({ headers: this.headers });
+export class TestimonialService{
 
     constructor(private requesterService: HttpRequester, 
                 private httpRequesterOptionsFactoryService: HttpRequesterOptionsFactoryService) { }
 
-    getAboutDetails(): Observable<Response> {
+    getTestimonialDetails(): Observable<Response> {
         const httpRequestOptions = this.httpRequesterOptionsFactoryService
-            .createHttpRequesterOptions('/api/about');
+            .createHttpRequesterOptions('/api/testimonials');
 
 
         return this.requesterService.get(httpRequestOptions);

@@ -1,6 +1,6 @@
 import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Banner } from '../models/banner';
+import { Banner } from '../../../models/banner';
 
 @Injectable()
 export class BannerService{

@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Contact } from '../../models/contact';
-import { ContactService } from '../../services/contact.service';
+import { Contact } from '../models/contact';
+import { ContactService } from '../services/contact.service';
 import { Observable } from 'rxjs/Rx';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { EmailValidator, StringValidator } from '../../shared/validators';
@@ -50,7 +50,7 @@ export class ContactFormComponent implements OnInit {
     this.contactModel = new Contact(this.firstName.value.trim(), 
                   this.lastName.value.trim(), this.email.value.trim(), this.subject.value.trim(), this.message.value.trim());
 
-    contactOperation =  this.contactService.send(this.contactModel);
+    contactOperation = this.contactService.send(this.contactModel);
 
     this.form.reset();     
   

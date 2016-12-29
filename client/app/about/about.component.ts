@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpinnerService } from '../shared/services';
-import { AboutUsService } from './../services/about.service';
+import { AboutUsService } from './services/about.service';
 
 @Component({
   selector: 'app-about',

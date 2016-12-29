@@ -1,4 +1,4 @@
-import { HttpRequest } from '../shared/models/http-requester.model';
+import { HttpRequest } from '../../models/http-requester.model';
 import { Injectable } from '@angular/core';
 
 @Injectable()
