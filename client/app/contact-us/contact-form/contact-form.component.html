@@ -1,7 +1,7 @@
 <h2 class="title">Get In Touch!</h2>
 <span class="underline-small"></span>
 
-<form id="contact-page-form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal col-sm-6">
+<form id="contact-page-form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal col-sm-12">
     <div class="form-group row" [ngClass]="{'has-error': (!firstName.valid && firstName.touched), 'has-success': (firstName.valid && firstName.touched)}">
         <label for="inputFirstName3" class="col-sm-12 control-label">First name</label>
 
@@ -48,4 +48,3 @@
         </div>
     </div>
 </form>
-        
