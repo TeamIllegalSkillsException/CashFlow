@@ -7,18 +7,20 @@ let AboutSchema = new Schema({
     content: {
         type: String
     },
-    team: [{
-        avatar: {
-            type: String
-        },
-        name: {
-            type: String
-        },
-        jobTitle: {
-            type: String
-        },
-        socialMediaIcons: [{}]
-    }]
+    title: {
+        type: String
+    },
+    avatar: {
+        type: String
+    },
+    name: {
+        type: String
+    },
+    jobTitle: {
+        type: String
+    },
+    socialMediaIcons: [{}]
+
 });
 
 mongoose.model('About', AboutSchema);

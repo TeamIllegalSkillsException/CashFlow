@@ -11,6 +11,7 @@ import { UsersModule } from './users/users.module';
 import { AboutModule } from './about/about.module';
 import { ContactUsModule } from './contact-us/contact-us.module';
 import { BannerModule } from './shared/components/banner/banner.module';
+import { TestimonialModule } from './testimonials/testimonials.module';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -27,7 +28,7 @@ import { HttpRequester } from './services/http-requester.service';
   declarations: [
     AppComponent,
     NavigationComponent,
-    PreloaderComponent
+    PreloaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +39,7 @@ import { HttpRequester } from './services/http-requester.service';
     AboutModule,
     ContactUsModule,
     BannerModule,
+    TestimonialModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: '**', redirectTo: '/', pathMatch: 'full' }

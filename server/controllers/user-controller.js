@@ -215,34 +215,50 @@ module.exports = function(data) {
         },
         sendEmail(req, res) {
             return Promise.resolve()
-                .then(() => {
-                    console.log(req.body);
-
+                .then(() => {                   
                     let userEmail = req.body.email,
                         subject = req.body.subject,
-                        message = req.body.message;
+                        message = req.body.message,
+                        fullName = req.body.firstName + ' ' + req.body.lastName;
+                    
+                    console.log(req.body);
+
+                    if (req.body.firstName.trim() == '') {
+                        return 'First name cannot be empty'
+                    }
+
+                    if (req.body.lastName.trim() == '') {
+                        return 'Last name cannot be empty'
+                    }
+                    
+                    if(userEmail.trim() == '') {
+                        return 'Email cannot be empty';
+                    }                                    
+                    
+                    if(message.trim() == '') {
+                        return 'Message cannot be empty';
+                    }
 
                     const mailOptions = {
                         to: config.email,
                         from: config.email,
                         subject: subject,
                         text: message,
-                        html: `useremail: ${userEmail}, messages ${message}`
+                        html: `Fullname of user: ${fullName},
+                               useremail: ${userEmail}, 
+                               messages ${message}`
                     };
 
                     transporter.sendMail(mailOptions, (err) => {
                         if (err) {
                             console.log(err.message);
-                            //return res.redirect('/contact');
                         }
-
-                        // res.redirect('/contact');
                         return res;
                     });
                 })
                 .catch(err => {
                     res.status(400)
-                        .send(JSON.stringify({ validationErrors: helpers.errorHelper(err) }));
+                        .send(JSON.stringify({ validationErrors: err }));
                 });
         }
     };

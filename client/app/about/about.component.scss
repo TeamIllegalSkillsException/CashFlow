@@ -1,0 +1,26 @@
+#left-title {
+    display: inline-block;
+}
+
+#right-title {
+    float: right;
+    margin-right: 100px;
+}
+
+// #bottom-left-title {
+//     display: block;
+// }
+// .names {
+//     display: inline-table;
+// }
+.images {
+    margin: 60px;
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
+}
+
+.table-row-view {
+    display: table-row;
+    text-align: center;
+}

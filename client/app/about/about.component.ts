@@ -12,7 +12,9 @@ export class AboutComponent implements OnInit {
   aboutDetails: any[];
   result:Array<Object>;
 
-  constructor(private spinnerService:SpinnerService,private aboutService: AboutUsService) { }
+  constructor(private spinnerService:SpinnerService, private aboutService: AboutUsService) {
+      
+   }
 
   ngOnInit() {
     this.spinnerService.show();
