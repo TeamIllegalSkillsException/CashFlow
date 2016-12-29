@@ -1,5 +1,7 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+
 import {SpinnerService} from "../../shared/services/spinner/spinner.service";
 import {UserService} from '../services/user.service';
 
@@ -38,9 +40,9 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(values:Object):void {
     this.submitted = true;
+    
     if (this.form.valid) {
       this.userService.loginUser(values)
-        .map((res) => res.json())
         .subscribe(response => {
           if (!response.username || !response.auth_token) {
             throw new Error('Incorrect response');
