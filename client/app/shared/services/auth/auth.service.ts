@@ -1,8 +1,8 @@
 import { Response} from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { HttpRequester } from '../../../services/http-requester.service';
-import { HttpRequesterOptionsFactoryService } from '../../../services/http-requester-options-factory.service';
+import { HttpRequester } from '../http/http-requester.service';
+import { HttpRequesterOptionsFactoryService } from '../http/http-requester-options-factory.service';
 
 @Injectable()
 export class AuthService {
