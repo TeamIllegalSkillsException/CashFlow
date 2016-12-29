@@ -6,14 +6,14 @@ import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AboutUsService{
+export class OurServicesService{
     
     constructor(private requesterService: HttpRequester, 
                 private httpRequesterOptionsFactoryService: HttpRequesterOptionsFactoryService) { }
 
-    getAboutDetails(): Observable<Response> {
+    getOurServicesDetails(): Observable<Response> {
         const httpRequestOptions = this.httpRequesterOptionsFactoryService
-            .createHttpRequesterOptions('/api/about');
+            .createHttpRequesterOptions('/api/services');
 
         return this.requesterService.get(httpRequestOptions);
     }

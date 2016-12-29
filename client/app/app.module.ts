@@ -13,6 +13,7 @@ import { ContactUsModule } from './contact-us/contact-us.module';
 import { BannerModule } from './shared/components/banner/banner.module';
 import { TestimonialModule } from './testimonials/testimonials.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { OurServicesModule } from './ourservices/ourservices.module';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { HttpRequester } from './shared/services/http/http-requester.service';
 import { AboutUsService } from './about/services/about.service';
 import { TestimonialService } from './testimonials/services/testimonial.service';
 import { AuthService, AuthGuard } from './shared/services/auth';
+import { OurServicesService } from './ourservices/services/ourservices.services';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { AuthService, AuthGuard } from './shared/services/auth';
     BannerModule,
     TestimonialModule,
     DashboardModule,
+    OurServicesModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: '**', redirectTo: '/', pathMatch: 'full' }
@@ -58,7 +61,8 @@ import { AuthService, AuthGuard } from './shared/services/auth';
     AboutUsService,
     TestimonialService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    OurServicesService
   ],
   bootstrap: [AppComponent]
 })
