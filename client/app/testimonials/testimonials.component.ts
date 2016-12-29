@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpinnerService } from '../shared/services';
 
 @Component({
   selector: 'app-testimonials',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestimonialsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private spinnerService:SpinnerService) { }
 
   ngOnInit() {
+    this.spinnerService.show();
+  }
+
+  public ngAfterViewInit(): void {
+    this.spinnerService.hide(1000);
   }
 
 }
