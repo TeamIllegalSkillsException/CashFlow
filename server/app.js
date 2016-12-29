@@ -55,19 +55,23 @@ require('./router')(app, data);
 // }
 // data.createTestimonialData(testimonial);
 
-// let SITE_ADDRESS = {
-//     key: 'SITE_ADDRESS',
-//     value: "Aleksandar Malinov, Sofia, Bulgaria"
-// };
+let SITE_ADDRESS = {
+    key: 'SITE_ADDRESS',
+    value: "Aleksandar Malinov, Sofia, Bulgaria"
+};
 
-// let SITE_EMAIL = {
-//     key: 'SITE_EMAIL',
-//     value: "cashflowsup@gmail.com"
-// };
+let SITE_EMAIL = {
+    key: 'SITE_EMAIL',
+    value: "cashflowsup@gmail.com"
+};
 
-// let SITE_PHONE = {
-//     key: 'SITE_PHONE',
-//     value: "+359123456789"
-// };
+let SITE_PHONE = {
+    key: 'SITE_PHONE',
+    value: "+359123456789"
+};
+
+data.createee(SITE_ADDRESS);
+data.createee(SITE_PHONE);
+data.createee(SITE_EMAIL);
 
 app.start();
