@@ -1,30 +1,51 @@
 <h2 class="title">Get In Touch!</h2>
 <span class="underline-small"></span>
 
-<form id="contact-page-form" #contactUsForm="ngForm" (ngSubmit)="contact(); contactUsForm.reset()">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="form-group">
-                <input class="form-control" type="text" name="firstName" [(ngModel)]="contactModel.firstName" #tbName="ngModel" required placeholder="First Name" />
-                <div [hidden]="tbName.untouched || tbName.valid">
-                    Invalid field
-                </div>
-            </div>
-            <div class="form-group">
-                <input class="form-control" type="text" name="lastName" [(ngModel)]="contactModel.secondName" required placeholder="Last Name" />
-            </div>
-            <div class="form-group">
-                <input class="form-control" type="text" name="email" [(ngModel)]="contactModel.email" placeholder="Email" >
-            </div>
-            <div class="form-group">
-                <input class="form-control" type="text" name="subject" [(ngModel)]="contactModel.subject" required placeholder="Subject" />
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" name="message" [(ngModel)]="contactModel.message" placeholder="Type your message here..." ></textarea>
-            </div>
-            <div class="form-group">
-                <button class="btn-purple">Send</button>
-            </div>
+<form id="contact-page-form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal col-sm-6">
+    <div class="form-group row" [ngClass]="{'has-error': (!firstName.valid && firstName.touched), 'has-success': (firstName.valid && firstName.touched)}">
+        <label for="inputFirstName3" class="col-sm-12 control-label">First name</label>
+
+        <div class="col-sm-12">
+            <input [formControl]="firstName" type="text" class="form-control" id="inputFirstName3" >
+            <span *ngIf="!firstName.valid && firstName.touched" class="help-block sub-little-text">Invalid Name!</span>
+        </div>
+    </div>
+    <div class="form-group row" [ngClass]="{'has-error': (!lastName.valid && lastName.touched), 'has-success': (lastName.valid && lastName.touched)}">
+        <label for="inputLastName3" class="col-sm-12 control-label">Last name</label>
+
+        <div class="col-sm-12">
+            <input [formControl]="lastName" type="text" class="form-control" id="inputLastName3" >
+            <span *ngIf="!lastName.valid && lastName.touched" class="help-block sub-little-text">Invalid Name!</span>
+        </div>
+    </div>
+    <div class="form-group row" [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched)}">
+        <label for="inputEmail3" class="col-sm-12 control-label">Email</label>
+
+        <div class="col-sm-12">
+            <input [formControl]="email" type="email" class="form-control" id="inputEmail3" >
+            <span *ngIf="!email.valid && email.touched" class="help-block sub-little-text">Invalid Email!</span>
+        </div>
+    </div>
+    <div class="form-group row" [ngClass]="{'has-error': (!subject.valid && subject.touched), 'has-success': (subject.valid && subject.touched)}">
+        <label for="inputSubject3" class="col-sm-12 control-label">Subject</label>
+
+        <div class="col-sm-12">
+            <input [formControl]="subject" type="text" class="form-control" id="inputSubject3" >
+            <span *ngIf="!subject.valid && subject.touched" class="help-block sub-little-text">Invalid Subject!</span>
+        </div>
+    </div>
+    <div class="form-group row" [ngClass]="{'has-error': (!message.valid && message.touched), 'has-success': (message.valid && message.touched)}">
+        <label for="inputMessage3" class="col-sm-12 control-label">Message</label>
+
+        <div class="col-sm-12">
+            <input [formControl]="message" type="text" class="form-control" id="inputMessage3" >
+            <span *ngIf="!message.valid && message.touched" class="help-block sub-little-text">Invalid Message!</span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12">
+            <button [disabled]="!form.valid" type="submit" class="btn-purple btn-auth">Send</button>
         </div>
     </div>
 </form>
+        
