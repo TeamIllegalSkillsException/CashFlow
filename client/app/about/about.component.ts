@@ -10,11 +10,8 @@ import { AboutUsService } from './services/about.service';
 
 export class AboutComponent implements OnInit {
   aboutDetails: any[];
-  result:Array<Object>;
 
-  constructor(private spinnerService:SpinnerService, private aboutService: AboutUsService) {
-      
-   }
+  constructor(private spinnerService:SpinnerService, private aboutService: AboutUsService) { }
 
   ngOnInit() {
     this.spinnerService.show();
@@ -24,14 +21,6 @@ export class AboutComponent implements OnInit {
       .subscribe(response => {
         this.aboutDetails = response;
       });
-    /*this.http.get('/api/about')
-    .map(response => response.json())
-    .subscribe(
-        result => this.result = result.json()
-        //(x => this.aboutDetails = x)
-    );*/
-
-    //this.aboutService.getAboutDetails().map(x => x.json()).subscribe(x => this.aboutDetails = x);
   }
 
   public ngAfterViewInit(): void {
