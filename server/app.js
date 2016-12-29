@@ -1,12 +1,13 @@
-'use strict'
+'use strict';
 
 const environment = process.env.NODE_ENV || 'development',
     config = require('./config/config')(environment),
     app = require('./config/application')(config),
-    data = require('./data')();
+    data = require('./data')(),
+    jwt  = require('jsonwebtoken');
 
 require('./config/database')(config.connectionString);
-require('./auth')(app, data);
+require('./auth')(app, config, data);
 require('./router')(app, data);
 
 
@@ -20,16 +21,17 @@ require('./router')(app, data);
 //     role: 'admin'
 // };
 // data.createUser(user);
-let about = {
-    content: 'admin',
-    team: [{
-        avatar: '/asdads/123',
-        name: 'pesho',
-        jobTitle: 'shef',
-        socialMediaIcons: []
-    }, ],
-};
-data.createAboutData(about);
+
+// let about = {
+//     content: 'admin',
+//     team: [{
+//         avatar: '/asdads/123',
+//         name: 'pesho',
+//         jobTitle: 'shef',
+//         socialMediaIcons: []
+//     }, ],
+// };
+// data.createAboutData(about)
 
 app.start();
 

@@ -1,7 +1,12 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {EmailValidator, EqualPasswordsValidator} from '../../shared/validators';
+
 import {SpinnerService} from "../../shared/services/spinner/spinner.service";
+import {UserService} from '../services/user.service';
+import {UserFactoryService} from './../services/user.factory.service';
+import {User} from './../models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -9,9 +14,9 @@ import {SpinnerService} from "../../shared/services/spinner/spinner.service";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+  user: User;
   public form:FormGroup;
-  public name:AbstractControl;
+  public username:AbstractControl;
   public email:AbstractControl;
   public password:AbstractControl;
   public repeatPassword:AbstractControl;
@@ -19,9 +24,13 @@ export class RegisterComponent implements OnInit {
 
   public submitted:boolean = false;
 
-  constructor(fb:FormBuilder, private spinnerService: SpinnerService) {
+  constructor(fb:FormBuilder,
+              private appRouter: Router,
+              private spinnerService: SpinnerService,
+              private userService: UserService,
+              private userFactoryService: UserFactoryService) {
     this.form = fb.group({
-      'name': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      'username': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'email': ['', Validators.compose([Validators.required, EmailValidator.validate])],
       'passwords': fb.group({
         'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
@@ -29,7 +38,7 @@ export class RegisterComponent implements OnInit {
       }, {validator: EqualPasswordsValidator.validate('password', 'repeatPassword')})
     });
 
-    this.name = this.form.controls['name'];
+    this.username = this.form.controls['username'];
     this.email = this.form.controls['email'];
     this.passwords = <FormGroup> this.form.controls['passwords'];
     this.password = this.passwords.controls['password'];
@@ -46,9 +55,22 @@ export class RegisterComponent implements OnInit {
 
   public onSubmit(values:Object):void {
     this.submitted = true;
+
     if (this.form.valid) {
-      // your code goes here
-       console.log(values);
+      this.spinnerService.show();
+      this.user = this.userFactoryService.createUser(
+        values['username'],
+        values['passwords']['password'],
+        values['email']);
+
+      this.userService.registerUser(this.user)
+        .subscribe(response => {
+            console.log(response);
+
+            this.spinnerService.hide();
+            setTimeout(() => this.appRouter.navigateByUrl('/login'), 1500);
+          },
+          err => console.log(err));
 
 
     }

@@ -47,15 +47,11 @@ module.exports = function(models) {
                 });
             });
         },
-        getUserByName(name) {
+        getUserByName(username) {
             return new Promise((resolve, reject) => {
-                User.findOne({ username: name }, (err, user) => {
+                User.findOne({ username }, (err, user) => {
                     if (err) {
                         return reject(err);
-                    }
-
-                    if (!user) {
-                        return reject(user);
                     }
 
                     return resolve(user);

@@ -10,6 +10,10 @@ import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ForgottenComponent } from './forgotten/forgotten.component';
 
+/* Services */
+import { UserService } from './services/user.service';
+import { UserFactoryService } from './services/user.factory.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +26,10 @@ import { ForgottenComponent } from './forgotten/forgotten.component';
     RegisterComponent,
     LogoutComponent,
     ForgottenComponent
+  ],
+  providers: [
+    UserService,
+    UserFactoryService
   ]
 })
 export class UsersModule { }

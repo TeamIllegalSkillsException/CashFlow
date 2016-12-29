@@ -12,14 +12,12 @@ const LETTERS = /^[A-Za-zА-Яа-я]+$/,
 let UserSchema = new Schema({
     firstName: {
         type: String,
-        required: true,
         minlength: [3, 'Name is too short!'],
         maxlength: [50, 'Name is too long!'],
         match: LETTERS
     },
     lastName: {
         type: String,
-        required: true,
         minlength: [3, 'Name is too short!'],
         maxlength: [50, 'Name is too long!'],
         match: LETTERS
@@ -45,7 +43,7 @@ let UserSchema = new Schema({
     },
     avatarUrl: {
         type: String,
-        default: '/static/uploads/users/avatar.jpg'
+        default: '/assets/uploads/users/avatar.jpg'
     },
     salt: String,
     passwordHash: {
@@ -92,7 +90,7 @@ UserSchema
     .set(function(password) {
         this._password = password;
         this.salt = this.makeSalt();
-        this.passwordHash = this.encryptPassword(password);
+        this.passwordHash = this.encryptPassword(password.toString());
     })
     .get(function() {
         return this._password;
@@ -121,6 +119,7 @@ UserSchema.methods = {
                 .update(password)
                 .digest('hex');
         } catch (err) {
+          console.log(err)
             return '';
         }
     },

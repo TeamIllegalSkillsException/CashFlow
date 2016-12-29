@@ -1,11 +1,11 @@
 'use strict';
 
 const environment = process.env.NODE_ENV || 'development',
-    config = require('../config/config')(environment);
+    config = require('../config/config')(environment),
+    nodemailer = require('nodemailer'),
+    jwt = require('jsonwebtoken');
 
 const User = require('../models/user-model');
-
-const nodemailer = require('nodemailer');
 
 const settings = {
     host: 'smtp.sendgrid.net',
@@ -20,6 +20,8 @@ const settings = {
 const transporter = nodemailer.createTransport(settings);
 
 module.exports = function(data) {
+    const webTokenSecret = config.webTokenSecret;
+
     return {
         getLogin(req, res) {
             return Promise.resolve()
@@ -124,14 +126,29 @@ module.exports = function(data) {
                 });
         },
         getRegister(req, res) {
-            return Promise.resolve()
-                .then(() => {
-                    if (!req.isAuthenticated()) {
-                        res.render('user/register', {});
-                    } else {
-                        res.redirect('/home');
-                    }
-                });
+          if (req.user) {
+            return res.status(400).json({ message: 'User already logged in.' });
+          }
+
+          const userObject = req.body;
+
+          return data.getUserByName(userObject.username)
+            .then(user => {
+              if (user) {
+                throw new Error('Username already exists.');
+              }
+
+              return userObject;
+            })
+            .then(() => {
+              return data.createUser(userObject);
+            })
+            .then(() => {
+              res.status(200).json({ message: 'success' });
+            })
+            .catch((err) => {
+              res.status(400).json({ message: err.message });
+            });
         },
         updateProfile(req, res) {
             const updatedUser = req.body;
@@ -155,15 +172,46 @@ module.exports = function(data) {
         },
         getAll(req, res) {
             return data.getAllUsers()
-                .then((listings) => {
-                    if (!listings) {
-                        throw new Error('No items available');
+                .then((users) => {
+                    if (!users) {
+                        throw new Error('No users available');
                     }
-                    res.status(200).json(listings);
+                    res.status(200).json(users);
                 })
                 .catch((err) => {
                     res.status(400).json({ message: err.message });
                 });
+        },
+        getAuthentication(req, res) {
+
+          return data.getUserByName(req.body.username)
+            .then((user) => {
+              if (!user) {
+                res.json({ success: false, message: 'Authentication failed. User not found.' });
+              }
+
+              else if (user) {
+
+                // check if password matches
+                console.log(user.password);
+                console.log(req.body.password);
+                if (user.password == undefined || (user.password !== req.body.password)) {
+                  res.json({success: false, message: 'Authentication failed. Wrong password.'});
+                } else {
+
+                  // if user is found and password is right
+                  // create a token
+                  var token = jwt.sign(user, webTokenSecret, {});
+
+                  // return the information including token as JSON
+                  res.json({
+                    success: true,
+                    message: 'Enjoy your token!',
+                    token: token
+                  });
+                }
+              }
+            })
         },
         sendEmail(req, res) {
             return Promise.resolve()

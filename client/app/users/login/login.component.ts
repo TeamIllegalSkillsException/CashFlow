@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {SpinnerService} from "../../shared/services/spinner/spinner.service";
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,9 @@ export class LoginComponent implements OnInit {
   public password:AbstractControl;
   public submitted:boolean = false;
 
-  constructor(fb:FormBuilder, private spinnerService:SpinnerService) {
+  constructor(fb:FormBuilder,
+              private spinnerService:SpinnerService,
+              private userService: UserService) {
     this.form = fb.group({
       'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
@@ -36,8 +39,13 @@ export class LoginComponent implements OnInit {
   public onSubmit(values:Object):void {
     this.submitted = true;
     if (this.form.valid) {
-      // your code goes here
-      console.log(values);
+      this.userService.loginUser(values)
+        .map((res) => res.json())
+        .subscribe(response => {
+          if (!response.username || !response.auth_token) {
+            throw new Error('Incorrect response');
+          }
+        });
     }
   }
 

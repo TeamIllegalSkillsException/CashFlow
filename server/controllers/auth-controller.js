@@ -53,6 +53,10 @@ module.exports = function(data) {
         register(req, res) {
             const user = req.body;
 
+            if (req.user) {
+              return res.status(400).json({ message: 'User already logged in.' });
+            }
+
             return Promise.resolve()
                 .then(() => {
                     if (!req.isAuthenticated()) {
@@ -62,14 +66,11 @@ module.exports = function(data) {
                     }
                 })
                 .then(dbUser => {
-                    passport.authenticate('local')(req, res, function() {
-                        res.status(200)
-                            .send({ redirectRoute: '/profile' });
-                    });
+                    res.status(200).json({ message: 'user created' });
                 })
                 .catch(error => {
                     res.status(400)
-                        .send(JSON.stringify({ validationErrors: helpers.errorHelper(error) }));
+                        .send(JSON.stringify({ validationErrors: error.message }));
                 });
         }
     };
