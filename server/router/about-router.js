@@ -5,7 +5,7 @@ module.exports = function(app, passport, express, data) {
         aboutController = require('../controllers/about-controller')(data);
 
     aboutRouter
-        .get('/api/about', aboutController.getDetails);
+        .get('/api/about', passport.authenticate('jwt'), aboutController.getDetails);
 
     app.use(aboutRouter);
 };

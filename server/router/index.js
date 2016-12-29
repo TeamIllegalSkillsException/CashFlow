@@ -7,7 +7,7 @@ const fs = require('fs'),
 
 const routerFileNamesPattern = '-router.js';
 
-module.exports = function (app, data) {
+module.exports = function (app, config, data) {
     fs.readdirSync('./server/router')
         .filter(file => file.includes(routerFileNamesPattern))
         .forEach(file => require(path.join(__dirname, file))(app, passport, express, data));

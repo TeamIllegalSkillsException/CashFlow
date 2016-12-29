@@ -1,7 +1,7 @@
 import { HttpRequesterOptionsFactoryService } from '../../services/http-requester-options-factory.service';
 import { HttpRequester } from '../../services/http-requester.service';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import { Response } from '@angular/http';
 import { User } from './../models/user.model';
 
@@ -12,9 +12,12 @@ export class UserService {
   private logoutApiUrl: string = '/api/logout';
   private contentTypeHeaderObject: {} = { 'Content-Type': 'application/json' };
 
+  private isLogged: boolean = false;
+
   constructor(
     private httpRequesterService: HttpRequester,
     private httpRequesterOptionsFactory: HttpRequesterOptionsFactoryService) {
+    this.isLogged = !!localStorage.getItem('auth_token');
   }
 
   registerUser(user: Object): Observable<Response> {
@@ -34,5 +37,13 @@ export class UserService {
   logoutUser(): Observable<Response> {
     const httpRequestOptions = this.httpRequesterOptionsFactory.createHttpRequesterOptions(this.logoutApiUrl);
     return this.httpRequesterService.get(httpRequestOptions);
+  }
+
+  isLoggedIn() {
+    return this.isLogged;
+  }
+
+  setLoggedUser(authResponse) {
+    localStorage.setItem('user', JSON.stringify(authResponse));
   }
 }

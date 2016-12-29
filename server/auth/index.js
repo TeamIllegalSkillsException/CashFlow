@@ -3,6 +3,7 @@
 const passport = require('passport');
 
 module.exports = function(app, config, data) {
+
     passport.serializeUser((user, done) => {
         if (user) {
             done(null, user.id);
@@ -15,6 +16,6 @@ module.exports = function(app, config, data) {
             .catch(error => done(error, false));
     });
 
-    require('./local-strategy')(passport, data);
+    require('./local-strategy')(passport, app, config, data);
     require('./jwt-strategy')(passport, app, config, data);
 };

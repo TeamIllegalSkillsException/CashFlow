@@ -7,7 +7,7 @@ const environment = process.env.NODE_ENV || 'development',
 
 require('./config/database')(config.connectionString);
 require('./auth')(app, config, data);
-require('./router')(app, data);
+require('./router')(app, config, data);
 
 
 // let user = {

@@ -12,6 +12,7 @@ import { AboutModule } from './about/about.module';
 import { ContactUsModule } from './contact-us/contact-us.module';
 import { BannerModule } from './shared/components/banner/banner.module';
 import { TestimonialModule } from './testimonials/testimonials.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { PreloaderService } from './shared/services/preloader';
 import { SpinnerService } from './shared/services/spinner';
 import { HttpRequesterOptionsFactoryService } from './services/http-requester-options-factory.service';
 import { HttpRequester } from './services/http-requester.service';
+import { AuthService, AuthGuard } from './shared/services/auth';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { HttpRequester } from './services/http-requester.service';
     ContactUsModule,
     BannerModule,
     TestimonialModule,
+    DashboardModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: '**', redirectTo: '/', pathMatch: 'full' }
@@ -49,7 +52,9 @@ import { HttpRequester } from './services/http-requester.service';
     PreloaderService,
     SpinnerService,
     HttpRequesterOptionsFactoryService,
-    HttpRequester
+    HttpRequester,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

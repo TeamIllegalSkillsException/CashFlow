@@ -3,6 +3,7 @@
 const environment = process.env.NODE_ENV || 'development',
     config = require('../config/config')(environment),
     nodemailer = require('nodemailer'),
+    passport = require('passport'),
     jwt = require('jsonwebtoken');
 
 const User = require('../models/user-model');
@@ -24,14 +25,15 @@ module.exports = function(data) {
 
     return {
         getLogin(req, res) {
-            return Promise.resolve()
-                .then(() => {
-                    if (!req.isAuthenticated()) {
-                        res.render('user/login', {});
-                    } else {
-                        res.redirect('/home');
-                    }
-                });
+            const webTokenObject = {
+              _id: req.user.id,
+              username: req.user.username
+            };
+
+            res.status(200).json({
+              username: req.user.username,
+              auth_token: jwt.sign(webTokenObject, webTokenSecret)
+            });
         },
         getProfile(req, res) {
             return Promise.resolve()
@@ -126,29 +128,28 @@ module.exports = function(data) {
                 });
         },
         getRegister(req, res) {
-          if (req.user) {
-            return res.status(400).json({ message: 'User already logged in.' });
-          }
+            if (req.user) {
+                return res.status(400).json({ message: 'User already logged in.' });
+            }
+            const userObject = req.body;
 
-          const userObject = req.body;
+            return data.getUserByName(userObject.username)
+                .then(user => {
+                    if (user) {
+                        throw new Error('Username already exists.');
+                    }
 
-          return data.getUserByName(userObject.username)
-            .then(user => {
-              if (user) {
-                throw new Error('Username already exists.');
-              }
-
-              return userObject;
-            })
-            .then(() => {
-              return data.createUser(userObject);
-            })
-            .then(() => {
-              res.status(200).json({ message: 'success' });
-            })
-            .catch((err) => {
-              res.status(400).json({ message: err.message });
-            });
+                    return userObject;
+                })
+                .then(() => {
+                    return data.createUser(userObject);
+                })
+                .then(() => {
+                    res.status(200).json({ message: 'success' });
+                })
+                .catch((err) => {
+                    res.status(400).json({ message: err.message });
+                });
         },
         updateProfile(req, res) {
             const updatedUser = req.body;
@@ -183,44 +184,53 @@ module.exports = function(data) {
                 });
         },
         getAuthentication(req, res) {
+          var token = req.get('AuthToken');
 
-          return data.getUserByName(req.body.username)
-            .then((user) => {
-              if (!user) {
-                res.json({ success: false, message: 'Authentication failed. User not found.' });
-              }
+          if (token) {
+            let decoded = jwt.decode(token, config.webTokenSecret);
 
-              else if (user) {
-
-                // check if password matches
-                console.log(user.password);
-                console.log(req.body.password);
-                if (user.password == undefined || (user.password !== req.body.password)) {
-                  res.json({success: false, message: 'Authentication failed. Wrong password.'});
+            return data.getUserByName(decoded.username)
+              .then((user, err) => {
+                if (!user) {
+                    return res.json({ success: false, message: 'No user.' });
                 } else {
-
-                  // if user is found and password is right
-                  // create a token
-                  var token = jwt.sign(user, webTokenSecret, {});
-
-                  // return the information including token as JSON
                   res.json({
                     success: true,
-                    message: 'Enjoy your token!',
-                    token: token
+                    user: {
+                      token,
+                      username: user.username,
+                      firstname: user.firstname,
+                      lastname: user.lastname,
+                      _id: user._id
+                    }
                   });
                 }
+
+              })
+          }
+          else {
+            return res.json({success: false, message: "No token, sorry dude"});
+          }
+        },
+        logout(req, res) {
+          return Promise.resolve()
+            .then(() => {
+              if (!req.isAuthenticated()) {
+                res.redirect('/home');
+              } else {
+                req.logout();
+                res.redirect('/home');
               }
-            })
+            });
         },
         sendEmail(req, res) {
             return Promise.resolve()
-                .then(() => {                   
+                .then(() => {
                     let userEmail = req.body.email,
                         subject = req.body.subject,
                         message = req.body.message,
                         fullName = req.body.firstName + ' ' + req.body.lastName;
-                    
+
                     console.log(req.body);
 
                     if (req.body.firstName.trim() == '') {
@@ -230,11 +240,11 @@ module.exports = function(data) {
                     if (req.body.lastName.trim() == '') {
                         return 'Last name cannot be empty'
                     }
-                    
+
                     if(userEmail.trim() == '') {
                         return 'Email cannot be empty';
-                    }                                    
-                    
+                    }
+
                     if(message.trim() == '') {
                         return 'Message cannot be empty';
                     }

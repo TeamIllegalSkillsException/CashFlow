@@ -1,9 +1,11 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import 'rxjs/add/operator/map';
 
 import {SpinnerService} from "../../shared/services/spinner/spinner.service";
 import {UserService} from '../services/user.service';
+import {User} from './../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -12,21 +14,22 @@ import {UserService} from '../services/user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  user: User;
   public form:FormGroup;
-  public email:AbstractControl;
+  public username:AbstractControl;
   public password:AbstractControl;
   public submitted:boolean = false;
 
   constructor(fb:FormBuilder,
+              private appRouter: Router,
               private spinnerService:SpinnerService,
               private userService: UserService) {
     this.form = fb.group({
-      'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      'username': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
     });
 
-    this.email = this.form.controls['email'];
+    this.username = this.form.controls['username'];
     this.password = this.form.controls['password'];
   }
 
@@ -40,13 +43,24 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(values:Object):void {
     this.submitted = true;
-    
+
     if (this.form.valid) {
-      this.userService.loginUser(values)
+
+      this.userService.loginUser(this.form.value)
+        .map((res) => res.json())
         .subscribe(response => {
-          if (!response.username || !response.auth_token) {
-            throw new Error('Incorrect response');
-          }
+            console.log(response);
+            if(!response.auth_token){
+              throw new Error('Invalid login');
+            }
+
+            localStorage.setItem('user', JSON.stringify(response));
+            this.userService.setLoggedUser(response);
+            setTimeout(() => this.appRouter.navigateByUrl('/dashboard'), 1500);
+        }, (err) => {
+          console.log(err);
+        }, () => {
+
         });
     }
   }

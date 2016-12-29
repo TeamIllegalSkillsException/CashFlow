@@ -13,6 +13,7 @@ import {User} from './../models/user.model';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent implements OnInit {
   user: User;
   public form:FormGroup;

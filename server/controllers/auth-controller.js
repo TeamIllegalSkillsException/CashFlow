@@ -1,6 +1,5 @@
 'use strict';
-const passport = require('passport'),
-    helpers = require('../helpers');
+const passport = require('passport');
 
 module.exports = function(data) {
     return {
