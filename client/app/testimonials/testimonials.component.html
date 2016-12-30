@@ -1,4 +1,19 @@
 <banner [banner]="{imgUrl: '../../assets/images/banners/contact-us-background.jpg', caption: 'CashFlow Testimonials'}"></banner>
-<p>
-    testimonials works!
-</p>
+<div id="wrapper">
+    <ul>
+        <li class="col-sm-4" *ngFor="let item of this.testimonialDetails">
+            <div class="info-box">
+                <div class="aio-block">
+                    <div class="aio-header">
+                        <img [src]='this.item.avatar' class="images">
+                        <h5>{{this.item.name}}</h5>
+                        <h4>{{this.item.jobTitle}}</h4>
+                    </div>
+                    <div class="aio-description">
+                        <p>{{this.item.content}}</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
