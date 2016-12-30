@@ -57,18 +57,21 @@ data.createTestimonialData(testimonial);
 
 let SITE_ADDRESS = {
     key: 'SITE_ADDRESS',
+    title: 'Address',
     value: 'Aleksandar Malinov, Sofia, Bulgaria',
     icon: 'home'
 };
 
 let SITE_EMAIL = {
     key: 'SITE_EMAIL',
+    title: 'Email',
     value: 'cashflowsup@gmail.com',
     icon: 'envelope'
 };
 
 let SITE_PHONE = {
     key: 'SITE_PHONE',
+    title: 'Phone',
     value: '+359123456789',
     icon: 'phone'
 };

@@ -12,6 +12,10 @@ let SiteSettingsSchema = new Schema({
         type: String
     },
 
+    title: {
+      type: String
+    },
+
     icon: {
       type: String
     }
