@@ -59,25 +59,25 @@ export class LoginComponent implements OnInit {
       this.userService.loginUser(this.form.value)
         .map((res) => res.json())
         .subscribe(response => {
-            console.log(response);
-            if(!response.auth_token){
-              throw new Error('Invalid login');
-            }
 
-            localStorage.setItem('user', JSON.stringify(response));
-            this.userService.setLoggedUser(response);
-            this.notificationsService.success(
-              'Welcome!',
-              'You have logged in successfully!'
-            )
+          if(!response.auth_token){
+            throw new Error('Invalid login');
+          }
+
+          localStorage.setItem('user', JSON.stringify(response));
+          this.userService.setLoggedUser(response);
+
+          const successTitle = "Welcome!";
+          const successMessage = "You have logged in successfully!";
+          this.notificationsService.success(successTitle, successMessage);
         }, (err) => {
-          //console.log(err);
-          this.notificationsService.error(
-            'Incorrect input',
-            'Wrong username or password! Please try again.'
-          )
+
+          const errorTitle = "Invalid credentials!";
+          const errorMessage = "Wrong username or password! Please try again.";
+          this.notificationsService.error(errorTitle, errorMessage);
         }, () => {
-          setTimeout(() => this.appRouter.navigateByUrl('/dashboard'), 1500);
+
+          setTimeout(() => this.appRouter.navigateByUrl('/dashboard'), 500);
         });
     }
   }
