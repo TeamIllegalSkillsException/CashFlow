@@ -151,6 +151,9 @@ main{
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
+button[disabled], html input[disabled] {
+  cursor: not-allowed !important;
+}
 
 /* Hover effects */
 .hvr-sweep-to-right:before {
