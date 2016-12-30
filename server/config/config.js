@@ -8,8 +8,8 @@ module.exports = function(environment) {
       webTokenSecret: 'secret mecret',
       connectionString: 'mongodb://localhost:27017/cash-flow-db',
       port: 3003,
-      email: 'test@test.tt',
-      password: 'asdasd'
+      email: 'eventsys.sup@gmail.com',
+      password: 'ninjas123456'
     },
     production: {
       cookieName: process.env.COOKIE_NAME,

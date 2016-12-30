@@ -38,7 +38,7 @@
         <label for="inputMessage3" class="col-sm-12 control-label">Message</label>
 
         <div class="col-sm-12">
-            <input [formControl]="message" type="text" class="form-control" id="inputMessage3" >
+            <textarea [formControl]="message" class="form-control" id="inputMessage3" ></textarea>
             <span *ngIf="!message.valid && message.touched" class="help-block sub-little-text">Invalid Message!</span>
         </div>
     </div>
