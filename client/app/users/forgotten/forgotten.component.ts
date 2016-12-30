@@ -58,7 +58,7 @@ export class ForgottenComponent implements OnInit {
             setTimeout(() => {this.form.reset(); }, 500);
 
           } else {
-            const successTitle = 'uccessfully changed password!';
+            const successTitle = 'Successfully changed password!';
             const successMessage = 'You can check it out in your mail!';
             this.notificationsService.success(successTitle, successMessage);
 
