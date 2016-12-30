@@ -67,7 +67,6 @@ let testimonial = {
 };
 data.createTestimonialData(testimonial);
 
-<<<<<<< HEAD
 
 // let SITE_ADDRESS = {
 //     key: 'SITE_ADDRESS',
@@ -83,7 +82,7 @@ data.createTestimonialData(testimonial);
 //     key: 'SITE_PHONE',
 //     value: "+359123456789"
 // };
-=======
+
 let SITE_ADDRESS = {
     key: 'SITE_ADDRESS',
     title: 'Address',
@@ -104,7 +103,6 @@ let SITE_PHONE = {
     value: '+359123456789',
     icon: 'phone'
 };
->>>>>>> 6054188707c12f9020e64f1c66ffceec565bcd54
 
 // data.createee(SITE_ADDRESS);
 // data.createee(SITE_PHONE);
