@@ -1,13 +1,23 @@
 <div class="settings-list">
-  <ul>
-    <li *ngFor="let setting of settings">
-      <div>
-        <i class="{{setting.icon}}"></i>
-        <h5>{{setting.key}}</h5>
-        <p>{{setting.value}}</p>
-      </div>
-    </li>
-  </ul>
+    <ul>
+        <li class="col-sm-4" *ngFor="let setting of settings">
+            <div class="info-box">
+                <div class="aio-icon-left">
+                    <div class="aio-icon">
+                        <i class="fa fa-{{setting.icon}} fa-fw"></i>
+                    </div>
+                </div>
+                <div class="aio-block">
+                    <div class="aio-header">
+                        <h5>{{setting.title}}</h5>
+                    </div>
+                    <div class="aio-description">
+                        <p>{{setting.value}}</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>
 
 

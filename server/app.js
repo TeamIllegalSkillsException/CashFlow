@@ -59,14 +59,15 @@ require('./router')(app, config, data);
 // };
 // data.createAboutData(about3);
 
-// let testimonial = {
-//     content: 'bla',
-//     avatar: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/13906970_10210535840300100_2497753137668459306_n.jpg?oh=e9faadf031de7ee3bb96199c11a26af8&oe=58EE0C6F',
-//     name: 'Zorka jiasjva',
-//     jobTitle: 'CEO',
-// }
-// data.createTestimonialData(testimonial);
+let testimonial = {
+    content: 'bla',
+    avatar: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/13906970_10210535840300100_2497753137668459306_n.jpg?oh=e9faadf031de7ee3bb96199c11a26af8&oe=58EE0C6F',
+    name: 'Zorka jiasjva',
+    jobTitle: 'CEO'
+};
+data.createTestimonialData(testimonial);
 
+<<<<<<< HEAD
 
 // let SITE_ADDRESS = {
 //     key: 'SITE_ADDRESS',
@@ -82,6 +83,28 @@ require('./router')(app, config, data);
 //     key: 'SITE_PHONE',
 //     value: "+359123456789"
 // };
+=======
+let SITE_ADDRESS = {
+    key: 'SITE_ADDRESS',
+    title: 'Address',
+    value: 'Aleksandar Malinov, Sofia, Bulgaria',
+    icon: 'home'
+};
+
+let SITE_EMAIL = {
+    key: 'SITE_EMAIL',
+    title: 'Email',
+    value: 'cashflowsup@gmail.com',
+    icon: 'envelope'
+};
+
+let SITE_PHONE = {
+    key: 'SITE_PHONE',
+    title: 'Phone',
+    value: '+359123456789',
+    icon: 'phone'
+};
+>>>>>>> 6054188707c12f9020e64f1c66ffceec565bcd54
 
 // data.createee(SITE_ADDRESS);
 // data.createee(SITE_PHONE);

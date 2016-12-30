@@ -119,12 +119,14 @@ UserSchema.methods = {
                 .update(password)
                 .digest('hex');
         } catch (err) {
-          console.log(err)
             return '';
         }
     },
     authenticatePassword: function(password) {
         return this.encryptPassword(password) === this.passwordHash;
+    },
+    isAuthenticated: function (username, password) {
+      return this.username === username && this.authenticatePassword(password);
     }
 };
 
