@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Router } from '@angular/router';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 /* Custom Modules */
 import { HomeModule } from './home/home.module';
@@ -34,7 +35,7 @@ import { OurServicesService } from './ourservices/services/ourservices.services'
   declarations: [
     AppComponent,
     NavigationComponent,
-    PreloaderComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +49,7 @@ import { OurServicesService } from './ourservices/services/ourservices.services'
     TestimonialModule,
     DashboardModule,
     OurServicesModule,
+    SimpleNotificationsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
       { path: '**', redirectTo: '/', pathMatch: 'full' }
