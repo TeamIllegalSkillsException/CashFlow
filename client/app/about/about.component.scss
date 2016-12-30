@@ -1,26 +1,86 @@
-#left-title {
-    display: inline-block;
+.about-us-page .about-intro-section{
+  padding-top: 70px;
+  padding-bottom: 50px;
 }
+.about-us-page .about-image{
+  padding-left: 0;
+  padding-right: 30px;
 
-#right-title {
-    float: right;
-    margin-right: 100px;
 }
-
-// #bottom-left-title {
-//     display: block;
-// }
-// .names {
-//     display: inline-table;
-// }
-.images {
-    margin: 60px;
-    width: 250px;
-    height: 250px;
-    border-radius: 8px;
+.about-us-page .about-image figure{
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
 }
-
-.table-row-view {
-    display: table-row;
-    text-align: center;
+.about-us-page .about-image figure .image-wrapper{
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  line-height: 0;
+}
+.about-us-page .about-image figure img{
+  height: auto;
+  max-width: 100%;
+  vertical-align: top;
+}
+.about-us-page .about-intro h2{
+  margin-bottom: 25px;
+  line-height: 40px;
+  color: #3b3f4a;
+  font: normal 500 34px / 44px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+}
+.about-us-page .about-intro p{
+  font: normal 15px / 28px "Open Sans", Helvetica, Arial, Verdana, sans-serif;
+  color:rgb(120, 125, 133);
+}
+.about-us-page .founders{
+  background: rgba(183, 191, 199, 0.1) none repeat scroll 0% 0%;
+  float: left;
+  position: relative;
+  width:100%;
+  padding-top:40px;
+  padding-bottom:25px;
+}
+.about-us-page .founders .title h2{
+  color: #3b3f4a;
+  font-size: 22px;
+  line-height: 32px;
+  font-family:roboto-medium;
+}
+.about-us-page .founder-wrapper{
+  padding-left: 0;
+  padding-right: 44px;
+}
+.about-us-page .founder-wrapper .image{
+  width: 100%;
+  max-height: 290px;
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: inline-block;
+}
+.about-us-page .founder-wrapper .image img{
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+.about-us-page .founder-wrapper .heading h3{
+  text-align: center;
+  color: #3b3f4a;
+  font-size: 18px;
+  text-transform: none;
+}
+.about-us-page .founder-wrapper .position h4{
+  text-align: center;
+  color: #1ebbf0;
+  font: normal 15px / 28px "Open Sans", Helvetica, Arial, Verdana, sans-serif;;
 }
