@@ -15,6 +15,7 @@ module.exports = function (passport, app, config, data) {
                     if (user && user.authenticatePassword(password)) {
                         done(null, user);
                     } else {
+                      
                         done(null, false);
                     }
                 })
