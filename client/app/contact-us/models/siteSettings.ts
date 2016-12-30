@@ -1,11 +1,11 @@
 export class SiteSettings {
     icon: string;
     key: string;
-    keyValue: string;    
+    keyValue: string;
 
-    constructor(icon: string, key: string, keyValue: string) {
-        this.icon = icon;
+    constructor(key: string, keyValue: string, icon: string) {
         this.key = key;
         this.keyValue = keyValue;
+        this.icon = icon;
     }
 };
