@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../shared/services/auth';
 
 @Component({
   selector: 'home-slider',
@@ -12,7 +13,7 @@ export class SliderComponent implements OnInit {
   public noWrapSlides:boolean = false;
   public slides:any[] = [];
 
-  public constructor() {
+  public constructor(private authService: AuthService) {
     this.addSlide('../../../assets/images/slider/slide-03.jpg', 'homepage-background');
   }
 
@@ -35,4 +36,7 @@ export class SliderComponent implements OnInit {
     this.slideHeight = window.innerHeight;
   }
 
+  isUserLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
 }

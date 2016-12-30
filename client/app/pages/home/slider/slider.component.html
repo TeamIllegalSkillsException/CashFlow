@@ -6,8 +6,11 @@
         </div>
         <p id="homepage-slider-subtitle">The most advanced personal expense tracker</p>
         <div id="homepage-slider-buttons">
-            <a routerLink="/login" routerLinkActive="active" class="btn-ghost hvr-sweep-to-right">
+            <a *ngIf="!isUserLoggedIn" routerLink="/login" routerLinkActive="active" class="btn-ghost hvr-sweep-to-right">
                 <span>Login or Register</span>
+            </a>
+            <a *ngIf="isUserLoggedIn" routerLink="/dashboard" routerLinkActive="active" class="btn-ghost hvr-sweep-to-right">
+                <span>Go to Dashboard</span>
             </a>
         </div>
         <div class="homepage-slider-scroll">

@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     $('body').removeClass('homepage');
   }
 
-  public ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     this.spinnerService.hide(1000);
   }
 }
