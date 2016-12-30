@@ -10,6 +10,7 @@ import {UserService} from '../services/user.service';
 import {UserFactoryService} from './../services/user.factory.service';
 import {User} from './../models/user.model';
 import {AuthService} from '../../shared/services/auth';
+import {NotificationsService} from 'angular2-notifications';
 
 @Component({
   selector: 'app-register',
@@ -33,7 +34,9 @@ export class RegisterComponent implements OnInit {
               private appRouter: Router,
               private spinnerService: SpinnerService,
               private userService: UserService,
-              private userFactoryService: UserFactoryService) {
+              private userFactoryService: UserFactoryService,
+              private notificationsService: NotificationsService) {
+
     this.form = fb.group({
       'username': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'email': ['', Validators.compose([Validators.required, EmailValidator.validate])],
@@ -52,7 +55,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit():void {
     this.spinnerService.show();
-    
+
     if(this.authService.isLoggedIn()){
       this.appRouter.navigateByUrl('/dashboard');
     }
@@ -66,7 +69,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
 
     if (this.form.valid) {
-      this.spinnerService.show();
+      
       this.user = this.userFactoryService.createUser(
         values['username'],
         values['passwords']['password'],
@@ -74,14 +77,19 @@ export class RegisterComponent implements OnInit {
 
       this.userService.registerUser(this.user)
         .subscribe(response => {
-            console.log(response);
+            const successTitle = "Success!";
+            const successMessage = "You have registered successfully!";
+            this.notificationsService.success(successTitle, successMessage);
 
+          }, err => {
             this.spinnerService.hide();
-            setTimeout(() => this.appRouter.navigateByUrl('/login'), 1500);
-          },
-          err => console.log(err));
 
-
+            const errorTitle = "Oops! Something went wrong..";
+            const errorMessage = err.json().message;
+            this.notificationsService.error(errorTitle, errorMessage)
+        }, () => {
+          setTimeout(() => this.appRouter.navigateByUrl('/login'), 500);
+        });
     }
   }
 

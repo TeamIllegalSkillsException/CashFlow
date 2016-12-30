@@ -60,13 +60,9 @@ module.exports = function(models) {
         },
         getUserByEmail(email) {
             return new Promise((resolve, reject) => {
-                User.findOne({ email: email }, (err, user) => {
+                User.findOne({ email }, (err, user) => {
                     if (err) {
                         return reject(err);
-                    }
-
-                    if (!user) {
-                        return reject(user);
                     }
 
                     return resolve(user);

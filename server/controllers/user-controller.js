@@ -128,18 +128,20 @@ module.exports = function(data) {
                 });
         },
         getRegister(req, res) {
-            if (req.user) {
-                return res.status(400).json({ message: 'User already logged in.' });
-            }
-            const userObject = req.body;
 
+            const userObject = req.body;
             return data.getUserByName(userObject.username)
                 .then(user => {
                     if (user) {
                         throw new Error('Username already exists.');
                     }
 
-                    return userObject;
+                  return data.getUserByEmail(userObject.email);
+                })
+                .then((user) => {
+                    if (user) {
+                        throw new Error('Email already exists.');
+                    }
                 })
                 .then(() => {
                     return data.createUser(userObject);
