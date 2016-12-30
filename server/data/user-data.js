@@ -92,6 +92,26 @@ module.exports = function(models) {
                     return resolve(users);
                 });
             });
+        },
+        generateNewPassword(user) {
+            return new Promise((resolve, reject) => {
+                let generatedPassword = Math.random().toString(36).substr(2, 6);
+
+                User.findOne({ email: user.email }, (err, userr) => {
+                    if (err) {
+                        return reject(err);
+                    }
+
+                    if (!userr) {
+                        return reject(userr);
+                    }
+
+                    userr.password = generatedPassword;
+                    userr.save();
+                    
+                    return resolve(generatedPassword);
+                });
+            });        
         }
     };
 };
