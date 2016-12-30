@@ -23,14 +23,14 @@ require('./router')(app, config, data);
 
 
 // There is some annoying bug here!!! and the data
-// let ourServices = {
-//     content: 'Chukundursi',
-//     avatar: 'http://img.memecdn.com/yolo-swag_o_1660131.jpg',
-//     title: 'The guy with no life',
-//     freeOfCharge: 'You WISH!!!',
-//     paid: 'But Of Course!!!'
-// };
-// data.createOurServicesData(ourServices);
+let ourServices = {
+    content: 'Chukundursi',
+    avatar: 'http://img.memecdn.com/yolo-swag_o_1660131.jpg',
+    title: 'The guy with no life',
+    freeOfCharge: 'You WISH!!!',
+    paid: 'But Of Course!!!'
+};
+data.createOurServicesData(ourServices);
 
 // let about = {
 //     content: 'We are young and tough and we are trying to rock the world with this app. Unforunately we r using Angular 2 ><',
