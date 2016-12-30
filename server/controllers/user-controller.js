@@ -277,15 +277,19 @@ module.exports = function(data) {
             return Promise.resolve()
                 .then(() => {
                     let userEmail = req.body.userEmail;                                                               
-                    let newPassword;
-                    let userWithForgottenPass;                    
 
                     if(userEmail.trim() == '') {
                         return 'Email cannot be empty';                    
                     }
 
                     data.getUserByEmail(userEmail)
-                        .then((user) => {                            
+                        .then((user) => {     
+                            if(!user) {
+                                return res.json({
+                                    success: false,
+                                    message: 'No user' 
+                                });
+                            }                       
                             data.generateNewPassword(user)
                                 .then((generatedPassword) => {                                                                      
                                     const mailOptions = {
@@ -306,6 +310,12 @@ module.exports = function(data) {
                                         });
                                     });
                                 });
+                    })
+                    .catch((err) => {
+                        return res.json({
+                            success: false,
+                            message: 'No user' 
+                        });
                     });                   
                 })
                 .catch(err => {
