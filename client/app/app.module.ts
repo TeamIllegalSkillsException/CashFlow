@@ -27,7 +27,6 @@ import {
   AuthGuard
 } from './shared/services';
 
-
 @NgModule({
   declarations: [
     AppComponent,

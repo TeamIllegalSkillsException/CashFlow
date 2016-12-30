@@ -1,19 +1,39 @@
-<banner [banner]="{imgUrl: '../../assets/images/banners/contact-us-background.jpg', caption: 'CashFlow Testimonials'}"></banner>
-<div id="wrapper">
-    <ul>
-        <li class="col-sm-4" *ngFor="let item of this.testimonialDetails">
-            <div class="info-box">
-                <div class="aio-block">
-                    <div class="aio-header">
-                        <img [src]='this.item.avatar' class="images">
-                        <h5>{{this.item.name}}</h5>
-                        <h4>{{this.item.jobTitle}}</h4>
-                    </div>
-                    <div class="aio-description">
+<main id="content">
+
+    <!--<banner [banner]="{imgUrl: '../../assets/images/banners/testimonials-background.png', caption: 'Testimonials'}"></banner>-->
+    <div class="page-title">
+        <div class="container">
+            <div class="pg-table">
+                <div class="hgroup">
+                    <h1>Testimonials</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-testimonials">
+        <div class="container">
+            <div class="masonry">
+                <div class="item" *ngFor="let item of this.testimonialDetails">
+                    <div class="content">
                         <p>{{this.item.content}}</p>
+                    </div>
+                    <div class="testimonial-vcard">
+                        <div class="image">
+                            <span>
+                                <img [src]='this.item.avatar' class="images">
+                            </span>
+                        </div>
+                        <div class="text">
+                            <span class="primary">{{this.item.name}}</span>
+                            <br>
+                            <span class="secondary">{{this.item.jobTitle}}</span>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </li>
-    </ul>
-</div>
+        </div>
+    </div>
+
+</main>

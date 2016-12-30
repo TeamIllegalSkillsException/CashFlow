@@ -60,7 +60,7 @@ let about3 = {
 data.createAboutData(about3);
 
 let testimonial = {
-    content: 'bla',
+    content: 'Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet',
     avatar: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/13906970_10210535840300100_2497753137668459306_n.jpg?oh=e9faadf031de7ee3bb96199c11a26af8&oe=58EE0C6F',
     name: 'Zorka jiasjva',
     jobTitle: 'CEO'

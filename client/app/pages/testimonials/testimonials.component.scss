@@ -3,42 +3,82 @@
     padding: 0;
     list-style: none;
 }
-
-.info-box {
-    display: inline-block;
-    background-color: rgba(170, 170, 170, 0.1);
-    width: 90%;
-    height: 50%;
+#page-testimonials{
+  padding: 70px 0 70px 0;
+}
+#page-testimonials .masonry { /* Masonry container */
+  column-count: 2;
+  column-gap: 1em;
 }
 
-.aio-block {
-    display: table-cell;
-    vertical-align: middle;
+#page-testimonials .masonry .item { /* Masonry bricks or child elements */
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
 }
 
-.aio-header {
-    float: left;
-    //width: 100px;
+#page-testimonials .masonry {
+  margin: 1.5em 0;
+  padding: 0;
+  -moz-column-gap: 1.5em;
+  -webkit-column-gap: 1.5em;
+  column-gap: 1.5em;
+  font-size: .85em;
 }
 
-.aio-header h5 {
-    margin: 0;
-    display: block;
-    font-size: 16px;
-    line-height: 26px;
-    font-weight: bold;
-    color: #3b3f4a;
+#page-testimonials .masonry .item {
+  display: inline-block;
+  background-color: #f8f8f9;
+  padding: 20px 25px 20px;
+  margin: 0 0 1.5em;
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-shadow: 2px 2px 4px 0 #ccc;
 }
 
-.aio-description {
-    float: left;
-    width: 50%;
-    margin-top: 10px;
-    color: #787d85;
+#page-testimonials .item img{
+  width:100%;
 }
 
-.images {
-    width: 100px;
-    height: 100px;
-    border-radius: 120px;
+#page-testimonials .content p{
+  font: normal 15px / 28px "Open Sans", Helvetica, Arial, Verdana, sans-serif;
+  word-spacing: normal;
+  color: #787d85;
 }
+
+#page-testimonials .testimonial-vcard{
+  display: table;
+  margin: 20px 0 0 0;
+  overflow: hidden;
+}
+#page-testimonials .testimonial-vcard .image{
+  display: table-cell;
+  vertical-align: middle;
+}
+#page-testimonials .testimonial-vcard .image span{
+  margin: 0 20px 5px 0;
+  font-size: 0;
+  line-height: 0;
+}
+#page-testimonials .testimonial-vcard .image span img{
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  width:60px;
+}
+#page-testimonials .testimonial-vcard .primary{
+  font-size: 14px;
+  line-height: 26px;
+  font-weight: bold;
+  color: #3b3f4a;
+  font-family: "Open Sans", sans-serif;
+}
+#page-testimonials .testimonial-vcard .secondary{
+  font-size: 13px;
+  line-height: 25px;
+  font-weight: bold;
+  color: #3b3f4a;
+  font-family: "Open Sans", sans-serif;
+}
+

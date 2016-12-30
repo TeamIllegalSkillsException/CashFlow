@@ -8,6 +8,34 @@ main{
   width:100%;
 }
 
+.page-title{
+  background-color: #f8f8f9;
+  background-image: none;
+  background-repeat: repeat;
+  background-attachment: ;
+  background-position: center center;
+  background-size: auto auto;
+  min-height: 200px;
+}
+.page-title .container{
+  display: table;
+  width: 100%;
+}
+.page-title .pg-table{
+  display: table-cell;
+  vertical-align: middle;
+  height: 200px;
+}
+.page-title h1{
+  color: #3b3f4a;
+  font: normal 500 34px / 44px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+}
+.page-title .hgroup{
+  display: block;
+  text-align: center;
+  padding: 5px 0;
+  vertical-align: middle;
+}
 /* Buttons */
 .btn-ghost{
   width:300px;
