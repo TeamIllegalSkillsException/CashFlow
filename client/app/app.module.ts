@@ -14,8 +14,9 @@ import { PagesModule } from './pages/pages.module';
 
 /* Components */
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationComponent } from './shared/components/navigation/navigation.component';
 import { PreloaderComponent } from './shared/components/preloader/preloader.component';
+
 
 /* Services */
 import {
