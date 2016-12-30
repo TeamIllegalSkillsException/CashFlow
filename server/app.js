@@ -20,6 +20,18 @@ require('./router')(app, config, data);
 //     role: 'admin'
 // };
 //data.createUser(user);
+
+
+// There is some annoying bug here!!! and the data
+// let ourServices = {
+//     content: 'Chukundursi',
+//     avatar: 'http://img.memecdn.com/yolo-swag_o_1660131.jpg',
+//     title: 'The guy with no life',
+//     freeOfCharge: 'You WISH!!!',
+//     paid: 'But Of Course!!!'
+// };
+// data.createOurServicesData(ourServices);
+
 // let about = {
 //     content: 'We are young and tough and we are trying to rock the world with this app. Unforunately we r using Angular 2 ><',
 //     avatar: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/14702243_1455497067799478_955787893861110435_n.jpg?oh=672068d2a17145e80da2812619bbc08a&oe=5922CECB',
@@ -55,23 +67,24 @@ require('./router')(app, config, data);
 // }
 // data.createTestimonialData(testimonial);
 
-let SITE_ADDRESS = {
-    key: 'SITE_ADDRESS',
-    value: "Aleksandar Malinov, Sofia, Bulgaria"
-};
 
-let SITE_EMAIL = {
-    key: 'SITE_EMAIL',
-    value: "cashflowsup@gmail.com"
-};
+// let SITE_ADDRESS = {
+//     key: 'SITE_ADDRESS',
+//     value: "Aleksandar Malinov, Sofia, Bulgaria"
+// };
 
-let SITE_PHONE = {
-    key: 'SITE_PHONE',
-    value: "+359123456789"
-};
+// let SITE_EMAIL = {
+//     key: 'SITE_EMAIL',
+//     value: "cashflowsup@gmail.com"
+// };
 
-data.createee(SITE_ADDRESS);
-data.createee(SITE_PHONE);
-data.createee(SITE_EMAIL);
+// let SITE_PHONE = {
+//     key: 'SITE_PHONE',
+//     value: "+359123456789"
+// };
+
+// data.createee(SITE_ADDRESS);
+// data.createee(SITE_PHONE);
+// data.createee(SITE_EMAIL);
 
 app.start();
