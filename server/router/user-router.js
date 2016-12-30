@@ -9,7 +9,7 @@ module.exports = function(app, passport, express, data) {
         .post('/api/users', passport.authenticate('local'), userController.getLogin)
         .put('/api/users',  userController.getRegister)
         .post('/api/authenticate', userController.getAuthentication)
-        .post('/api/contact-us', passport.authenticate('jwt'), userController.sendEmail);
+        .post('/api/contact-us', userController.sendEmail);
 
     app.use(userRouter);
 };
