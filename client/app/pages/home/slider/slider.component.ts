@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../shared/services/auth';
+import {Observable} from "rxjs/Rx";
 
 @Component({
   selector: 'home-slider',
@@ -8,12 +9,15 @@ import { AuthService } from '../../../shared/services/auth';
 })
 
 export class SliderComponent implements OnInit {
+  public isUserLoggedIn: Observable<boolean> | boolean;
+
   public slideHeight:number = window.innerHeight;
   public myInterval:number = 5000;
   public noWrapSlides:boolean = false;
   public slides:any[] = [];
 
   public constructor(private authService: AuthService) {
+
     this.addSlide('../../../assets/images/slider/slide-03.jpg', 'homepage-background');
   }
 
@@ -29,14 +33,14 @@ export class SliderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isUserLoggedIn = this.authService.isLoggedIn();
+  }
 
+  ngDoCheck() {
+    this.isUserLoggedIn = this.authService.isLoggedIn();
   }
 
   onResize(event) {
     this.slideHeight = window.innerHeight;
-  }
-
-  isUserLoggedIn() {
-    return this.authService.isLoggedIn();
   }
 }

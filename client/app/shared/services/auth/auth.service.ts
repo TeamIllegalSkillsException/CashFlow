@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpRequester } from '../http/http-requester.service';
 import { HttpRequesterOptionsFactoryService } from '../http/http-requester-options-factory.service';
+import {Subject} from "rxjs/Rx";
 
 @Injectable()
 export class AuthService {
@@ -14,6 +15,7 @@ export class AuthService {
 
   public isLoggedIn(): Observable<boolean> | boolean {
     let userDataString: string = localStorage.getItem('user');
+    console.log(localStorage.getItem('user'));
 
     if (!userDataString) {
       return false;
