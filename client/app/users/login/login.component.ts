@@ -9,6 +9,7 @@ import {SpinnerService} from "../../shared/services/spinner/spinner.service";
 import {UserService} from '../services/user.service';
 import {User} from './../models/user.model';
 import {AuthService} from '../../shared/services/auth';
+import {NotificationsService} from 'angular2-notifications';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
               private authService: AuthService,
               private appRouter: Router,
               private spinnerService:SpinnerService,
-              private userService: UserService) {
+              private userService: UserService,
+              private notificationsService: NotificationsService) {
     this.form = fb.group({
       'username': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
@@ -39,7 +41,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit():void {
     this.spinnerService.show();
-    
+
     if(this.authService.isLoggedIn()){
       this.appRouter.navigateByUrl('/dashboard');
     }
@@ -64,11 +66,18 @@ export class LoginComponent implements OnInit {
 
             localStorage.setItem('user', JSON.stringify(response));
             this.userService.setLoggedUser(response);
-            setTimeout(() => this.appRouter.navigateByUrl('/dashboard'), 1500);
+            this.notificationsService.success(
+              'Welcome!',
+              'You have logged in successfully!'
+            )
         }, (err) => {
-          console.log(err);
+          //console.log(err);
+          this.notificationsService.error(
+            'Incorrect input',
+            'Wrong username or password! Please try again.'
+          )
         }, () => {
-
+          setTimeout(() => this.appRouter.navigateByUrl('/dashboard'), 1500);
         });
     }
   }

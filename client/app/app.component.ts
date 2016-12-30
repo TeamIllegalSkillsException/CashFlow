@@ -9,6 +9,13 @@ import {SpinnerService} from './shared/services';
 export class AppComponent implements OnInit{
   @HostBinding('class') public cssClass = '';
 
+  public notificationOptions = {
+    timeOut: 5000,
+    showProgressBar: true,
+    pauseOnHover: false,
+    clickToClose: false,
+    maxLength: 50,
+  };
   constructor(private spinnerService:SpinnerService){}
 
   ngOnInit():void {
