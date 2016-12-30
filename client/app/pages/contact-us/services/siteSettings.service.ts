@@ -15,6 +15,6 @@ export class SiteSettingsService {
 
     getSettings(): Observable<Response> {         
         return this.http.get(this.settingsUrl, this.options)
-                        .catch((error: any) => Observable.throw(error.json().error));        
+            .catch((error: any) => Observable.throw(error.json().error));        
     }
 };

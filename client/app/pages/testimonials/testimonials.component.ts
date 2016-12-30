@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SpinnerService } from '../shared/services';
+import { SpinnerService } from '../../shared/services';
 import { TestimonialService } from './services/testimonial.service';
 
 @Component({

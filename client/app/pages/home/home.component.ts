@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SpinnerService } from '../shared/services';
+import { SpinnerService } from '../../shared/services';
 
 @Component({
   selector: 'app-home',

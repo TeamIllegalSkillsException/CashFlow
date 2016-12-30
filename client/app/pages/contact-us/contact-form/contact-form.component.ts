@@ -3,7 +3,7 @@ import { Contact } from '../models/contact';
 import { ContactService } from '../services/contact.service';
 import { Observable } from 'rxjs/Rx';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
-import { EmailValidator, StringValidator } from '../../shared/validators';
+import { EmailValidator, StringValidator } from '../../../shared/validators';
 import {NotificationsService} from 'angular2-notifications';
 
 @Component({

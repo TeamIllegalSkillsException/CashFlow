@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Banner } from '../shared/models/banner';
-import { SpinnerService } from '../shared/services';
+import { Banner } from '../../shared/models/banner';
+import { SpinnerService } from '../../shared/services';
 
 @Component({
   selector: 'contact-us',
