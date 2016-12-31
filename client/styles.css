@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+html{
+  height:100%;
+}
+body{
+  height:100%;
+}
+#page{
+  height:100%;
+  position: relative;
+}
 .carousel-control{
   display: none;
 }
@@ -6,6 +17,12 @@ main{
   float: left;
   position: relative;
   width:100%;
+  margin: 0 auto -162px;
+  padding: 0 0 162px;
+}
+main:after{
+  content: '';
+  display: block;
 }
 .homepage footer{
   display: none;
@@ -15,7 +32,6 @@ main{
   background-color: #f8f8f9;
   background-image: none;
   background-repeat: repeat;
-  background-attachment: ;
   background-position: center center;
   background-size: auto auto;
   min-height: 200px;
