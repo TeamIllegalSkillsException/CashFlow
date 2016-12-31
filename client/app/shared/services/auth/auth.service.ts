@@ -15,7 +15,6 @@ export class AuthService {
 
   public isLoggedIn(): Observable<boolean> | boolean {
     let userDataString: string = localStorage.getItem('user');
-    console.log(localStorage.getItem('user'));
 
     if (!userDataString) {
       return false;
