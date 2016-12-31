@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AboutComponent } from './about.component';
 import { AboutUsService } from './services/about.service';
 import { BannerModule } from '../../shared/components/banner/banner.module';
-import { ArrayFormatterPipe } from '../../shared/pipes'
 
 @NgModule({
     imports: [
@@ -13,8 +12,7 @@ import { ArrayFormatterPipe } from '../../shared/pipes'
       BannerModule
     ],
     declarations: [
-      AboutComponent,
-      ArrayFormatterPipe
+      AboutComponent
     ],
     providers: [
       AboutUsService

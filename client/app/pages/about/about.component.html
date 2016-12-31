@@ -24,7 +24,7 @@
                 <h2>Founders</h2>
             </div>
             <div *ngFor="let item of this.aboutDetails" class="founders-list">
-                <div *ngFor="let teamMember of this.item.team | arrayFormatter" class="founder-wrapper col-sm-4">
+                <div *ngFor="let teamMember of this.item.team " class="founder-wrapper col-sm-4">
                     <div class="image">
                         <img [src]="this.teamMember.avatar" class="images">
                     </div>

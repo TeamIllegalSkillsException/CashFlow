@@ -1,0 +1,86 @@
+.pricing-tables{
+  padding-top: 70px;
+  float: left;
+  position: relative;
+  width: 100%;
+  padding-bottom: 50px;
+}
+.pr-table .wrapper{
+  padding: 10px 80px;
+}
+.pr-table .box{
+  width:100%;
+  background-color: #23262d;
+  border: none;
+  transition: box-shadow 0.2s linear;
+  overflow: hidden;
+  font-family:"open_sans";
+  color:#fff;
+}
+.pr-table .header-top{
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+.pr-table .header-top h3{
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: bold;
+  font-family:"open_sans";
+}
+.pr-table .coin-wrap{
+  height: 90px;
+  margin: 0 auto;
+  width: 90px;
+  background: #fff;
+  border-radius: 100%;
+  display: table;
+}
+.pr-table .coin-wrap > div{
+  display: table-cell;
+  vertical-align: middle;
+}
+.pr-table .coin-wrap span{
+  color: #23262d;
+  font-size: 28px;
+  font-weight:normal;
+}
+.pr-table .description{
+  padding: 10px 20px 10px 20px;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  text-align: center;
+  margin:30px 0 20px;
+}
+.pr-table .body-modules ul{
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+.pr-table .body-modules ul li{
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px 5px;
+  text-align: center;
+  width: 100%;
+
+}
+.pr-table i.fa-close{
+  background: firebrick;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pr-table i{
+  background-color: #37a0fe;
+  background-image: none;
+  background: #37a0fe;
+  background: -webkit-linear-gradient(135deg,#37a0fe 30%,#8846fd 100%);
+  background: linear-gradient(135deg,#37a0fe 30%,#8846fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pr-table .buttons{
+  text-align: center;
+  margin: 20px 0 30px;
+}

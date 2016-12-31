@@ -3,12 +3,49 @@
         <div class="container">
             <div class="pg-table">
                 <div class="hgroup">
-                    <h1>Testimonials</h1>
+                    <h1>Services</h1>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="services-list">
+        <div class="container">
+            <div class="pricing-tables">
+                <div class="pr-table col-sm-6" *ngFor="let item of this.ourServicesDetails">
+                    <div class="wrapper">
+                        <div class="box">
+                            <div class="header-top">
+                                <h3>{{this.item.title}}</h3>
+                                <div class="coin-wrap">
+                                    <div>
+                                        <span>{{this.item.price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="description">
+                                {{this.item.content}}
+                            </div>
+                            <div class="body-modules">
+                                <ul>
+                                    <li *ngFor="let module of this.item.modules">
+                                        {{this.module.title}}
+
+                                        <i *ngIf="this.module.isAvailable" class="fa fa-check"></i>
+                                        <i *ngIf="!this.module.isAvailable" class="fa fa-close"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="buttons">
+                                <a *ngIf="this.item.type != 'Premium'" routerLink="/register"  class="btn-purple-small">Start using right now!</a>
+                                <a *ngIf="this.item.type == 'Premium'" routerLink="/contact-us"  class="btn-purple-small">Order</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </main>

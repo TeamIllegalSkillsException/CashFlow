@@ -18,7 +18,6 @@ import { NavigationComponent } from './shared/components/navigation/navigation.c
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { PreloaderComponent } from './shared/components/preloader/preloader.component';
 
-
 /* Services */
 import {
   PreloaderService,
@@ -29,12 +28,16 @@ import {
   AuthGuard
 } from './shared/services';
 
+/* Pipes */
+import { ArrayFormatterPipe } from './shared/pipes'
+
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     FooterComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    ArrayFormatterPipe
   ],
   imports: [
     BrowserModule,

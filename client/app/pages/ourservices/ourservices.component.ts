@@ -8,9 +8,10 @@ import { OurServicesService } from './services/ourservices.services';
   styleUrls: ['./ourservices.component.scss']
 })
 export class OurservicesComponent implements OnInit {
-  ourServicesDetails: any[];
+  ourServicesDetails: {};
 
-  constructor(private spinnerService:SpinnerService, private ourServicesService: OurServicesService) { }
+  constructor(private spinnerService:SpinnerService,
+              private ourServicesService: OurServicesService) { }
 
   ngOnInit() {
     this.spinnerService.show();

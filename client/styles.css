@@ -114,6 +114,35 @@ main:after{
   box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
 }
 
+.btn-purple-small{
+  background-color: #37a0fe;
+  background-image: none;
+  background: #37a0fe;
+  background: -webkit-linear-gradient(135deg,#37a0fe 30%,#8846fd 100%);
+  background: linear-gradient(135deg,#37a0fe 30%,#8846fd 100%);
+  transform: translateZ(0);
+  transition: box-shadow 0.2s ease-out, background-color 0.2s ease;
+  text-decoration: none;
+  padding-left: 14.666666666667px;
+  padding-right: 14.666666666667px;
+  font: normal bold 13px / 32px "roboto-regular",Helvetica,Arial,Verdana,sans-serif;
+  border-radius: 3px;
+  text-transform: none;
+  position: relative;
+  display: inline-block;
+  border: none;
+  white-space: nowrap;
+  box-sizing: content-box;
+  letter-spacing: normal;
+  margin: 0;
+  outline: none;
+  color:#fff;
+}
+.btn-purple-small:hover{
+  text-decoration: none;
+  color:#fff;
+}
+
 .btn-simple{
   ransition: .2s ease color,.2s ease background;
   background: #fff;
@@ -166,7 +195,6 @@ main:after{
 .aio-icon{
   color: #ffffff;
   background: #ffffff;
-  border-style: ;
   border-color: #333333;
   border-width: 1px;
   width: 30px;

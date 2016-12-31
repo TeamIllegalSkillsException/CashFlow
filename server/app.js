@@ -61,31 +61,31 @@ let ourServices = {
 };
 
 let ourServices2 = {
-  type: 'Standard',
-  title: 'Standard',
-  price: 'Free',
+  type: 'Premium',
+  title: 'Premium',
+  price: '$10',
   content: 'Gravrida amet nulla. Lorem usce volutpat lectus justo, ut suscipit felis congue ut. Vivamus ut ultricies.',
   modules: [
-    {
-      title: 'Accounts',
-      isAvailable: true
-    },
-    {
-      title: 'Bills',
-      isAvailable: true
-    },
-    {
-      title: 'Income',
-      isAvailable: true
-    },
-    {
-      title: 'Calendar',
-      isAvailable: true
-    },
-    {
-      title: 'Transactions',
-      isAvailable: false
-    }
+      {
+          title: 'Accounts',
+          isAvailable: true
+      },
+      {
+          title: 'Bills',
+          isAvailable: true
+      },
+      {
+          title: 'Income',
+          isAvailable: true
+      },
+      {
+          title: 'Calendar',
+          isAvailable: true
+      },
+      {
+          title: 'Transactions',
+          isAvailable: true
+      }
   ]
 };
 data.getAllOurServices()
