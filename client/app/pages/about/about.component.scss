@@ -48,9 +48,13 @@
   line-height: 32px;
   font-family:roboto-medium;
 }
-.about-us-page .founder-wrapper{
-  padding-left: 0;
-  padding-right: 44px;
+.about-us-page .founder-wrapper:first-child{
+  padding-left:0;
+  padding-right:30px;
+}
+.about-us-page .founder-wrapper:last-child{
+  padding-right:0;
+  padding-left: 30px;
 }
 .about-us-page .founder-wrapper .image{
   width: 100%;
