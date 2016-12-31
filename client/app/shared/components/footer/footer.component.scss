@@ -1,0 +1,25 @@
+footer{
+  float: left;
+  position: relative;
+  width: 100%;
+}
+footer .logo{
+  padding: 8px 12px 8px 0px;
+}
+footer .logo img{
+  width:50px;
+  float: left;
+}
+
+footer .copyright{
+  float: left;
+  position: relative;
+  color:#fff;
+  margin: 11px 0;
+}
+footer .copyright p{
+  margin:0;
+  font-size:15px;
+  font-weight:normal;
+  font-family:"open_sans";
+}
