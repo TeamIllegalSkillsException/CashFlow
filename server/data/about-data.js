@@ -17,7 +17,7 @@ module.exports = function(models) {
                 });
             });
         },
-        getAll() {
+        getAllAboutData() {
             return new Promise((resolve, reject) => {
                 About.find((err, details) => {
                     if (err) {

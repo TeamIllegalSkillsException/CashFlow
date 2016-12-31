@@ -4,23 +4,24 @@ const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 let OurServicesSchema = new Schema({
-    content: {
-        type: String
-    },
-    avatar: {
+    type: {
         type: String
     },
     title: {
         type: String
     },
-    freeOfCharge: {
+    price: {
         type: String
     },
-    paid: {
+    content: {
         type: String
-    }
-
-    // Can always change those
+    },
+    modules: [
+        {
+            title: String,
+            isAvailable: Boolean
+        }
+    ]
 });
 
 mongoose.model('OurServices', OurServicesSchema);

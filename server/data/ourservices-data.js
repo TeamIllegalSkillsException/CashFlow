@@ -2,7 +2,7 @@
 
 module.exports = function(models) {
     const OurServices = models.OurServices;
-   // console.log(OurServices);
+
     return {
         createOurServicesData(ourServicesData) {
             let ourServices = new OurServices(ourServicesData);

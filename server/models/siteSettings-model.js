@@ -13,11 +13,11 @@ let SiteSettingsSchema = new Schema({
     },
 
     title: {
-      type: String
+        type: String
     },
 
     icon: {
-      type: String
+        type: String
     }
 });
 

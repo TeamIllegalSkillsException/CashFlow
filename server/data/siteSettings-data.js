@@ -4,7 +4,7 @@ module.exports = function(models) {
     const SiteSettings = models.SiteSettings;
 
     return {
-        createee(model) {
+        createSiteSetting(model) {
             let s = new SiteSettings(model);
 
             return new Promise((resolve, reject) => {
@@ -27,6 +27,17 @@ module.exports = function(models) {
                     return resolve(result);
                 })
             });
+        },
+        getSettingByName(settingName) {
+            return new Promise((resolve, reject) => {
+                SiteSettings.findOne({key: settingName }, (err, user) => {
+                    if (err) {
+                        return reject(err);
+                    }
+
+                    return resolve(user);
+                  });
+            });
         }
     }
-}
+};

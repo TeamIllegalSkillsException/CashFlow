@@ -4,23 +4,24 @@ const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 let AboutSchema = new Schema({
-    content: {
-        type: String
-    },
     title: {
         type: String
     },
-    avatar: {
+    content: {
         type: String
     },
-    name: {
-        type: String
-    },
-    jobTitle: {
-        type: String
-    },
-    socialMediaIcons: [{}]
-
+    team: [{
+        avatar: {
+            type: String
+        },
+        name: {
+            type: String
+        },
+        jobTitle: {
+            type: String
+        },
+        socialMediaIcons: [{}]
+    }]
 });
 
 mongoose.model('About', AboutSchema);

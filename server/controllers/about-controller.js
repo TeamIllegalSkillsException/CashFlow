@@ -4,7 +4,7 @@ module.exports = function(data) {
     return {
 
         getDetails(req, res) {
-            return data.getAll()
+            return data.getAllAboutData()
                 .then((listings) => {
                     if (!listings) {
                         throw new Error('No items available');
