@@ -2,10 +2,10 @@
 <div class="homepage-slider-captions">
     <div class="container">
         <div>
-            <h1 id="homepage-slider-title">CASH FLOW</h1>
+            <h1 [@fadeInLeft]="state" id="homepage-slider-title">CASH FLOW</h1>
         </div>
-        <p id="homepage-slider-subtitle">The most advanced personal expense tracker</p>
-        <div id="homepage-slider-buttons">
+        <p [@fadeInRight]="state" id="homepage-slider-subtitle">The most advanced personal expense tracker</p>
+        <div [@fadeInUp]="state" id="homepage-slider-buttons">
             <a *ngIf="!isUserLoggedIn" routerLink="/login" routerLinkActive="active" class="btn-ghost hvr-sweep-to-right">
                 <span>Login or Register</span>
             </a>

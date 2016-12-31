@@ -6,6 +6,9 @@ html{
 body{
   height:100%;
 }
+body.homepage{
+  overflow: hidden;
+}
 #page{
   height:100%;
   position: relative;

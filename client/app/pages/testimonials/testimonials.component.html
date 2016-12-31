@@ -14,7 +14,7 @@
     <div id="page-testimonials">
         <div class="container">
             <div class="masonry">
-                <div class="item" *ngFor="let item of this.testimonialDetails">
+                <div  [@fadeIn]="state" class="item" *ngFor="let item of this.testimonialDetails">
                     <div class="content">
                         <p>{{this.item.content}}</p>
                     </div>
