@@ -20,7 +20,7 @@ module.exports = function(data) {
             if (errors) {
                 return res.redirect("/user-income");
             }
-            UserIncome.findById(req.userIncome._id, (err, userIncome) => {
+            UserIncome.findById(req.userIncome.user_id, (err, userIncome) => {
                 if (err) {
                     return next(err);
                 }
