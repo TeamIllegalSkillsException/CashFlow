@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersRouterModule } from './users.router';
+import { DashboardModule } from '../dashboard/dashboard.module';
 
 /* Components */
 import { LoginComponent } from './login/login.component';
@@ -20,7 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
     CommonModule,
     FormsModule,
     UsersRouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DashboardModule
   ],
   declarations: [
     LoginComponent,

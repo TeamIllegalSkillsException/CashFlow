@@ -12,6 +12,9 @@ import { MenuComponent } from './menu/menu.component';
     CommonModule,
     DashboardRouterModule
   ],
+  exports: [
+    DashboardComponent
+  ],
   declarations: [
     DashboardComponent,
     MenuComponent

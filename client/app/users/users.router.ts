@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'forgotten-password', component: ForgottenComponent },
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
-  { path: 'account', component: ProfileComponent, outlet:'dashboard', canActivate: [AuthGuard] },
+  { path: 'account', component: ProfileComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
