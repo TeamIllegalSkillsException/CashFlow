@@ -1,3 +1,15 @@
+#dashboard:before{
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: url("../../assets/images/sky-bg.jpg") no-repeat center center;
+  background-size: cover;
+  will-change: transform;
+  z-index: 0;
+}
 .dashboard-main{
   //min-height: 100%;
   //position: relative;
@@ -12,11 +24,11 @@
   font: 14px/16px "roboto-regular", sans-serif;
 }
 .dashboard-main .main-panel{
-  background-color: #37a0fe;
+ /*background-color: #37a0fe;
   background-image: none;
   background: #37a0fe;
   background: -webkit-linear-gradient(135deg,rgba(55,160,254, 0.5) 30%,rgba(136,70,253, 0.5) 100%);
-  background: linear-gradient(135deg,rgba(55,160,254, 0.8) 30%,rgba(136,70,253, 0.8) 100%);
+  background: linear-gradient(135deg,rgba(55,160,254, 0.8) 30%,rgba(136,70,253, 0.8) 100%);*/
 }
 
 /*           Font Smoothing      */

@@ -56,6 +56,16 @@ export class UserService {
     return this.httpRequesterService.get(httpRequestOptions);
   }
 
+  updateUserProfile(user: User): Observable<Response> {
+      const updateProfileUrl = this.userApiUrl + '/' + user._id,
+        authHeaderObject = this.getAuthHeaderObject();
+
+    const httpRequestOptions = this.httpRequesterOptionsFactory
+      .createHttpRequesterOptions(updateProfileUrl, user , authHeaderObject);
+
+    return this.httpRequesterService.put(httpRequestOptions);
+  }
+
   isLoggedIn() {
     return this.isLogged;
   }

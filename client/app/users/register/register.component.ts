@@ -12,6 +12,10 @@ import {User} from './../models/user.model';
 import {AuthService} from '../../shared/services/auth';
 import {NotificationsService} from 'angular2-notifications';
 
+const MIN_FIELD_LENGTH = 3,
+  MAX_FIELD_LENGTH = 20,
+  ALPHA_PATTERN = '^[A-Za-zА-Яа-я0-9]+$';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -20,6 +24,7 @@ import {NotificationsService} from 'angular2-notifications';
 
 export class RegisterComponent implements OnInit {
   user: User;
+
   public form:FormGroup;
   public username:AbstractControl;
   public email:AbstractControl;
@@ -29,20 +34,36 @@ export class RegisterComponent implements OnInit {
 
   public submitted:boolean = false;
 
-  constructor(fb:FormBuilder,
+  constructor(private fb:FormBuilder,
               private authService: AuthService,
               private appRouter: Router,
               private spinnerService: SpinnerService,
               private userService: UserService,
               private userFactoryService: UserFactoryService,
               private notificationsService: NotificationsService) {
+    this.initRegistrationFormAndValidation();
+  }
 
-    this.form = fb.group({
-      'username': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+  initRegistrationFormAndValidation():void {
+    this.form = this.fb.group({
+      'username': ['',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern(ALPHA_PATTERN),
+          Validators.minLength(MIN_FIELD_LENGTH),
+          Validators.maxLength(MAX_FIELD_LENGTH)])
+      ],
       'email': ['', Validators.compose([Validators.required, EmailValidator.validate])],
-      'passwords': fb.group({
-        'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-        'repeatPassword': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
+      'passwords': this.fb.group({
+        'password': ['',
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(MIN_FIELD_LENGTH),
+            Validators.maxLength(MAX_FIELD_LENGTH)])
+        ],
+        'repeatPassword': ['', 
+          Validators.compose([
+            Validators.required])]
       }, {validator: EqualPasswordsValidator.validate('password', 'repeatPassword')})
     });
 
@@ -52,6 +73,7 @@ export class RegisterComponent implements OnInit {
     this.password = this.passwords.controls['password'];
     this.repeatPassword = this.passwords.controls['repeatPassword'];
   }
+
 
   ngOnInit():void {
     this.spinnerService.show();
@@ -69,7 +91,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
 
     if (this.form.valid) {
-      
+
       this.user = this.userFactoryService.createUser(
         values['username'],
         values['passwords']['password'],

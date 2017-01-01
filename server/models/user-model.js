@@ -24,7 +24,7 @@ let UserSchema = new Schema({
         unique: true,
         dropDups: true,
         minlength: [3, 'Name is too short!'],
-        maxlength: [50, 'Name is too long!'],
+        maxlength: [30, 'Name is too long!'],
         match: ALPHA_PATTERN
     },
     age: {

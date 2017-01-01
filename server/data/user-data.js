@@ -34,11 +34,11 @@ module.exports = function(models) {
         },
         findUserByIdAndUpdate(id, update) {
             return new Promise((resolve, reject) => {
-                User.findOneAndUpdate({ _id: id }, update, { new: true }, (err, user) => {
+                User.findOneAndUpdate({ _id: id }, update, { runValidators: true }, (err, user) => {
+
                     if (err) {
                         return reject(err);
                     }
-
                     if (!user) {
                         return reject(user);
                     }
@@ -108,10 +108,10 @@ module.exports = function(models) {
 
                     userr.password = generatedPassword;
                     userr.save();
-                    
+
                     return resolve(generatedPassword);
                 });
-            });        
+            });
         }
     };
 };

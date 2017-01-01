@@ -6,7 +6,7 @@ export class UserFactoryService {
 
   constructor() { }
 
-  createUser(username = '', password = '', email = '', firstName = '', lastName = '', age = 0, avatarUrl = ''): User {
+  createUser(username = '', password = '', email = '', firstName = '', lastName = '', age = 0, avatarUrl = '/assets/uploads/users/avatar.jpg'): User {
     const newUser = new User();
     newUser.username = username;
     newUser.password = password;

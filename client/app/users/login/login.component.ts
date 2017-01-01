@@ -24,16 +24,19 @@ export class LoginComponent implements OnInit {
   public password:AbstractControl;
   public submitted:boolean = false;
 
-
-  constructor(fb:FormBuilder,
+  constructor(private fb:FormBuilder,
               private authService: AuthService,
               private appRouter: Router,
               private spinnerService:SpinnerService,
               private userService: UserService,
               private notificationsService: NotificationsService) {
-    this.form = fb.group({
-      'username': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-      'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
+    this.initLoginFormValidation();
+  }
+
+  initLoginFormValidation(): void {
+    this.form = this.fb.group({
+      'username': ['', Validators.compose([Validators.required])],
+      'password': ['', Validators.compose([Validators.required])]
     });
 
     this.username = this.form.controls['username'];

@@ -1,0 +1,29 @@
+.user-profile-page .control-label{
+  float: left;
+  width:auto;
+}
+.user-profile-page span{
+  padding-top: 7px;
+  display: block;
+}
+.user-profile-page input{
+  margin-top: 5px;
+}
+.user-profile-page .btn-save{
+  float: left;
+}
+.user-profile-page .btn-leave{
+  float: right;
+}
+.user-profile-page .image{
+  float: left;
+  position: relative;
+  width: 100%;
+  margin-bottom:15px;
+}
+.user-profile-page .image img{
+  width:150px;
+  border-radius:5%;
+  padding:5px;
+  background:#fff;
+}

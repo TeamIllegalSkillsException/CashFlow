@@ -12,7 +12,9 @@
 
                     <div class="col-sm-12">
                         <input [formControl]="username" type="text" class="form-control" id="inputName3" >
-                        <span *ngIf="!username.valid && username.touched" class="help-block sub-little-text">Invalid Name!</span>
+                        <span *ngIf="!username.valid && username.touched && username.hasError('required')" class="help-block sub-little-text">Username cannot be empty.</span>
+                        <span *ngIf="!username.valid &&(username.hasError('minlength') || username.hasError('maxlength'))" class="help-block sub-little-text">Username must be between 3 and 30 symbols.</span>
+                        <span *ngIf="!username.valid &&(username.hasError('pattern') || username.hasError('maxlength'))" class="help-block sub-little-text">Username must be alphanumeric.</span>
                     </div>
                 </div>
                 <div class="form-group row" [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched)}">
@@ -20,7 +22,7 @@
 
                     <div class="col-sm-12">
                         <input [formControl]="email" type="email" class="form-control" id="inputEmail3" >
-                        <span *ngIf="!email.valid && email.touched" class="help-block sub-little-text">Invalid Email!</span>
+                        <span *ngIf="!email.valid && email.touched" class="help-block sub-little-text">Enter a valid Email!</span>
                     </div>
                 </div>
                 <div class="form-group row" [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
@@ -28,7 +30,9 @@
 
                     <div class="col-sm-12">
                         <input [formControl]="password" type="password" class="form-control" id="inputPassword3" >
-                        <span *ngIf="!password.valid && password.touched" class="help-block sub-little-text">Invalid Password!</span>
+                        <span *ngIf="!password.valid && password.touched && password.hasError('required')" class="help-block sub-little-text">Password cannot be empty.</span>
+                        <span *ngIf="!password.valid &&(password.hasError('minlength') || password.hasError('maxlength'))" class="help-block sub-little-text">Password must be between 3 and 30 symbols.</span>
+                        <span *ngIf="!password.valid &&(password.hasError('pattern') || password.hasError('maxlength'))" class="help-block sub-little-text">Password must be alphanumeric.</span>
                     </div>
                 </div>
                 <div class="form-group row" [ngClass]="{'has-error': (!repeatPassword.valid && repeatPassword.touched), 'has-success': (repeatPassword.valid && repeatPassword.touched)}">

@@ -1,4 +1,5 @@
 'use strict';
+const helpers = require('../helpers');
 
 const environment = process.env.NODE_ENV || 'development',
     config = require('../config/config')(environment),
@@ -37,8 +38,9 @@ module.exports = function(data) {
         },
         getProfile(req, res) {
           const userJson = JSON.parse(JSON.stringify(req.user));
-          console.log(req.user);
-          delete userJson.password;
+
+          delete userJson.passwordHash;
+          delete userJson.salt;
           res.status(200).json(userJson);
         },
         getProfileAvatar(req, res) {
@@ -146,23 +148,23 @@ module.exports = function(data) {
                 });
         },
         updateProfile(req, res) {
-            const updatedUser = req.body;
+            const userIdForUpdate = req.body._id;
+            const updateObj = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                age: req.body.age
+            };
 
-            return Promise.resolve()
-                .then(() => {
-                    if (!req.isAuthenticated()) {
-                        res.redirect('/home');
-                    } else {
-                        return data.findUserByIdAndUpdate(req.user._id, updatedUser);
+            return data.findUserByIdAndUpdate(userIdForUpdate, updateObj)
+                .then((user) => {
+                    if (!user) {
+                      throw new Error('User not found.');
                     }
-                })
-                .then(user => {
-                    res.status(200)
-                        .send({ redirectRoute: '/profile' });
+
+                    res.status(200).json(user);
                 })
                 .catch(err => {
-                    res.status(400)
-                        .send(JSON.stringify({ validationErrors: helpers.errorHelper(err) }));
+                    res.status(400).json({ message: helpers.errorHelper(err) });
                 });
         },
         getAll(req, res) {
