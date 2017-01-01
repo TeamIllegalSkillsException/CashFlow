@@ -5,6 +5,7 @@ import { DashboardRouterModule } from './dashboard.router';
 
 /* Components */
 import { DashboardComponent } from './dashboard.component';
+import { DashboardSidebarComponent } from './sidebar/dashboard-sidebar.component';
 import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MenuComponent } from './menu/menu.component';
   ],
   declarations: [
     DashboardComponent,
+    DashboardSidebarComponent,
     MenuComponent
   ]
 })

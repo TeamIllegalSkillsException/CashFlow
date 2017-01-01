@@ -1,10 +1,10 @@
 <div id="dashboard" class="dashboard-main" *ngIf="isUserLoggedIn">
+    <dashboard-sidebar></dashboard-sidebar>
     <div class="main-panel">
         <dashboard-menu></dashboard-menu>
 
         <div class="content">
             <div class="container-fluid">
-                Content e taka
                 <ng-content></ng-content>
             </div>
         </div>
