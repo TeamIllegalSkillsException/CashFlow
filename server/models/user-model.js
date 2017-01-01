@@ -12,14 +12,10 @@ const LETTERS = /^[A-Za-zА-Яа-я]+$/,
 let UserSchema = new Schema({
     firstName: {
         type: String,
-        minlength: [3, 'Name is too short!'],
-        maxlength: [50, 'Name is too long!'],
         match: LETTERS
     },
     lastName: {
         type: String,
-        minlength: [3, 'Name is too short!'],
-        maxlength: [50, 'Name is too long!'],
         match: LETTERS
     },
     username: {

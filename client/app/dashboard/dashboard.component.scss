@@ -9,6 +9,14 @@
   position: relative;
   top: 0;
   height: 100vh;
+  font: 14px/16px "roboto-regular", sans-serif;
+}
+.dashboard-main .main-panel{
+  background-color: #37a0fe;
+  background-image: none;
+  background: #37a0fe;
+  background: -webkit-linear-gradient(135deg,rgba(55,160,254, 0.5) 30%,rgba(136,70,253, 0.5) 100%);
+  background: linear-gradient(135deg,rgba(55,160,254, 0.8) 30%,rgba(136,70,253, 0.8) 100%);
 }
 
 /*           Font Smoothing      */

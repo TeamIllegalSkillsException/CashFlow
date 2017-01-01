@@ -1,0 +1,18 @@
+#dashboard-top-nav{
+  background-color: #282828;
+  color:#fff;
+  border-radius: 0;
+  border-color: #282828;
+  padding: 4px 0px;
+}
+#dashboard-top-nav .navbar-brand,
+#dashboard-top-nav i,
+#dashboard-top-nav a{
+  color:#fff;
+}
+#dashboard-top-nav a:hover,
+#dashboard-top-nav i:hover{
+  text-transform: none;
+  color:#fff;
+  text-decoration: none;
+}
