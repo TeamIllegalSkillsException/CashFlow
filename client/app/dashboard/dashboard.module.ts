@@ -5,12 +5,16 @@ import { DashboardRouterModule } from './dashboard.router';
 
 /* Components */
 import { DashboardComponent } from './dashboard.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRouterModule
   ],
-  declarations: [DashboardComponent]
+  declarations: [
+    DashboardComponent,
+    MenuComponent
+  ]
 })
 export class DashboardModule { }

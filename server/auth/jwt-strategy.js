@@ -8,10 +8,22 @@ module.exports = function (passport, app, config, data) {
   app.use(passport.session());
 
   var opts = {};
-  opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
+
+  const tokenExtractor = function (req) {
+    let token = "";
+    
+    if (req) {
+      token = req.get('Authorization');
+    }
+    
+    return token;
+  };
+
+  opts.jwtFromRequest = ExtractJwt.fromExtractors([tokenExtractor]);
   opts.secretOrKey = config.webTokenSecret;
 
   passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
+
       data.getUserById(jwt_payload._id)
           .then((user) => {
               if (user) {

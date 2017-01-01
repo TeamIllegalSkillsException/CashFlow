@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   public username:AbstractControl;
   public password:AbstractControl;
   public submitted:boolean = false;
-  
+
 
   constructor(fb:FormBuilder,
               private authService: AuthService,
@@ -77,8 +77,9 @@ export class LoginComponent implements OnInit {
           const errorMessage = "Wrong username or password! Please try again.";
           this.notificationsService.error(errorTitle, errorMessage);
         }, () => {
-
-          setTimeout(() => this.appRouter.navigateByUrl('/dashboard'), 500);
+          this.spinnerService.show();
+          setTimeout(() => this.appRouter.navigateByUrl('/dashboard'), 1500);
+          //this.spinnerService.hide(1000);
         });
     }
   }

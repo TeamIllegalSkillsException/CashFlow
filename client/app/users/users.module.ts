@@ -13,6 +13,7 @@ import { ForgottenComponent } from './forgotten/forgotten.component';
 /* Services */
 import { UserService } from './services/user.service';
 import { UserFactoryService } from './services/user.factory.service';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { UserFactoryService } from './services/user.factory.service';
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    ForgottenComponent
+    ForgottenComponent,
+    ProfileComponent
   ],
   providers: [
     UserService,

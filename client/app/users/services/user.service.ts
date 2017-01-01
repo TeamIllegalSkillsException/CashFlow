@@ -36,12 +36,30 @@ export class UserService {
   }
 
   logoutUser(): Observable<Response> {
-    const httpRequestOptions = this.httpRequesterOptionsFactory.createHttpRequesterOptions(this.logoutApiUrl);
+    let userDataString: string = localStorage.getItem('user');
+    let token: string = JSON.parse(userDataString).auth_token;
+
+    let contentTypeHeaderObject = {
+      'Content-Type': 'application/json',
+      'Authorization': token
+    };
+
+
+    const httpRequestOptions = this.httpRequesterOptionsFactory.createHttpRequesterOptions(
+      this.logoutApiUrl,
+      {},
+      contentTypeHeaderObject
+    );
+
     return this.httpRequesterService.get(httpRequestOptions);
   }
 
   isLoggedIn() {
     return this.isLogged;
+  }
+
+  getLoggedUser() {
+    return localStorage.getItem('user');
   }
 
   setLoggedUser(authResponse) {

@@ -1,3 +1,12 @@
-<div id="dashboard" *ngIf="isUserLoggedIn">
-  dashboard works! You are logged in!
+<div id="dashboard" class="dashboard-main" *ngIf="isUserLoggedIn">
+    <div class="main-panel">
+        <dashboard-menu></dashboard-menu>
+
+        <div class="content">
+            <div class="container-fluid">
+                Content e taka
+                <router-outlet name="dashboard"></router-outlet>
+            </div>
+        </div>
+    </div>
 </div>

@@ -40,7 +40,7 @@ export class AuthService {
       });
   }
 
-  public logoutUser(): void {
+  public clearLoggedUser(): void {
     localStorage.clear();
   }
 }

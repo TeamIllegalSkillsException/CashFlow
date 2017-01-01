@@ -15,6 +15,7 @@ import { PagesModule } from './pages/pages.module';
 /* Components */
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
+import { DashboardSidebarComponent } from './dashboard/sidebar/dashboard-sidebar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { PreloaderComponent } from './shared/components/preloader/preloader.component';
 
@@ -35,6 +36,7 @@ import { ArrayFormatterPipe } from './shared/pipes'
   declarations: [
     AppComponent,
     NavigationComponent,
+    DashboardSidebarComponent,
     FooterComponent,
     PreloaderComponent,
     ArrayFormatterPipe

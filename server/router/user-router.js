@@ -6,6 +6,7 @@ module.exports = function(app, passport, express, data) {
 
     userRouter
         .get('/api/users', passport.authenticate('jwt'), userController.getAll)
+        .get('/api/logout', passport.authenticate('jwt'), userController.logout)
         .post('/api/users', passport.authenticate('local'), userController.getLogin)
         .put('/api/users',  userController.getRegister)
         .post('/api/authenticate', userController.getAuthentication)
