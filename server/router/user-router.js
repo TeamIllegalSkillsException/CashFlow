@@ -5,7 +5,7 @@ module.exports = function(app, passport, express, data) {
         userController = require('../controllers/user-controller')(data);
 
     userRouter
-        .get('/api/users', passport.authenticate('jwt'), userController.getAll)
+        .get('/api/users', passport.authenticate('jwt'), userController.getProfile)
         .get('/api/logout', passport.authenticate('jwt'), userController.logout)
         .post('/api/users', passport.authenticate('local'), userController.getLogin)
         .put('/api/users',  userController.getRegister)

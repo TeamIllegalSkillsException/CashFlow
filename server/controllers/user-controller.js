@@ -36,18 +36,10 @@ module.exports = function(data) {
             });
         },
         getProfile(req, res) {
-            return Promise.resolve()
-                .then(() => {
-                    if (!req.isAuthenticated()) {
-                        res.status(401).redirect('/unauthorized');
-                    } else {
-                        if (req.user.role === 'admin') {
-                            res.render('user/profile', { user: req.user, isAdmin: true });
-                        } else {
-                            res.render('user/profile', { user: req.user, isAdmin: false });
-                        }
-                    }
-                });
+          const userJson = JSON.parse(JSON.stringify(req.user));
+          console.log(req.user);
+          delete userJson.password;
+          res.status(200).json(userJson);
         },
         getProfileAvatar(req, res) {
             return Promise.resolve()
