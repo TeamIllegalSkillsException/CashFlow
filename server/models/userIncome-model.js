@@ -17,9 +17,10 @@ let UserIncomeSchema = new Schema({
         startDate: {
             type: Date
         },
-        accounts: [{}],
+        accounts: {
+            type: String
+        },
         recurrence: {
-            _id: String,
             name: String
         }
     }]

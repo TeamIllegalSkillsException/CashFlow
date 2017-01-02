@@ -7,7 +7,7 @@ module.exports = function(app, passport, express, data) {
     userIncomeRouter
         .get('/api/user-income', passport.authenticate('jwt'), userIncomeController.getUserIncomeDetails)
         .post('/api/user-income', passport.authenticate('jwt'), userIncomeController.addNewIncome)
-        .get('/api/user-recurrences', passport.authenticate('jwt'), userIncomeController.getAllIncomeRecurrences);
+        .get('/api/income-recurrences', passport.authenticate('jwt'), userIncomeController.getIncomeRecurrences);
 
     app.use(userIncomeRouter);
 };

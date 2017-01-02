@@ -1,8 +1,7 @@
 'use strict';
 
 module.exports = function(models) {
-    const UserIncome = models.UserIncome,
-        BillRecurrence = models.BillRecurrence;
+    const UserIncome = models.UserIncome;
 
     return {
         createUserIncomeData(userIncomeData) {
@@ -73,7 +72,7 @@ module.exports = function(models) {
         },
         getAllIncomeRecurrences() {
             return new Promise((resolve, reject) => {
-                BillRecurrence.find((error, recurrences) => {
+                UserIncome.find((error, recurrences) => {
                     if (error) {
                         return reject(error);
                     }
