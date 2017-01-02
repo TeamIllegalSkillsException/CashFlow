@@ -94,6 +94,9 @@ main:after{
 .white-box-d-content{
   padding: 10px 8px;
 }
+.white-box-d-content td{
+  color:black;
+}
 /* Buttons */
 .btn-ghost{
   width:300px;

@@ -36,7 +36,8 @@ module.exports = function(models) {
                       userWithAccount.save();
                     }
 
-                    let accounts = userWithAccount.accounts;
+                    let accounts = JSON.parse(JSON.stringify(userWithAccount.accounts));
+
                     let responseObject = {
                       accounts: accounts
                     };

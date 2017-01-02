@@ -21,6 +21,7 @@ import { BillsService } from '../dashboard/services/bills.services';
 import { IncomeService } from './services/income.service';
 
 import { DataFilterPipe } from '../shared/pipes/data-filter.pipe';
+import { DateFormatterPipe } from '../shared/pipes/date-formatter.pipe';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { DataFilterPipe } from '../shared/pipes/data-filter.pipe';
     BillsComponent,
     AccountComponent,
     IncomesComponent,
-    DataFilterPipe
+    DataFilterPipe,
+    DateFormatterPipe
   ],
   providers: [
     AccountService,
