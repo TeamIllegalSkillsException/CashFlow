@@ -4,14 +4,14 @@ module.exports = function(data) {
     return {
         getUserBillsDetails(req, res) {
             let currentUserId = req.user.id;
-          
+
             return data.getBillsByUserId(currentUserId)
                 .then((bills) => {
                     if (!bills) {
                         throw new Error('No bills available');
                     }
 
-                    res.status(200).json(bills);
+                    res.status(200).send(bills);
                 })
                 .catch((err) => {
                     res.status(400).json({ message: err.message });

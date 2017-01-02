@@ -24,6 +24,10 @@ export class BillsComponent implements OnInit {
   public recModel = '';
   public submitted:boolean = false;
 
+  public data: any[];
+  public filterQuery = "";
+  public rowsOnPage = 3;
+
   @ViewChild('childModal') public childModal:ModalDirective;
 
   constructor(private billsService: BillsService, fb:FormBuilder, private notificationsService: NotificationsService) {
@@ -43,11 +47,22 @@ export class BillsComponent implements OnInit {
 
   ngOnInit() {
     this.billsService.getUserBills()
-    .map(res => res.json())
-    .subscribe(response => {
-      console.log(response);
+      .map(res => res.json())
+      .subscribe(response => {
+        console.log(response);
+        this.data = response.bills;
 
-    });
+        console.log(this.data);
+      });
+
+
+
+
+
+  }
+
+  ngAfterViewInit() {
+
   }
 
   public onSubmit(values:Object):void {
@@ -83,5 +98,20 @@ export class BillsComponent implements OnInit {
   }
   public hideChildModal():void {
     this.childModal.hide();
+  }
+
+    public toInt(num: string) {
+        return +num;
+    }
+
+    public sortByWordLength = (a: any) => {
+        return a.city.length;
+    }
+
+  public remove(item) {
+    let index = this.data.indexOf(item);
+    if(index>-1) {
+      this.data.splice(index, 1);
+    }
   }
 }

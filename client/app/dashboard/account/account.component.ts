@@ -22,7 +22,13 @@ export class AccountComponent implements OnInit {
   public amount:AbstractControl;
   public submitted:boolean = false;
 
+  public inEditMode = false;
+  public data: any[];
+  public filterQuery = "";
+  public rowsOnPage = 10;
+
   @ViewChild('childModal') public childModal:ModalDirective;
+  @ViewChild('childModalEdit') public childModalEdit:ModalDirective;
 
   constructor(private fb:FormBuilder,
               private accountService: AccountService,
@@ -41,11 +47,14 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getUserAccountsData();
+  }
+
+  getUserAccountsData() {
     this.accountService.getUserAccounts()
       .map(res => res.json())
       .subscribe(response => {
-        console.log(response);
-
+        this.data = response.accounts;
       },(err) => {
         const infoTitle = "Hey there! : )";
         const infoMessage = err.json().message;
@@ -58,11 +67,12 @@ export class AccountComponent implements OnInit {
 
     if (this.form.valid) {
 
-      this.account = new Account(values['name'], values['ammount']);
+      this.account = new Account(values['name'], values['amount']);
 
       this.accountService.addAccountToCurrentUser(this.account)
         .subscribe(response => {
           this.hideChildModal();
+          this.getUserAccountsData();
 
           const successTitle = "Success!";
           const successMessage = "You have added a new account successfully!";
@@ -79,8 +89,19 @@ export class AccountComponent implements OnInit {
   public showChildModal(): void {
     this.childModal.show();
   }
+
   public hideChildModal():void {
     this.childModal.hide();
   }
 
+  public toggleEditMode(editMode) {
+    this.inEditMode = editMode;
+  }
+
+  public edit(item) {
+    let index = this.data.indexOf(item);
+    if(index>-1) {
+      this.data.splice(index, 1);
+    }
+  }
 }
