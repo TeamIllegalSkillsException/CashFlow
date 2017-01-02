@@ -5,6 +5,7 @@ import { DashboardRouterModule } from './dashboard.router';
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerModule } from 'ng2-datepicker';
+import {DataTableModule} from "angular2-datatable";
 
 /* Components */
 import { DashboardComponent } from './dashboard.component';
@@ -19,6 +20,8 @@ import { AccountService } from '../dashboard/services/account.service';
 import { BillsService } from '../dashboard/services/bills.services';
 import { IncomeService } from './services/income.service';
 
+import { DataFilterPipe } from '../shared/pipes/data-filter.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,6 +29,7 @@ import { IncomeService } from './services/income.service';
     FormsModule,
     ReactiveFormsModule,
     DatePickerModule,
+    DataTableModule,
     ModalModule.forRoot()
   ],
   exports: [
@@ -37,7 +41,8 @@ import { IncomeService } from './services/income.service';
     MenuComponent,
     BillsComponent,
     AccountComponent,
-    IncomesComponent
+    IncomesComponent,
+    DataFilterPipe
   ],
   providers: [
     AccountService,
