@@ -15,6 +15,7 @@ import { Account } from './account.model';
 })
 export class AccountComponent implements OnInit {
   account: Account;
+  public accountForEdit: Account;
 
   public accounts: any[];
   public form:FormGroup;
@@ -98,10 +99,27 @@ export class AccountComponent implements OnInit {
     this.inEditMode = editMode;
   }
 
-  public edit(item) {
-    let index = this.data.indexOf(item);
-    if(index>-1) {
-      this.data.splice(index, 1);
-    }
+  public updateAccount(){
+    this.accountService.updateUserAccountData(this.accountForEdit)
+      .subscribe(response => {
+        const successTitle = "Success!";
+        const successMessage = "You have updated your account!";
+        this.notificationService.success(successTitle, successMessage);
+      }, err => {
+
+        const errorTitle = "Oops! Something went wrong..";
+        const errorMessage = err.json().message;
+        this.notificationService.error(errorTitle, errorMessage)
+      }, () => {
+        this.childModalEdit.hide();
+      });
+  }
+
+  public edit(accountId) {
+    let accountObj = this.data.filter(doc => doc._id == accountId)[0];
+    this.accountForEdit = accountObj;
+    console.log(this.accountForEdit);
+
+    this.childModalEdit.show();
   }
 }

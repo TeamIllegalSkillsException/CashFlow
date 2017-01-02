@@ -6,7 +6,9 @@ module.exports = function(app, passport, express, data) {
 
   userAccountRouter
     .get('/api/user-accounts', passport.authenticate('jwt'), userAccountController.getUserAccountsDetails)
-    .post('/api/user-accounts', passport.authenticate('jwt'), userAccountController.addNewAccount);
+    .put('/api/user-accounts', passport.authenticate('jwt'), userAccountController.updateUserAccountDetails)
+    .post('/api/user-accounts', passport.authenticate('jwt'), userAccountController.addNewAccount)
+    .post('/api/user-accounts/:id', passport.authenticate('jwt'), userAccountController.getAccountData);
 
   app.use(userAccountRouter);
 };

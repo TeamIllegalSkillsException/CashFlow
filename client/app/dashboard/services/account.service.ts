@@ -17,6 +17,17 @@ export class AccountService {
               private httpRequesterOptionsFactory: HttpRequesterOptionsFactoryService) {
   }
 
+  getUserAccountDataById(accountId:string): Observable<Response> {
+    const getUserAccUrl = this.userAccountApiUrl + '/' + accountId,
+      authHeaderObject = this.userService.getAuthHeaderObject(),
+      userId = this.userService.getLoggedUser()._id;
+
+    let httpRequestOptions = this.httpRequesterOptionsFactory
+      .createHttpRequesterOptions(getUserAccUrl, {accId: accountId, userId: userId}, authHeaderObject);
+
+    return this.httpRequesterService.post(httpRequestOptions);
+  }
+
   getUserAccounts(): Observable<Response> {
     let authHeaderObject = this.userService.getAuthHeaderObject();
 
@@ -34,5 +45,14 @@ export class AccountService {
       .createHttpRequesterOptions(this.userAccountApiUrl, account, authHeaderObject);
 
     return this.httpRequesterService.post(httpRequestOptions);
+  }
+  
+  updateUserAccountData(account: Account): Observable<Response> {
+    const authHeaderObject = this.userService.getAuthHeaderObject();
+
+    const httpRequestOptions = this.httpRequesterOptionsFactory
+      .createHttpRequesterOptions(this.userAccountApiUrl, account , authHeaderObject);
+
+    return this.httpRequesterService.put(httpRequestOptions);
   }
 };
