@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardSidebarComponent } from './sidebar/dashboard-sidebar.component';
 import { MenuComponent } from './menu/menu.component';
+import { AccountComponent} from './account/account.component';
 import { BillsComponent } from './bills/bills.component';
 
 /* Services */
@@ -29,7 +30,8 @@ import { BillsService } from '../dashboard/services/bills.services';
     DashboardComponent,
     DashboardSidebarComponent,
     MenuComponent,
-    BillsComponent
+    BillsComponent,
+    AccountComponent
   ],
   providers: [
     BillsService
