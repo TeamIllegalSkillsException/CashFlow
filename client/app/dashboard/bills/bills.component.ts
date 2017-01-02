@@ -22,7 +22,6 @@ export class BillsComponent implements OnInit {
   public notes:AbstractControl;
   public catModel = '';
   public recModel = '';
-
   public submitted:boolean = false;
 
   @ViewChild('childModal') public childModal:ModalDirective;
@@ -55,13 +54,12 @@ export class BillsComponent implements OnInit {
     this.submitted = true;
 
     if (this.form.valid) {
-      
-      this.bill = new Bill(values['amount'], values['startDueDate'],
-                          values['endDueDate'], this.recModel, this.catModel, values['notes']);
+      this.bill = new Bill(values['amount'], values['startDueDate'].formatted,
+                          values['endDueDate'].formatted, this.recModel, this.catModel, values['notes']);
 
       this.billsService.addBillToCurrentUser(this.bill)
         .subscribe(response => {
-          const successTitle = "Success!";
+            const successTitle = "Success!";
             const successMessage = "You have added a bill successfully!";
             this.hideChildModal();
             this.notificationsService.success(successTitle, successMessage);
@@ -75,14 +73,12 @@ export class BillsComponent implements OnInit {
     .map(res => res.json())
     .subscribe(response => {
         this.billCategories = response.categories;
-        console.log(this.billCategories); 
     });
 
     this.billsService.getBillsRecurrences()
     .map(res => res.json())
     .subscribe(response => {
         this.billRecurrences = response.recurrences;
-        console.log(this.billRecurrences);
     });
   }
   public hideChildModal():void {

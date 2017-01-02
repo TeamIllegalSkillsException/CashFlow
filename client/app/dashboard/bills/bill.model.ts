@@ -1,5 +1,4 @@
 export class Bill {
-  _id: string;
   user_id: string;
   amount: Number;
   startDueDate: Date;
