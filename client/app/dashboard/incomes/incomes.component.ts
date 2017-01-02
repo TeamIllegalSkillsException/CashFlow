@@ -13,6 +13,7 @@ import { Income } from './models/income.model';
 export class IncomesComponent implements OnInit {
   public incomes: any[];
   public incomeRecurrences: any[];
+  public accounts: any[];
   income: Income;
   public form:FormGroup;
   public company: AbstractControl;
@@ -50,7 +51,7 @@ export class IncomesComponent implements OnInit {
 
     if (this.form.valid) {
       
-      this.income = new Income(values['company'], values['amount'], values['startDate'], values['recurrence']);
+      this.income = new Income(values['company'], values['amount'], values['startDate'], values['accounts'], values['recurrence']);
 
       this.incomeService.addIncomeToCurrentUser(this.income)
         .subscribe(response => {

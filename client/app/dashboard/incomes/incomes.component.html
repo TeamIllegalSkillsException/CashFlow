@@ -2,4 +2,67 @@
     <button type="button" class="btn btn-primary" (click)="showChildModal()">Add Income</button>
 
 </app-dashboard>
-<p> PEDAL GOLQM ANGULAR aosdko9aksdo9skdq </p>
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="hideChildModal()">
+            <span aria-hidden="true">&times;</span>
+            </button>
+                <h4 class="modal-title">Create New Income</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="inputRecurrence3" class="col-sm-12 control-label">Recurrence</label>
+
+                    <select class="form-control" [(ngModel)]="recModel">
+                    <option *ngFor="let account of accounts" [value]="rec.name">{{account.name}}</option>
+                </select>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputRecurrence3" class="col-sm-12 control-label">Accounts</label>
+
+                    <select class="form-control" [(ngModel)]="recModel">
+                    <option *ngFor="let rec of incomeRecurrences" [value]="rec.name">{{rec.name}}</option>
+                </select>
+                </div>
+
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
+                    <div class="form-group row" [ngClass]="{'has-error': (!company.valid && company.touched), 'has-success': (company.valid && company.touched)}">
+                        <label for="inputAmount3" class="col-sm-12 control-label">Company</label>
+
+                        <div class="col-sm-12">
+                            <input [formControl]="company" type="text" class="form-control" id="inputAmount3">
+                            <span *ngIf="!company.valid && company.touched" class="help-block sub-little-text">Invalid company!</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" [ngClass]="{'has-error': (!amount.valid && amount.touched), 'has-success': (amount.valid && amount.touched)}">
+                        <label for="inputAmount3" class="col-sm-12 control-label">Amount</label>
+
+                        <div class="col-sm-12">
+                            <input [formControl]="amount" type="text" class="form-control" id="inputAmount3">
+                            <span *ngIf="!amount.valid && amount.touched" class="help-block sub-little-text">Invalid amount!</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" [ngClass]="{'has-error': (!startDate.valid && startDate.touched), 'has-success': (startDate.valid && startDate.touched)}">
+                        <label for="inputStartDueDate3" class="col-sm-12 control-label">Start Date</label>
+
+                        <div class="col-sm-12">
+                            <input [formControl]="startDate" type="text" class="form-control" id="inputStartDueDate3">
+                            <span *ngIf="!startDate.valid && startDate.touched" class="help-block sub-little-text">Invalid Date!</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <button [disabled]="!form.valid" type="submit" class="btn-purple btn-auth">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
