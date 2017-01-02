@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersRouterModule } from './users.router';
 import { DashboardModule } from '../dashboard/dashboard.module';
+import { NgUploaderModule } from 'ngx-uploader';
 
 /* Components */
 import { LoginComponent } from './login/login.component';
@@ -22,7 +23,8 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     UsersRouterModule,
     ReactiveFormsModule,
-    DashboardModule
+    DashboardModule,
+    NgUploaderModule
   ],
   declarations: [
     LoginComponent,

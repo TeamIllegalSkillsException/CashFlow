@@ -7,6 +7,15 @@
             <div class="white-box-d-content">
                 <div class="image">
                     <img [src]="user.avatarUrl" />
+
+                    <div class="col-sm-3">
+                        <label >Change picture</label>
+                        <input type="file"
+                               ngFileSelect
+                               [options]="options"
+                               (onUpload)="handleUpload($event)"
+                               (beforeUpload)="beforeUpload($event)">
+                    </div>
                 </div>
 
                 <form [formGroup]="editUserForm" (ngSubmit)="onSubmit(editUserForm.value)" class="form-horizontal col-sm-12">

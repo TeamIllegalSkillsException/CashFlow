@@ -1,6 +1,7 @@
 /* Common */
 import {Component, OnInit, Input} from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from "@angular/forms";
+import { NgUploaderOptions } from 'ngx-uploader';
 
 /* Services */
 import { User } from '../models/user.model';
@@ -11,7 +12,8 @@ import { SpinnerService } from "../../shared/services/spinner/spinner.service";
 
 const MIN_FIELD_LENGTH = 3,
   MAX_FIELD_LENGTH = 20,
-  LETTERS_PATTERN = '^[A-Za-zА-Яа-я]+$';
+  LETTERS_PATTERN = '^[A-Za-zА-Яа-я]+$',
+  uploadUrl = '/api/users/upload';
 
 @Component({
   selector: 'app-profile',
@@ -19,15 +21,22 @@ const MIN_FIELD_LENGTH = 3,
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  @Input() user: User;
-
+  user: User;
+  public filesToUpload: File;
   public editUserForm: FormGroup;
   public firstName: AbstractControl;
   public lastName: AbstractControl;
   public age: AbstractControl;
-  // public avatarUrl: AbstractControl;
+  public avatarUrl: any;
   public inEditMode:boolean = false;
   public submitted:boolean = false;
+
+  public sizeLimit = 2000000;
+  public options: NgUploaderOptions = {
+    url: '/api/upload',
+    customHeaders: {},
+    data:{}
+  };
 
   constructor(private fb: FormBuilder,
               private userFactoryService: UserFactoryService,
@@ -42,8 +51,8 @@ export class ProfileComponent implements OnInit {
   initEditUserFormValidation(): void {
     this.editUserForm = this.fb.group({
       'firstName': ['', Validators.compose([
-        Validators.required, 
-        Validators.minLength(MIN_FIELD_LENGTH), 
+        Validators.required,
+        Validators.minLength(MIN_FIELD_LENGTH),
         Validators.maxLength(MAX_FIELD_LENGTH),
         Validators.pattern(LETTERS_PATTERN)
       ])],
@@ -61,7 +70,12 @@ export class ProfileComponent implements OnInit {
     this.firstName = this.editUserForm.controls['firstName'];
     this.lastName = this.editUserForm.controls['lastName'];
     this.age = this.editUserForm.controls['age'];
-    // this.avatarUrl = this.editUserForm.controls['avatarUrl'];
+  }
+
+  setFileUploaderHeaders() {
+    let loggedUserId = JSON.parse(localStorage.getItem('user'))._id;
+    this.options.customHeaders = this.userService.getAuthToken();
+    this.options.data = {_id:loggedUserId};
   }
 
   toggleEditMode(value:boolean): void {
@@ -69,6 +83,8 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setFileUploaderHeaders();
+
     this.spinnerService.show();
 
     this.userService.getUserProfile()
@@ -79,12 +95,29 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  ngDoCheck() {
-
+  handleUpload(data): void {
+    if (data && data.response) {
+      data = JSON.parse(data.response);
+      this.user.avatarUrl = data.imageUrl;
+      console.log(this.avatarUrl);
+    }
   }
 
+  beforeUpload(uploadingFile): void {
+    if (uploadingFile.size > this.sizeLimit) {
+      uploadingFile.setAbort();
+      alert('File is too large');
+    }
+  }
 
+  uploadAvatar() {
 
+    this.userService.updateUserProfileImage(this.user._id, this.filesToUpload)
+      .subscribe(response => {
+        console.log(response)
+      })
+  }
+  
   public onSubmit(values:Object):void {
     this.submitted = true;
 

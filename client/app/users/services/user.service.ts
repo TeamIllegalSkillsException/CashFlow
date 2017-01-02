@@ -1,9 +1,11 @@
-import { HttpRequesterOptionsFactoryService } from '../../shared/services/http/http-requester-options-factory.service';
-import { HttpRequester } from '../../shared/services/http/http-requester.service';
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Response } from '@angular/http';
 import { User } from './../models/user.model';
+
+/* Services */
+import { HttpRequesterOptionsFactoryService } from '../../shared/services/http/http-requester-options-factory.service';
+import { HttpRequester } from '../../shared/services/http/http-requester.service';
 
 @Injectable()
 export class UserService {
@@ -12,7 +14,7 @@ export class UserService {
   private logoutApiUrl: string = '/api/logout';
   private contentTypeHeaderObject: {} = { 'Content-Type': 'application/json' };
   private forgottenPass: string = '/api/forgotten-pass';
-
+  private userApiUploadUrl: string = '/api/users/upload';
   private isLogged: boolean = false;
 
   constructor(
@@ -57,11 +59,21 @@ export class UserService {
   }
 
   updateUserProfile(user: User): Observable<Response> {
-      const updateProfileUrl = this.userApiUrl + '/' + user._id,
-        authHeaderObject = this.getAuthHeaderObject();
+    const updateProfileUrl = this.userApiUrl + '/' + user._id,
+      authHeaderObject = this.getAuthHeaderObject();
 
     const httpRequestOptions = this.httpRequesterOptionsFactory
       .createHttpRequesterOptions(updateProfileUrl, user , authHeaderObject);
+
+    return this.httpRequesterService.put(httpRequestOptions);
+  }
+
+  updateUserProfileImage(userId: string, imageUrl): Observable<Response> {
+    const updateProfileUrl = '/api/upload/' + userId,
+      authHeaderObject = this.getAuthHeaderObject();
+
+    const httpRequestOptions = this.httpRequesterOptionsFactory
+      .createHttpRequesterOptions(updateProfileUrl, {userId: userId, imageUrl: imageUrl} , authHeaderObject);
 
     return this.httpRequesterService.put(httpRequestOptions);
   }
@@ -71,7 +83,7 @@ export class UserService {
   }
 
   getLoggedUser() {
-    return localStorage.getItem('user');
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   setLoggedUser(authResponse) {
@@ -86,6 +98,15 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': token
     };
+
+    return authHeaderObject;
+  }
+
+  getAuthToken() {
+    let userDataString: string = localStorage.getItem('user');
+    let token: string = JSON.parse(userDataString).auth_token;
+
+    let authHeaderObject = {'Authorization': token};
 
     return authHeaderObject;
   }

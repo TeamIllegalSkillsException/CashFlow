@@ -6,7 +6,7 @@ module.exports = function(app, passport, express, data) {
 
     userIncomeRouter
         .get('/api/user-income', userIncomeController.getUserIncomeDetails)
-        .post('/api/user-income', userIncomeController.updateUserIncomeDetailsById);
+        //.post('/api/user-income', userIncomeController.updateUserIncomeDetailsById);
 
     app.use(userIncomeRouter);
 };

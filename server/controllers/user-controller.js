@@ -1,5 +1,10 @@
 'use strict';
-const helpers = require('../helpers');
+const helpers = require('../helpers'),
+  fs = require('fs'),
+  mv = require('mv'),
+  multer = require('multer');
+
+var uploadProfileImgs = multer({ dest: './dist/uploads/users/' }).single('file');
 
 const environment = process.env.NODE_ENV || 'development',
     config = require('../config/config')(environment),
@@ -22,7 +27,8 @@ const settings = {
 const transporter = nodemailer.createTransport(settings);
 
 module.exports = function(data) {
-    const webTokenSecret = config.webTokenSecret;
+    const webTokenSecret = config.webTokenSecret,
+       ROOT_UPLOADS_DIR = './dist/uploads';
 
     return {
         getLogin(req, res) {
@@ -32,6 +38,7 @@ module.exports = function(data) {
             };
 
             res.status(200).json({
+              _id: req.user.id,
               username: req.user.username,
               auth_token: jwt.sign(webTokenObject, webTokenSecret)
             });
@@ -166,6 +173,51 @@ module.exports = function(data) {
                 .catch(err => {
                     res.status(400).json({ message: helpers.errorHelper(err) });
                 });
+        },
+        updateProfileAvatar(req, res) {
+
+            return Promise.resolve()
+                .then(() => {
+                    uploadProfileImgs(req, res, function (err) {
+                        const userId = req.body._id;
+
+                        data.getUserById(userId)
+                            .then((user) => {
+                                let userUploadsDirName = './dist/uploads/users/';
+                                    if(user){
+                                        userUploadsDirName = `./dist/uploads/users/${userId}/`;
+                                        const userUploadsDirExists = fs.existsSync(userUploadsDirName);
+
+                                        if (!userUploadsDirExists) {
+                                          fs.mkdirSync(userUploadsDirName);
+                                        }
+                                    }
+
+                                  return userUploadsDirName;
+                            })
+                            .then((newFilePath) => {
+                                const fileMimeType = req.file.mimetype,
+                                   fileNewName = req.file.filename;
+
+                                let fileExtension = '';
+                                if (fileMimeType.indexOf('jpeg') >= 0) {
+                                    fileExtension = '.jpg';
+                                } else if (fileMimeType.indexOf('png') >= 0) {
+                                    fileExtension = '.png';
+                                }
+                                let newLocation = newFilePath +  fileNewName + fileExtension;
+                                let oldLocation = req.file.destination + fileNewName;
+
+                                mv(oldLocation, newLocation, function(err) {
+                                    if(err){
+                                      return res.status(400).send({ message: err });
+                                    }
+                                    return res.status(200).send({ imageUrl: `/uploads/users/${userId}/${fileNewName}${fileExtension}` });
+                                });
+                            });
+                    })
+                })
+
         },
         getAll(req, res) {
             return data.getAllUsers()
@@ -309,6 +361,6 @@ module.exports = function(data) {
                     res.status(400)
                         .send(JSON.stringify({ validationErrors: err }));
                 });
-        }
+        },
     };
 };
