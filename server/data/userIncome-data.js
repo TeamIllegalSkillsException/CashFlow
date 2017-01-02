@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = function(models) {
-    const UserIncome = models.UserIncome;
+    const UserIncome = models.UserIncome,
+        BillRecurrence = models.BillRecurrence;
 
     return {
         createUserIncomeData(userIncomeData) {
@@ -30,18 +31,56 @@ module.exports = function(models) {
         },
         getIncomeByUserId(id) {
             return new Promise((resolve, reject) => {
-                UserIncome.findOne({ user_id: id }, (err, income) => {
+                UserIncome.findOne({ user_id: id }, (err, userWithIncome) => {
                     if (err) {
                         return reject(err);
                     }
 
-                    if (!income) {
-                        return reject(income);
+                    if (!userWithIncome) {
+                        userWithIncome = new UserIncome({
+                            user_id: id,
+                            incomes: []
+                        });
+                        userWithIncome.save();
+
+                    } else if (!userWithIncome.incomes) {
+                        userWithIncome.incomes = [];
+                        userWithIncome.save();
                     }
 
-                    return resolve(income);
+                    let incomes = userWithIncome.incomes;
+                    let responseObject = {
+                        incomes: incomes
+                    }
+
+                    return resolve(responseObject);
                 });
             });
         },
+        addNewIncomeToCurrentUser(incomeToAdd, userId) {
+            return new Promise((resolve, reject) => {
+                UserIncome.findOne({ user_id: userId }, (err, userWithIncomes) => {
+                    if (err) {
+                        return reject(err);
+                    }
+
+                    userWithIncomes.incomes.push(incomeToAdd);
+                    userWithIncomes.save();
+
+                    return resolve(userWithIncomes);
+                });
+            });
+        },
+        getAllIncomeRecurrences() {
+            return new Promise((resolve, reject) => {
+                BillRecurrence.find((error, recurrences) => {
+                    if (error) {
+                        return reject(error);
+                    }
+
+                    return resolve(recurrences);
+                })
+            });
+        }
     }
 }

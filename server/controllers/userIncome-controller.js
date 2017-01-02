@@ -14,31 +14,37 @@ module.exports = function(data) {
                     res.status(400).json({ message: err.message });
                 });
         },
-        updateUserIncomeDetailsById(req, res, next) {
-            const errors = req.validationErrors();
+        addNewIncome(req, res) {
+            let currentUserId = req.user.id;
+            let incomeToAdd = req.body;
+            let username = req.user.username;
 
-            if (errors) {
-                return res.redirect("/user-income");
+            let response = {
+                sucsess: true,
+                username: username
             }
-            UserIncome.findById(req.userIncome.user_id, (err, userIncome) => {
-                if (err) {
-                    return next(err);
-                }
-                userIncome.incomes.company = req.body.company || "";
-                userIncome.incomes.amount = req.body.amount || "";
-                userIncome.incomes.startDate = req.body.startDate || "";
-                userIncome.incomes.accounts = req.body.accounts || "";
-                userIncome.incomes.recurrence = req.body.recurrence || "";
-                userIncome.save((err) => {
-                    if (err) {
-                        if (err.code === 11000) {
-                            return res.redirect("/user-income");
-                        }
-                        return next(err);
-                    }
-                    res.redirect("/user-income");
+
+            return data.getIncomeByUserId(currentUserId)
+                .then((resObject) => {
+                    data.addNewIncomeToCurrentUser(incomeToAdd, currentUserId)
+                        .then((userWithIncome) => {
+                            res.status(200).json(response);
+                        });
                 });
-            });
         },
+        getIncomeRecurrences(req, res) {
+            return data.getAllIncomeRecurrences()
+                .then((recurrences) => {
+                    let response = {
+                        success: true,
+                        recurrences: recurrences
+                    }
+                    res.status(200).json(response);
+                })
+                .catch((err) => {
+                    res.status(400).json({ message: err.message });
+                })
+        }
+
     }
 }
