@@ -19,6 +19,7 @@ import { IncomesComponent } from './incomes/incomes.component';
 import { AccountService } from '../dashboard/services/account.service';
 import { BillsService } from '../dashboard/services/bills.services';
 import { IncomeService } from './services/income.service';
+import { EditIncomeComponent } from './incomes/edit-income/edit-income.component';
 
 import { DataFilterPipe } from '../shared/pipes/data-filter.pipe';
 import { DateFormatterPipe } from '../shared/pipes/date-formatter.pipe';
@@ -43,6 +44,7 @@ import { DateFormatterPipe } from '../shared/pipes/date-formatter.pipe';
     BillsComponent,
     AccountComponent,
     IncomesComponent,
+    EditIncomeComponent,
     DataFilterPipe,
     DateFormatterPipe
   ],

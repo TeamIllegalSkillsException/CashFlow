@@ -24,11 +24,32 @@ export class BillsComponent implements OnInit {
   public recModel = '';
   public submitted:boolean = false;
 
+
+
+
+
+  public currentCategory;
+  public currentRecurrence; 
+  public currentAmount; 
+  public currentStartDueDate; 
+  public currentEndDueDate; 
+  public currentNotes; 
+   
+  public isEditEnabled = false;
+  public amountModel = 0;
+  public startDateModel = new Date();
+  public endDateModel = new Date();
+  public notesModel = '';
+  public currentBillId = '';
+
+
+
   public data: any[];
   public filterQuery = "";
   public rowsOnPage = 3;
 
   @ViewChild('childModal') public childModal:ModalDirective;
+  @ViewChild('editModal') public editModal:ModalDirective;  
 
   constructor(private billsService: BillsService, fb:FormBuilder, private notificationsService: NotificationsService) {
     this.form = fb.group({
@@ -49,20 +70,21 @@ export class BillsComponent implements OnInit {
     this.billsService.getUserBills()
       .map(res => res.json())
       .subscribe(response => {
-        console.log(response);
+        // console.log(response);
         this.data = response.bills;
-
-        console.log(this.data);
       });
 
+      this.billsService.getBillsCategories()
+      .map(res => res.json())
+      .subscribe(response => {
+          this.billCategories = response.categories;
+      });
 
-
-
-
-  }
-
-  ngAfterViewInit() {
-
+      this.billsService.getBillsRecurrences()
+      .map(res => res.json())
+      .subscribe(response => {
+          this.billRecurrences = response.recurrences;
+      });
   }
 
   public onSubmit(values:Object):void {
@@ -83,35 +105,58 @@ export class BillsComponent implements OnInit {
   }
 
   public showChildModal(): void {
-    this.childModal.show();
-    this.billsService.getBillsCategories()
-    .map(res => res.json())
-    .subscribe(response => {
-        this.billCategories = response.categories;
-    });
-
-    this.billsService.getBillsRecurrences()
-    .map(res => res.json())
-    .subscribe(response => {
-        this.billRecurrences = response.recurrences;
-    });
+    this.catModel = '';
+    this.recModel = '';
+    this.childModal.show();    
   }
+
   public hideChildModal():void {
     this.childModal.hide();
   }
 
-    public toInt(num: string) {
-        return +num;
-    }
+  public toInt(num: string) {
+      return +num;
+  }
 
-    public sortByWordLength = (a: any) => {
-        return a.city.length;
-    }
+  public sortByWordLength = (a: any) => {
+     // return a.city.length;
+  }
 
-  public remove(item) {
-    let index = this.data.indexOf(item);
-    if(index>-1) {
-      this.data.splice(index, 1);
-    }
+  public edit(item) {
+    this.editModal.show();
+    console.log(item);
+    this.catModel = item.category;
+    this.recModel = item.recurrence;
+    this.amountModel = +item.amount;
+    this.startDateModel = item.startDueDate.slice(0,10);
+    this.endDateModel = item.endDueDate.slice(0,10);
+   // console.log(this.endDateModel);
+    this.notesModel = item.notes;
+    this.currentBillId = item._id;
+    console.log(this.currentBillId);
+
+    // RESET ngMODELS
+  }
+
+  public OnUpdateClick() {
+    let updatedBill = new Bill(this.amountModel, this.startDateModel, this.endDateModel,
+                        this.recModel, this.catModel, this.notesModel);
+    
+    updatedBill._id = this.currentBillId;
+
+    this.billsService.updateBill(updatedBill)
+      .subscribe(response => {
+        console.log(response);
+      });
+    
+
+
+
+    this.catModel = '';
+    this.recModel = '';
+    this.amountModel = 0;
+    this.startDateModel = new Date();
+    this.endDateModel = new Date();
+    this.notesModel = ''; 
   }
 }
