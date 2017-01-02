@@ -14,7 +14,7 @@ module.exports = function(data) {
                     res.status(200).json(accounts);
                 })
                 .catch((err) => {
-                    res.status(400).json({ message: err });
+                    res.status(400).json({ message: err.message });
                 });
         },
         addNewAccount(req, res) {
