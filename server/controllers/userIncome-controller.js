@@ -1,4 +1,6 @@
-'use strict'
+'use strict';
+
+const helpers = require('../helpers');
 
 module.exports = function(data) {
     return {
@@ -44,7 +46,28 @@ module.exports = function(data) {
                 .catch((err) => {
                     res.status(400).json({ message: err.message });
                 })
-        }
+        },
+        updateUserIncome(req, res) {
+            const userIncomeIdForUpdate = req.body._id;
 
+            const updateObj = {
+              firstName: req.body.firstName,
+              lastName: req.body.lastName,
+              avatarUrl: req.body.avatarUrl,
+              age: req.body.age
+            };
+
+            return data.findUserIncomeByIdAndUpdate(userIncomeIdForUpdate, updateObj)
+                .then((user) => {
+                    if (!user) {
+                       throw new Error('User Income not found.');
+                    }
+
+                    res.status(200).json(user);
+                })
+                .catch(err => {
+                    res.status(400).json({ message: helpers.errorHelper(err) });
+                });
+        }
     }
 }

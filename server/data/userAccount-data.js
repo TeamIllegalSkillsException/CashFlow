@@ -24,8 +24,21 @@ module.exports = function(models) {
                        return reject(err);
                     }
 
+                    if (!userWithAccount) {
+                      userWithAccount = new UserAccount({
+                        user_id: id,
+                        accounts: []
+                      });
+                      userWithAccount.save();
+
+                    } else if(!userWithAccount.accounts) {
+                      userWithAccount.bills = [];
+                      userWithAccount.save();
+                    }
+
+                    let accounts = userWithAccount.accounts;
                     let responseObject = {
-                       accounts: userWithAccount.accounts
+                      accounts: accounts
                     };
 
                     return resolve(responseObject);

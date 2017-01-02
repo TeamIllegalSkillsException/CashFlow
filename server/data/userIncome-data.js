@@ -80,6 +80,21 @@ module.exports = function(models) {
                     return resolve(recurrences);
                 })
             });
-        }
+        },
+        findUserIncomeByIdAndUpdate(id, update) {
+            return new Promise((resolve, reject) => {
+                UserIncome.findOneAndUpdate({ _id: id }, update, { runValidators: true }, (err, userIncome) => {
+      
+                    if (err) {
+                      return reject(err);
+                    }
+                    if (!userIncome) {
+                      return reject(userIncome);
+                    }
+        
+                    return resolve(userIncome);
+                });
+            });
+        },
     }
 }

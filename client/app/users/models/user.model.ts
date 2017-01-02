@@ -2,10 +2,10 @@ export class User {
   _id: string;
   username: string;
   password: string;
-  firstName: String;
-  lastName: String;
+  firstName: string;
+  lastName: string;
   age: Number;
-  email: String;
-  avatarUrl: String;
+  email: string;
+  avatarUrl: string;
   dateCreated: Date;
 }

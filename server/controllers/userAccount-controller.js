@@ -4,16 +4,17 @@ module.exports = function(data) {
     return {
         getUserAccountsDetails(req, res) {
             let currentUserId = req.user.id;
+
             return data.getAccountsByUserId(currentUserId)
-                .then((accounts) => {
-                    if (!accounts) {
-                       throw new Error('No accounts available');
+                .then((accountsData) => {
+                    if (accountsData.accounts.length == 0) {
+                       res.status(400).json({message: 'No accounts'});
                     }
 
                     res.status(200).json(accounts);
                 })
                 .catch((err) => {
-                    res.status(400).json({ message: err.message });
+                    res.status(400).json({ message: err });
                 });
         },
         addNewAccount(req, res) {

@@ -21,6 +21,10 @@ let UserAccountSchema = new Schema({
         currency: {
           type: 'String',
           default: '$USD'
+        },
+        dateCreated: {
+          type: Date,
+          default: Date.now
         }
     }]
 });

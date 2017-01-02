@@ -2,24 +2,25 @@
 
 module.exports = function(data) {
     return {
-        getUserBillsDetails(req, res) {       
+        getUserBillsDetails(req, res) {
             let currentUserId = req.user.id;
-            return data.getBillsByUserId(currentUserId)                
+          
+            return data.getBillsByUserId(currentUserId)
                 .then((bills) => {
                     if (!bills) {
                         throw new Error('No bills available');
                     }
-                          
+
                     res.status(200).json(bills);
                 })
-                .catch((err) => {                    
+                .catch((err) => {
                     res.status(400).json({ message: err.message });
                 });
         },
         addNewBill(req, res) {
             let currentUserId = req.user.id;
-            let billToAdd = req.body;   
-            let username = req.user.username;   
+            let billToAdd = req.body;
+            let username = req.user.username;
 
             let response = {
                 sucsess: true,
@@ -29,10 +30,10 @@ module.exports = function(data) {
             return data.getBillsByUserId(currentUserId)
                 .then((resObject) => {
                         data.addNewBillToCurrentUser(billToAdd, currentUserId)
-                            .then((userWithBills) => {                                
+                            .then((userWithBills) => {
                                 res.status(200).json(response);
                             });
-                });            
+                });
         },
         getBillCategories(req, res) {
             return data.getAllBillCategories()
@@ -44,7 +45,7 @@ module.exports = function(data) {
                     res.status(200).json(response);
                 })
                 .catch((err) => {
-                    res.status(400).json({ message: err.message });                    
+                    res.status(400).json({ message: err.message });
                 })
         },
         getBillRecurrences(req, res) {
@@ -57,8 +58,8 @@ module.exports = function(data) {
                     res.status(200).json(response);
                 })
                 .catch((err) => {
-                    res.status(400).json({ message: err.message });                    
+                    res.status(400).json({ message: err.message });
                 })
         }
-    }        
+    }
 }

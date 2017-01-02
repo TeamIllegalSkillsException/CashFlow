@@ -6,8 +6,7 @@ module.exports = function(models) {
     return {
         createUser(userData) {
             let user = new User(userData);           
-            return new Promise((resolve, reject) => {
-                console.log(userData);
+            return new Promise((resolve, reject) => {               
                 user.save((error) => {
                     if (error) {
                         return reject(error);

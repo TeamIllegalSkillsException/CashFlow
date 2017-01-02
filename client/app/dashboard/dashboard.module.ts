@@ -14,6 +14,7 @@ import { BillsComponent } from './bills/bills.component';
 import { IncomesComponent } from './incomes/incomes.component';
 
 /* Services */
+import { AccountService } from '../dashboard/services/account.service';
 import { BillsService } from '../dashboard/services/bills.services';
 import { IncomeService } from './services/income.service';
 
@@ -38,6 +39,7 @@ import { IncomeService } from './services/income.service';
     IncomesComponent
   ],
   providers: [
+    AccountService,
     BillsService,
     IncomeService
   ]
