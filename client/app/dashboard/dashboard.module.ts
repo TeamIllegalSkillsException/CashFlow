@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRouterModule } from './dashboard.router';
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DatepickerModule } from 'ng2-bootstrap/datepicker';
+import { DatePickerModule } from 'ng2-datepicker';
 
 /* Components */
 import { DashboardComponent } from './dashboard.component';
@@ -25,7 +25,7 @@ import { IncomeService } from './services/income.service';
     DashboardRouterModule,
     FormsModule,
     ReactiveFormsModule,
-    DatepickerModule,
+    DatePickerModule,
     ModalModule.forRoot()
   ],
   exports: [

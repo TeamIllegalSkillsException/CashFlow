@@ -43,7 +43,8 @@
 
                     <div class="col-sm-12">
                         <!--<input [formControl]="startDueDate" type="text" class="form-control" id="inputStartDueDate3" >-->
-                        <datepicker [formControl]="startDueDate"></datepicker>
+                        <!--<ng-datepicker [formControl]="startDueDate"></ng-datepicker>-->
+                        <ng2-datepicker formControlName="startDueDate"></ng2-datepicker>
                         <span *ngIf="!startDueDate.valid && startDueDate.touched" class="help-block sub-little-text">Invalid Date!</span>
                     </div>
                 </div>
@@ -52,7 +53,8 @@
 
                     <div class="col-sm-12">
                         <!--<input [formControl]="endDueDate" type="text" class="form-control" id="inputEndDueDate3" >-->
-                        <datepicker [formControl]="endDueDate"></datepicker>
+                        <!--<ng-datepicker [formControl]="endDueDate"></ng-datepicker>-->
+                        <ng2-datepicker formControlName="endDueDate"></ng2-datepicker>
                         <span *ngIf="!endDueDate.valid && endDueDate.touched" class="help-block sub-little-text">Invalid Date!</span>
                     </div>
                 </div>
