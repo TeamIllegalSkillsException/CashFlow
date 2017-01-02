@@ -11,9 +11,12 @@ import { DashboardSidebarComponent } from './sidebar/dashboard-sidebar.component
 import { MenuComponent } from './menu/menu.component';
 import { AccountComponent} from './account/account.component';
 import { BillsComponent } from './bills/bills.component';
+import { IncomesComponent } from './incomes/incomes.component';
 
 /* Services */
 import { BillsService } from '../dashboard/services/bills.services';
+import { IncomeService } from './services/income.service';
+
 
 @NgModule({
   imports: [
@@ -31,10 +34,12 @@ import { BillsService } from '../dashboard/services/bills.services';
     DashboardSidebarComponent,
     MenuComponent,
     BillsComponent,
-    AccountComponent
+    AccountComponent,
+    IncomesComponent
   ],
   providers: [
-    BillsService
+    BillsService,
+    IncomeService
   ]
 })
 export class DashboardModule { }

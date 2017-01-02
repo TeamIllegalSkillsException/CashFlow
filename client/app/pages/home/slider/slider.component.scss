@@ -1,183 +1,192 @@
 .homepage-slider,
-.homepage-slider > div{
-  padding:0;
-  overflow: hidden;
+.homepage-slider>div {
+    padding: 0;
+    overflow: hidden;
 }
-.homepage-slider img{
-  /*position: absolute;*/
-  /*width:100%;*/
-}
-.carousel-control{
-  display: none;
-}
-.homepage-slider-overlay{
-  z-index: 5;
-  position: absolute;
-  background: transparent linear-gradient(-140deg, rgba(169, 70, 253, 0.4), rgba(8, 43, 174, 0.6), rgba(0, 240, 255, 0.6)) repeat scroll 0% 0%;
-  visibility: inherit;
-  transition: none 0s ease 0s;
-  text-align: left;
-  line-height: 23px;
-  border-width: 0px;
-  margin: 0px;
-  padding: 0px;
-  letter-spacing: 0px;
-  font-weight: 400;
-  font-size: 12px;
-  white-space: nowrap;
-  min-height: 100%;
-  min-width: 100%;
-  opacity: 1;
-}
-.homepage-slider-captions{
-  min-height: 100%;
-  min-height: 100vh;
-  background: transparent;
-  position: absolute;
-  z-index: 9999;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 100%;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-}
-#homepage-slider-title{
-  white-space: nowrap;
-  font-size: 93px;
-  line-height: 102px;
-  font-weight: 700;
-  color: rgb(255, 255, 255);
-  font-family: Oswald;
-  visibility: inherit;
-  text-align: center;
-  letter-spacing: 0px;
-}
-#homepage-slider-subtitle{
-  font-size: 52px;
-  line-height: 61px;
-  font-weight: 300;
-  font-family: Roboto;
-  visibility: inherit;
-  text-align: left;
-  letter-spacing: 0px;
-  text-align: center;
-  color:#fff;
-}
-#homepage-slider-buttons{
-  margin-top:50px;
-}
-#homepage-slider-buttons .btn-ghost{
-  margin: 0 auto;
-  float: none;
-  display: block;
-}
-.homepage-slider-clouds{
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  position: absolute;
-  background: url("../../../assets/images/slider/cl-03.png");
-  z-index: 8;
-  visibility: inherit;
-  transition: none 0s ease 0s;
-  text-align: left;
-  line-height: 0px;
-  border-width: 0px;
-  margin: 0px;
-  padding: 0px;
-  letter-spacing: 0px;
-  font-weight: 400;
-  font-size: 14px;
-  white-space: nowrap;
-  min-height: 0px;
-  min-width: 0px;
-  max-height: 100%;
-  max-width: 100%;
-  opacity: 1;
 
-  -moz-animation-duration: 275s;
-  -webkit-animation-duration: 275s;
+.homepage-slider img {
+    /*position: absolute;*/
+    /*width:100%;*/
+}
 
-  -webkit-animation-name: slidein;
-  -moz-animation-name: slidein;
-  -ms-animation-name: slidein;
-  -o-animation-name: slidein;
-  animation-name: slidein;
+.carousel-control {
+    display: none;
+}
 
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  -ms-animation-iteration-count: infinite;
-  -o-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
+.homepage-slider-overlay {
+    z-index: 5;
+    position: absolute;
+    background: transparent linear-gradient(-140deg, rgba(169, 70, 253, 0.4), rgba(8, 43, 174, 0.6), rgba(0, 240, 255, 0.6)) repeat scroll 0% 0%;
+    visibility: inherit;
+    transition: none 0s ease 0s;
+    text-align: left;
+    line-height: 23px;
+    border-width: 0px;
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 0px;
+    font-weight: 400;
+    font-size: 12px;
+    white-space: nowrap;
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 1;
 }
-.homepage-slider-scroll{
-  left: 0;
-  bottom: 20px;
-  width: 100%;
-  position: absolute;
+
+.homepage-slider-captions {
+    min-height: 100%;
+    min-height: 100vh;
+    background: transparent;
+    position: absolute;
+    z-index: 9999;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
 }
-#scroll-icon{
-  width: 26px;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 500px;
-  visibility: inherit;
-  transition: none 0s ease 0s;
-  text-align: left;
-  line-height: 23px;
-  padding: 0px;
-  letter-spacing: 0px;
-  font-weight: 400;
-  font-size: 14px;
-  white-space: nowrap;
-  min-height: 50px;
-  min-width: 30px;
-  max-height: 68px;
-  max-width: 32px;
-  opacity: 1;
-  transform: translate3d(0px, 0px, 0px);
-  transform-origin: 50% 50% 0px;
-  margin:0 auto;
-  display: block;
+
+#homepage-slider-title {
+    white-space: nowrap;
+    font-size: 93px;
+    line-height: 102px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    font-family: Oswald;
+    visibility: inherit;
+    text-align: center;
+    letter-spacing: 0px;
 }
-#scroll-icon .dot{
-  display: block;
-  position: relative;
-  margin: 0 auto;
-  float: none;
-  top: 10px;
-  z-index: 14;
-  background-color: rgb(255, 255, 255);
-  border-color: rgba(255, 255, 255, 0);
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 5px;
-  visibility: inherit;
-  transition: none 0s ease 0s;
-  text-align: left;
-  line-height: 23px;
-  padding: 0px;
-  letter-spacing: 0px;
-  font-weight: 400;
-  font-size: 14px;
-  white-space: nowrap;
-  min-height: 5px;
-  min-width: 5px;
-  max-height: 5px;
-  max-width: 5px;
-  opacity: 1;
-  transform: translate3d(0px, 0px, 0px);
-  transform-origin: 50% 50% 0px;
+
+#homepage-slider-subtitle {
+    font-size: 52px;
+    line-height: 61px;
+    font-weight: 300;
+    font-family: 'roboto-light';
+    visibility: inherit;
+    text-align: left;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #fff;
+}
+
+#homepage-slider-buttons {
+    margin-top: 50px;
+}
+
+#homepage-slider-buttons .btn-ghost {
+    margin: 0 auto;
+    float: none;
+    display: block;
+}
+
+.homepage-slider-clouds {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url("../../../assets/images/slider/cl-03.png");
+    z-index: 8;
+    visibility: inherit;
+    transition: none 0s ease 0s;
+    text-align: left;
+    line-height: 0px;
+    border-width: 0px;
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 0px;
+    font-weight: 400;
+    font-size: 14px;
+    white-space: nowrap;
+    min-height: 0px;
+    min-width: 0px;
+    max-height: 100%;
+    max-width: 100%;
+    opacity: 1;
+    -moz-animation-duration: 275s;
+    -webkit-animation-duration: 275s;
+    -webkit-animation-name: slidein;
+    -moz-animation-name: slidein;
+    -ms-animation-name: slidein;
+    -o-animation-name: slidein;
+    animation-name: slidein;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+}
+
+.homepage-slider-scroll {
+    left: 0;
+    bottom: 20px;
+    width: 100%;
+    position: absolute;
+}
+
+#scroll-icon {
+    width: 26px;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 500px;
+    visibility: inherit;
+    transition: none 0s ease 0s;
+    text-align: left;
+    line-height: 23px;
+    padding: 0px;
+    letter-spacing: 0px;
+    font-weight: 400;
+    font-size: 14px;
+    white-space: nowrap;
+    min-height: 50px;
+    min-width: 30px;
+    max-height: 68px;
+    max-width: 32px;
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px);
+    transform-origin: 50% 50% 0px;
+    margin: 0 auto;
+    display: block;
+}
+
+#scroll-icon .dot {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    float: none;
+    top: 10px;
+    z-index: 14;
+    background-color: rgb(255, 255, 255);
+    border-color: rgba(255, 255, 255, 0);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    visibility: inherit;
+    transition: none 0s ease 0s;
+    text-align: left;
+    line-height: 23px;
+    padding: 0px;
+    letter-spacing: 0px;
+    font-weight: 400;
+    font-size: 14px;
+    white-space: nowrap;
+    min-height: 5px;
+    min-width: 5px;
+    max-height: 5px;
+    max-width: 5px;
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px);
+    transform-origin: 50% 50% 0px;
 }
