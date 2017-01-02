@@ -99,7 +99,7 @@ export class ProfileComponent implements OnInit {
     if (data && data.response) {
       data = JSON.parse(data.response);
       this.user.avatarUrl = data.imageUrl;
-      console.log(this.avatarUrl);
+      this.updateUserData();
     }
   }
 
@@ -111,38 +111,40 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadAvatar() {
-
     this.userService.updateUserProfileImage(this.user._id, this.filesToUpload)
       .subscribe(response => {
         console.log(response)
       })
   }
-  
+
+  updateUserData() {
+    this.userService.updateUserProfile(this.user)
+      .subscribe(response => {
+        this.spinnerService.hide(500);
+
+        console.log(response);
+        this.toggleEditMode(false);
+
+        const successTitle = "Success!";
+        const successMessage = "You have updated your profile!";
+        this.notificationsService.success(successTitle, successMessage);
+      }, err => {
+        this.spinnerService.hide();
+
+        const errorTitle = "Oops! Something went wrong..";
+        const errorMessage = err.json().message;
+        this.notificationsService.error(errorTitle, errorMessage)
+      }, () => {
+        // setTimeout(() => this.appRouter.navigateByUrl('/login'), 500);
+      });
+  }
+
   public onSubmit(values:Object):void {
     this.submitted = true;
 
     if (this.editUserForm.valid) {
       this.spinnerService.show();
-
-      this.userService.updateUserProfile(this.user)
-        .subscribe(response => {
-          this.spinnerService.hide(500);
-
-          console.log(response);
-          this.toggleEditMode(false);
-
-          const successTitle = "Success!";
-          const successMessage = "You have updated your profile!";
-          this.notificationsService.success(successTitle, successMessage);
-        }, err => {
-          this.spinnerService.hide();
-
-          const errorTitle = "Oops! Something went wrong..";
-          const errorMessage = err.json().message;
-          this.notificationsService.error(errorTitle, errorMessage)
-        }, () => {
-          // setTimeout(() => this.appRouter.navigateByUrl('/login'), 500);
-        });
+      this.updateUserData();
     }
   }
 }

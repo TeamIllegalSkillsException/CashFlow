@@ -159,6 +159,7 @@ module.exports = function(data) {
             const updateObj = {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
+                avatarUrl: req.body.avatarUrl,
                 age: req.body.age
             };
 
@@ -183,6 +184,11 @@ module.exports = function(data) {
 
                         data.getUserById(userId)
                             .then((user) => {
+                                let uploadsFolder = './dist/uploads';
+                                if (!uploadsFolder) {
+                                  fs.mkdirSync(uploadsFolder);
+                                }
+                              
                                 let userUploadsDirName = './dist/uploads/users/';
                                     if(user){
                                         userUploadsDirName = `./dist/uploads/users/${userId}/`;
@@ -214,7 +220,7 @@ module.exports = function(data) {
                                     }
                                     return res.status(200).send({ imageUrl: `/uploads/users/${userId}/${fileNewName}${fileExtension}` });
                                 });
-                            });
+                            })
                     })
                 })
 

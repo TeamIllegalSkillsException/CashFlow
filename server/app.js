@@ -3,11 +3,19 @@
 const environment = process.env.NODE_ENV || 'development',
     config = require('./config/config')(environment),
     app = require('./config/application')(config),
-    data = require('./data')();
+    data = require('./data')(),
+    path = require('path');
 
 require('./config/database')(config.connectionString);
 require('./auth')(app, config, data);
 require('./router')(app, config, data);
+
+app
+  .get('*', function(req, res) {
+    res
+      .status(200)
+      .sendFile(path.join(__dirname, '/../../dist/index.html'));
+  });
 
 /* Testing data */
 
@@ -34,7 +42,7 @@ require('./router')(app, config, data);
 //         recurrence: {},
 //         category: {},
 //         notes: 'long notes here',
-//         status: {} 
+//         status: {}
 //     }]
 // }
 // data.createUserBill(userBills);
@@ -60,8 +68,6 @@ let user = {
     age: 20,
     role: 'admin'
 };
-
-// data.createUser(user);
 
 // data.getUserByName(user.username)
 //     .then((userFound) => {
@@ -180,10 +186,17 @@ let houseRent = {
 let electricity = {
     name: 'Electricity'
 };
-// data.createBillCategory(tv);
-// data.createBillCategory(internet);
-// data.createBillCategory(houseRent);
-// data.createBillCategory(electricity);
+
+data.getAllBillCategories()
+  .then((categories) => {
+    if (categories.length < 4) {
+      data.createBillCategory(tv);
+      data.createBillCategory(internet);
+      data.createBillCategory(houseRent);
+      data.createBillCategory(electricity);
+    }
+  });
+
 
 /* BILL RECURRENCES */
 let monthly = {
@@ -198,10 +211,16 @@ let yearly = {
 let weekly = {
     name: 'Weekly'
 };
-// data.createBillRecurrence(daily);
-// data.createBillRecurrence(weekly);
-// data.createBillRecurrence(monthly);
-// data.createBillRecurrence(yearly);
+
+data.getAllBillRecurrences()
+  .then((recurrences) => {
+    if (recurrences.length < 4) {
+      data.createBillRecurrence(daily);
+      data.createBillRecurrence(weekly);
+      data.createBillRecurrence(monthly);
+      data.createBillRecurrence(yearly);
+    }
+  });
 
 /* TESTIMONIALS */
 let testimonial = {
