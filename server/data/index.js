@@ -21,7 +21,7 @@ module.exports = function() {
     // requiring all data files with the models
     fs.readdirSync('./server/data')
         .filter(x => x.includes(dataFileNamesPattern))
-        .forEach(file => {
+        .forEach(file => {           
             let dataModule =
                 require(path.join(__dirname, file))(models);
 

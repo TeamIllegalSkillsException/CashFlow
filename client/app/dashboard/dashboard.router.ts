@@ -9,7 +9,8 @@ import { DashboardComponent } from './dashboard.component';
 import { AuthGuard } from '../shared/services/auth';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'user-bills', component: DashboardComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
