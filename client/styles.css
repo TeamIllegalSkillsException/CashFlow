@@ -58,6 +58,9 @@ main:after{
   padding: 5px 0;
   vertical-align: middle;
 }
+.modal-body .control-label{
+  text-align: left !important;
+}
 
 .white-box-d{
   float: left;

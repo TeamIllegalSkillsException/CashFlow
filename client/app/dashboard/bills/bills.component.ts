@@ -13,7 +13,7 @@ import { Bill } from './bill.model';
 export class BillsComponent implements OnInit {
   public bills: any[];
   public billCategories: any[];
-  public billRecurrences: any[];  
+  public billRecurrences: any[];
   bill: Bill;
   public form:FormGroup;
   public amount:AbstractControl;
@@ -26,27 +26,27 @@ export class BillsComponent implements OnInit {
 
   @ViewChild('childModal') public childModal:ModalDirective;
 
-  constructor(private billsService: BillsService, fb:FormBuilder, private notificationsService: NotificationsService) { 
+  constructor(private billsService: BillsService, fb:FormBuilder, private notificationsService: NotificationsService) {
     this.form = fb.group({
       'amount': ['', Validators.compose([Validators.required])],
       'startDueDate': ['', Validators.compose([Validators.required])],
       'endDueDate': ['', Validators.compose([Validators.required])],
-      'notes': ['', Validators.compose([Validators.required])],      
+      'notes': ['', Validators.compose([Validators.required])],
     });
 
     this.amount = this.form.controls['amount'];
     this.startDueDate = this.form.controls['startDueDate'];
     this.endDueDate = this.form.controls['endDueDate'];
-    this.notes = this.form.controls['notes'];    
+    this.notes = this.form.controls['notes'];
   }
-  
+
 
   ngOnInit() {
     this.billsService.getUserBills()
     .map(res => res.json())
     .subscribe(response => {
       console.log(response);
-      
+
     });
   }
 
@@ -63,7 +63,7 @@ export class BillsComponent implements OnInit {
             const successMessage = "You have added a bill successfully!";
             this.hideChildModal();
             this.notificationsService.success(successTitle, successMessage);
-        })      
+        })
     }
   }
 

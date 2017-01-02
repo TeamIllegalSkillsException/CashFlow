@@ -266,6 +266,11 @@ input:focus {
   z-index: 3;
 }
 
+.control-label{
+  text-align: left;
+}
+
+
 @media (min-width: 992px) {
   .table-full-width {
     margin-left: -15px;

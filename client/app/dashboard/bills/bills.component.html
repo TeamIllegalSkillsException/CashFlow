@@ -1,6 +1,6 @@
-<app-dashboard>    
+<app-dashboard>
     <button type="button" class="btn btn-primary" (click)="showChildModal()">Add Bill</button>
-    
+
 </app-dashboard>
 
 <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -16,14 +16,14 @@
 
             <div class="form-group row">
                 <label for="inputCategory3" class="col-sm-12 control-label">Category</label>
-                
+
                 <select class="form-control" [(ngModel)]="catModel">
                     <option *ngFor="let category of billCategories" [value]="category.name">{{category.name}}</option>
                 </select>
             </div>
             <div class="form-group row">
                 <label for="inputRecurrence3" class="col-sm-12 control-label">Recurrence</label>
-                
+
                 <select class="form-control" [(ngModel)]="recModel">
                     <option *ngFor="let rec of billRecurrences" [value]="rec.name">{{rec.name}}</option>
                 </select>
@@ -43,7 +43,7 @@
 
                     <div class="col-sm-12">
                         <!--<input [formControl]="startDueDate" type="text" class="form-control" id="inputStartDueDate3" >-->
-                        <ng2-datepicker [formControl]="startDueDate"></ng2-datepicker>
+                        <datepicker [formControl]="startDueDate"></datepicker>
                         <span *ngIf="!startDueDate.valid && startDueDate.touched" class="help-block sub-little-text">Invalid Date!</span>
                     </div>
                 </div>
@@ -52,14 +52,14 @@
 
                     <div class="col-sm-12">
                         <!--<input [formControl]="endDueDate" type="text" class="form-control" id="inputEndDueDate3" >-->
-                        <ng2-datepicker [formControl]="endDueDate"></ng2-datepicker>                        
+                        <datepicker [formControl]="endDueDate"></datepicker>
                         <span *ngIf="!endDueDate.valid && endDueDate.touched" class="help-block sub-little-text">Invalid Date!</span>
                     </div>
                 </div>
                 <div class="form-group row" [ngClass]="{'has-error': (!notes.valid && notes.touched), 'has-success': (notes.valid && notes.touched)}">
                     <label for="inputNotes3" class="col-sm-12 control-label">Notes</label>
                     <div class="col-sm-12">
-                        <textarea [formControl]="notes" class="form-control" rows="4" id="inputNotes3" cols="1">Your notes here...</textarea>                          
+                        <textarea [formControl]="notes" class="form-control" rows="4" id="inputNotes3" cols="1">Your notes here...</textarea>
                         <span *ngIf="!notes.valid && notes.touched" class="help-block sub-little-text">Invalid Notes!</span>
                     </div>
                 </div>
@@ -67,9 +67,9 @@
                     <div class="col-sm-12">
                         <button [disabled]="!form.valid || catModel === '' || recModel === '' " type="submit" class="btn-purple btn-auth">Add</button>
                     </div>
-            </div>   
-                
-            </form>                           
+            </div>
+
+            </form>
 
         </div>
         </div>

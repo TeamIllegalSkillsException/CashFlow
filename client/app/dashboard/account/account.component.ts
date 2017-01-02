@@ -46,6 +46,10 @@ export class AccountComponent implements OnInit {
       .subscribe(response => {
         console.log(response);
 
+      },(err) => {
+        const infoTitle = "Hey there! : )";
+        const infoMessage = err.json().message;
+        this.notificationService.info(infoTitle, infoMessage);
       });
   }
 
@@ -63,6 +67,11 @@ export class AccountComponent implements OnInit {
           const successTitle = "Success!";
           const successMessage = "You have added a new account successfully!";
           this.notificationService.success(successTitle, successMessage);
+        }, (err) => {
+
+          const errorTitle = "An error occured..";
+          const errorMessage = err.json().message;
+          this.notificationService.error(errorTitle, errorMessage);
         })
     }
   }

@@ -13,4 +13,5 @@ export class Account {
     this.type = type;
     this.currency = currency;
   }
+  
 }
