@@ -56,8 +56,8 @@ export class BillsService {
         let authHeaderObject = this.userService.getAuthHeaderObject();
 
         const httpRequestOptions = this.httpRequesterOptionsFactory
-                .createHttpRequesterOptions(this.userBillsUrl, bill, authHeaderObject);
+                .createHttpRequesterOptions(this.updateBillUrl, bill, authHeaderObject);
 
-        return this.httpRequesterService.post(httpRequestOptions);
+        return this.httpRequesterService.put(httpRequestOptions);
     }
 };

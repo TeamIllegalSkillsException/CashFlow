@@ -128,9 +128,9 @@ export class BillsComponent implements OnInit {
     this.catModel = item.category;
     this.recModel = item.recurrence;
     this.amountModel = +item.amount;
-    this.startDateModel = item.startDueDate.slice(0,10);
-    this.endDateModel = item.endDueDate.slice(0,10);
-   // console.log(this.endDateModel);
+    this.startDateModel = item.startDueDate.formatted;
+    this.endDateModel = item.endDueDate.formatted;
+   console.log(this.endDateModel);
     this.notesModel = item.notes;
     this.currentBillId = item._id;
     console.log(this.currentBillId);
@@ -147,10 +147,11 @@ export class BillsComponent implements OnInit {
     this.billsService.updateBill(updatedBill)
       .subscribe(response => {
         console.log(response);
+        this.editModal.hide();
+         const successTitle = "Success!";
+          const successMessage = "You have updated a bill successfully!";
+          this.notificationsService.success(successTitle, successMessage);
       });
-    
-
-
 
     this.catModel = '';
     this.recModel = '';

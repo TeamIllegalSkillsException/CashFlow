@@ -60,6 +60,15 @@ module.exports = function(data) {
                 .catch((err) => {
                     res.status(400).json({ message: err.message });
                 })
+        },
+        updateBill(req, res) {
+           // console.log(req.body);
+
+            return data.getBillsByUserIdAndUpdateBill(req.body, req.user.id)
+                .then((response) => {
+                    res.status(200).json(response);
+
+                });
         }
     }
 }

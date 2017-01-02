@@ -8,7 +8,8 @@ module.exports = function(app, passport, express, data) {
         .get('/api/user-bills', passport.authenticate('jwt'), userBillsController.getUserBillsDetails)
         .post('/api/user-bills', passport.authenticate('jwt'), userBillsController.addNewBill) 
         .get('/api/bill-categories', passport.authenticate('jwt'), userBillsController.getBillCategories)      
-        .get('/api/bill-recurrences', passport.authenticate('jwt'), userBillsController.getBillRecurrences);                       
+        .get('/api/bill-recurrences', passport.authenticate('jwt'), userBillsController.getBillRecurrences)
+        .put('/api/update-bill', passport.authenticate('jwt'), userBillsController.updateBill);                               
 
     app.use(userBillsRouter);
 };

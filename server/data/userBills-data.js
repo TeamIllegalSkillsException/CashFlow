@@ -59,6 +59,37 @@ module.exports = function(models) {
                     return resolve(userWithBills);
                 });
             });
+        },
+        getBillsByUserIdAndUpdateBill(billToUpdate, idOfUser) {
+            return new Promise((resolve, reject) => {
+                UserBills.findOne({ user_id: idOfUser }, (err, userWithBills) => {
+                    let bills = userWithBills.bills;
+                    
+                    for(let i = 0; i < bills.length; i+=1) {
+                        
+                        if(String(bills[i]._id) === String(billToUpdate._id)) {
+                            
+                            userWithBills.bills[i].amount = billToUpdate.amount;
+                           // userWithBills.bills[i].startDueDate = billToUpdate.startDueDate;
+                           // userWithBills.bills[i].endDueDate = billToUpdate.endDueDate;
+                            userWithBills.bills[i].recurrence = billToUpdate.recurrence;
+                            userWithBills.bills[i].category = billToUpdate.category;
+                            userWithBills.bills[i].notes = billToUpdate.notes;                            
+                            
+                            userWithBills.save();
+
+                            break;
+                        }
+                    }
+
+                    let responseObject = {
+                        success: true
+                    }
+
+                    return resolve(responseObject);
+                });
+            });
+            
         }
     }
 }
