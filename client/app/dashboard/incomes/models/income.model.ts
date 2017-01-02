@@ -7,10 +7,11 @@ export class Income {
     accounts: string;
     recurrence: string;
 
-    constructor (company: string, amount: Number, startDate: Date, recurrence: string) {
+    constructor (company: string, amount: Number, startDate: Date, accounts: string, recurrence: string) {
         this.company = company;
         this.amount = amount;
         this.startDate = startDate;
+        this.accounts= accounts;
         this.recurrence = recurrence;
     }
 
