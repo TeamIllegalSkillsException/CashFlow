@@ -1,0 +1,89 @@
+<app-dashboard>
+    <p>
+        edit-income works!
+    </p>
+
+    <div class="user-profile-page">
+        <div class="white-box-d">
+            <div class="white-box-d-header">
+                <h3>My Income</h3>
+            </div>
+
+            <form [formGroup]="editUserIncomeForm" (ngSubmit)="onSubmit(editUserIncomeForm.value)" class="form-horizontal col-sm-12">
+                <div class="form-group row">
+                    <label class="col-sm-12 control-label">Company</label>
+                    <span>{{userIncome.company}}</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--<div class="form-group row">
+                    <label class="col-sm-12 control-label">Email</label>
+                    <span>{{user.email}}</span>
+                </div>
+
+                <div class="form-group row" [ngClass]="{'has-error': (!firstName.valid && firstName.touched && inEditMode),
+                             'has-success': (firstName.valid && firstName.touched && inEditMode)}">
+                    <label for="inputFirstName3" class="col-sm-12 control-label">First Name</label>
+                    <span *ngIf="!inEditMode">{{user.firstName}}</span>
+
+                    <div class="col-sm-12">
+                        <input *ngIf="inEditMode" [(ngModel)]="user.firstName" [formControl]="firstName" type="text" class="form-control" id="inputFirstName3">
+
+                        <span *ngIf="!firstName.valid && firstName.touched && inEditMode && firstName.hasError('required')" class="help-block sub-little-text">
+                                FirstName cannot be empty.
+                            </span>
+                        <span *ngIf="!firstName.valid && inEditMode && (firstName.hasError('minlength') || firstName.hasError('maxlength'))" class="help-block sub-little-text">
+                                FirstName must be between 3 and 30 symbols.
+                            </span>
+                        <span *ngIf="!firstName.valid && inEditMode && (firstName.hasError('pattern') || firstName.hasError('maxlength'))" class="help-block sub-little-text">
+                                FirstName must contain letters only.
+                            </span>
+                    </div>
+                </div>
+
+                <div class="form-group row" [ngClass]="{'has-error': (!lastName.valid && lastName.touched && inEditMode),
+                             'has-success': (lastName.valid && lastName.touched && inEditMode)}">
+                    <label for="inputLastName3" class="col-sm-12 control-label">Last Name</label>
+                    <span *ngIf="!inEditMode">{{user.lastName}}</span>
+
+                    <div class="col-sm-12">
+                        <input *ngIf="inEditMode" [(ngModel)]="user.lastName" [formControl]="lastName" type="text" class="form-control" id="inputLastName3">
+                        <span *ngIf="!lastName.valid && lastName.touched && inEditMode && lastName.hasError('required')" class="help-block sub-little-text">
+                                LastName cannot be empty.
+                            </span>
+                        <span *ngIf="!lastName.valid && inEditMode && (lastName.hasError('minlength') || lastName.hasError('maxlength'))" class="help-block sub-little-text">
+                                LastName must be between 3 and 30 symbols.
+                            </span>
+                        <span *ngIf="!lastName.valid && inEditMode && (lastName.hasError('pattern') || lastName.hasError('maxlength'))" class="help-block sub-little-text">
+                                LastName must contain letters only.
+                            </span>
+                    </div>
+                </div>
+
+                <div class="form-group row" [ngClass]="{'has-error': (!age.valid && age.touched && inEditMode),
+                             'has-success': (age.valid && age.touched && inEditMode)}">
+                    <label for="inputAge3" class="col-sm-12 control-label">Age</label>
+                    <span *ngIf="!inEditMode">{{user.age}}</span>
+
+                    <div class="col-sm-12">
+                        <input *ngIf="inEditMode" [(ngModel)]="user.age" [formControl]="age" type="text" class="form-control" id="inputAge3">
+                        <span *ngIf="!age.valid && age.touched && inEditMode" class="help-block sub-little-text">Invalid Age!</span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button *ngIf="inEditMode" [disabled]="!editUserForm.valid" type="submit" class="btn-ghost btn-auth btn-ghost-tf btn-save">Save
+                            </button>
+                        <button *ngIf="inEditMode" (click)="toggleEditMode(false)" type="button" class="btn-ghost btn-auth btn-ghost-tf btn-leave">Leave edit mode
+                            </button>
+                        <button *ngIf="!inEditMode" (click)="toggleEditMode(true)" type="button" class="btn-ghost btn-auth btn-ghost-tf">Edit Mode
+                            </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>-->
+</app-dashboard>

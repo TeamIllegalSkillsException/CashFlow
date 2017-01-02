@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Response, Http, RequestOptions, Headers } from '@angular/http';
 import { UserService } from '../../users/services/user.service';
-import { HttpRequester, HttpRequesterOptionsFactoryService } from '../../shared/services/http/index'; 
+import { HttpRequester, HttpRequesterOptionsFactoryService } from '../../shared/services/http/index';
+import { Income } from '../incomes/models/income.model'; 
 
 @Injectable()
 export class IncomeService {
@@ -39,4 +40,26 @@ export class IncomeService {
 
         return this.httpRequesterService.get(httpRequestOptions);
     }
+
+    updateUserIncome(userIncome: Income): Observable<Response> {
+    const updateProfileUrl = this.userIncomeUrl + '/' + userIncome._id,
+      authHeaderObject = this.getAuthHeaderObject();
+
+    const httpRequestOptions = this.httpRequesterOptionsFactory
+      .createHttpRequesterOptions(updateProfileUrl, userIncome , authHeaderObject);
+
+    return this.httpRequesterService.put(httpRequestOptions);
+  }
+  
+  getAuthHeaderObject() {
+    let userDataString: string = localStorage.getItem('user');
+    let token: string = JSON.parse(userDataString).auth_token;
+
+    let authHeaderObject = {
+      'Content-Type': 'application/json',
+      'Authorization': token
+    };
+
+    return authHeaderObject;
+  }
 };

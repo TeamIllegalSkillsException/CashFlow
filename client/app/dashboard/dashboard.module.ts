@@ -18,6 +18,7 @@ import { IncomesComponent } from './incomes/incomes.component';
 import { AccountService } from '../dashboard/services/account.service';
 import { BillsService } from '../dashboard/services/bills.services';
 import { IncomeService } from './services/income.service';
+import { EditIncomeComponent } from './incomes/edit-income/edit-income.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { IncomeService } from './services/income.service';
     MenuComponent,
     BillsComponent,
     AccountComponent,
-    IncomesComponent
+    IncomesComponent,
+    EditIncomeComponent
   ],
   providers: [
     AccountService,

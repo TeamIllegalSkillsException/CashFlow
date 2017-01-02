@@ -51,16 +51,17 @@ module.exports = function(data) {
             const userIncomeIdForUpdate = req.body._id;
 
             const updateObj = {
-              firstName: req.body.firstName,
-              lastName: req.body.lastName,
-              avatarUrl: req.body.avatarUrl,
-              age: req.body.age
+                company: req.body.company,
+                amount: req.body.amount,
+                startDate: req.body.startDate,
+                account: req.body.account,
+                recurrence: req.body.recurrence
             };
 
             return data.findUserIncomeByIdAndUpdate(userIncomeIdForUpdate, updateObj)
                 .then((user) => {
                     if (!user) {
-                       throw new Error('User Income not found.');
+                        throw new Error('User Income not found.');
                     }
 
                     res.status(200).json(user);
