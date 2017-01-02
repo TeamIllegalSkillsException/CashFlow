@@ -6,7 +6,7 @@ const mongoose = require('mongoose'),
 let IncomeRecurrenceSchema = new Schema({
     name: {
         type: String,
-        default: 'Monthly'
+        default: 'monthly'
     }
 });
 

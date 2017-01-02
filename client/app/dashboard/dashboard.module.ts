@@ -34,7 +34,8 @@ import { IncomeService } from './services/income.service';
     DashboardSidebarComponent,
     MenuComponent,
     BillsComponent,
-    AccountComponent
+    AccountComponent,
+    IncomesComponent
   ],
   providers: [
     BillsService,
