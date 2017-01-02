@@ -5,8 +5,9 @@ module.exports = function(app, passport, express, data) {
         userIncomeController = require('../controllers/userIncome-controller')(data);
 
     userIncomeRouter
-        .get('/api/user-income', userIncomeController.getUserIncomeDetails)
-        //.post('/api/user-income', userIncomeController.updateUserIncomeDetailsById);
+        .get('/api/user-income', passport.authenticate('jwt'), userIncomeController.getUserIncomeDetails)
+        .post('/api/user-income', passport.authenticate('jwt'), userIncomeController.addNewIncome)
+        .get('/api/user-recurrences', passport.authenticate('jwt'), userIncomeController.getAllIncomeRecurrences);
 
     app.use(userIncomeRouter);
 };
