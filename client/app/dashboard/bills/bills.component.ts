@@ -23,6 +23,8 @@ export class BillsComponent implements OnInit {
   public catModel = '';
   public recModel = '';
   public submitted:boolean = false;
+  public filterQuery = "";
+  public rowsOnPage = 3;
 
   @ViewChild('childModal') public childModal:ModalDirective;
 
@@ -46,7 +48,7 @@ export class BillsComponent implements OnInit {
     .map(res => res.json())
     .subscribe(response => {
       console.log(response);
-
+      this.bills = response.bills;
     });
   }
 
@@ -84,4 +86,12 @@ export class BillsComponent implements OnInit {
   public hideChildModal():void {
     this.childModal.hide();
   }
+
+  public toInt(num: string) {
+        return +num;
+    }
+
+    public sortByWordLength = (a: any) => {
+        return a.city.length;
+    }
 }
