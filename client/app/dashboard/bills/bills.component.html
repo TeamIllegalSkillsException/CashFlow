@@ -1,0 +1,76 @@
+<app-dashboard>    
+    <button type="button" class="btn btn-primary" (click)="showChildModal()">Add Bill</button>
+    
+</app-dashboard>
+
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="hideChildModal()">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Create New Bill</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group row">
+                <label for="inputCategory3" class="col-sm-12 control-label">Category</label>
+                
+                <select class="form-control" [(ngModel)]="catModel">
+                    <option *ngFor="let category of billCategories" [value]="category.name">{{category.name}}</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label for="inputRecurrence3" class="col-sm-12 control-label">Recurrence</label>
+                
+                <select class="form-control" [(ngModel)]="recModel">
+                    <option *ngFor="let rec of billRecurrences" [value]="rec.name">{{rec.name}}</option>
+                </select>
+            </div>
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
+                <div class="form-group row" [ngClass]="{'has-error': (!amount.valid && amount.touched), 'has-success': (amount.valid && amount.touched)}">
+                    <label for="inputAmount3" class="col-sm-12 control-label">Amount</label>
+
+                    <div class="col-sm-12">
+                        <input [formControl]="amount" type="text" class="form-control" id="inputAmount3" >
+                        <span *ngIf="!amount.valid && amount.touched" class="help-block sub-little-text">Invalid amount!</span>
+                    </div>
+                </div>
+                <div class="form-group row" [ngClass]="{'has-error': (!startDueDate.valid && startDueDate.touched), 'has-success': (startDueDate.valid && startDueDate.touched)}">
+                    <label for="inputStartDueDate3" class="col-sm-12 control-label">Start Due Date</label>
+
+                    <div class="col-sm-12">
+                        <input [formControl]="startDueDate" type="text" class="form-control" id="inputStartDueDate3" >
+                        <span *ngIf="!startDueDate.valid && startDueDate.touched" class="help-block sub-little-text">Invalid Date!</span>
+                    </div>
+                </div>
+                <div class="form-group row" [ngClass]="{'has-error': (!endDueDate.valid && endDueDate.touched), 'has-success': (endDueDate.valid && endDueDate.touched)}">
+                    <label for="inputEndDueDate3" class="col-sm-12 control-label">End Due Date</label>
+
+                    <div class="col-sm-12">
+                        <input [formControl]="endDueDate" type="text" class="form-control" id="inputEndDueDate3" >
+                        <span *ngIf="!endDueDate.valid && endDueDate.touched" class="help-block sub-little-text">Invalid Date!</span>
+                    </div>
+                </div>
+                <div class="form-group row" [ngClass]="{'has-error': (!notes.valid && notes.touched), 'has-success': (notes.valid && notes.touched)}">
+                    <label for="inputNotes3" class="col-sm-12 control-label">Notes</label>
+
+                    <div class="col-sm-12">
+                        <input [formControl]="notes" type="text" class="form-control" id="inputNotes3" >
+                        <span *ngIf="!notes.valid && notes.touched" class="help-block sub-little-text">Invalid Notes!</span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button [disabled]="!form.valid" type="submit" class="btn-purple btn-auth">Add</button>
+                    </div>
+            </div>   
+                
+            </form>                           
+
+        </div>
+        </div>
+    </div>
+</div>

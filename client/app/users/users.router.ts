@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { ForgottenComponent } from './forgotten/forgotten.component';
 import { LogoutComponent } from './logout/logout.component';
 import {ProfileComponent} from "./profile/profile.component";
+import { BillsComponent } from '../dashboard/bills/bills.component';
 
 /* Services */
 import { AuthGuard } from '../shared/services/auth';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'forgotten-password', component: ForgottenComponent },
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
   { path: 'account', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'user-bills', component: BillsComponent, canActivate: [AuthGuard] }  
 ];
 
 @NgModule({

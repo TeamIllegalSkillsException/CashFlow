@@ -23,16 +23,32 @@ require('./router')(app, config, data);
 // }
 // data.createUserIncomeData(income);
 
-let userIncomeId = 'sajkdasjd9122389';
-data.getIncomeByUserId(userIncomeId)
-    .then((income) => {
-        console.log(income);
-        if (!income) {
-            reject(err);
-        }
-        resolve(income);
+// User Bills
+// let userBills = {
+//     user_id: '58694bf182f2b31ee0c98087',
+//     bills: [{
+//         amount: 250,
+//         startDueDate: new Date(),
+//         endDueDate: new Date(),
+//         accountPaidFrom: {},
+//         recurrence: {},
+//         category: {},
+//         notes: 'long notes here',
+//         status: {} 
+//     }]
+// }
+// data.createUserBill(userBills);
 
-    });
+// let userIncomeId = 'sajkdasjd9122389';
+// data.getIncomeByUserId(userIncomeId)
+//     .then((income) => {
+//         console.log(income);
+//         if (!income) {
+//             reject(err);
+//         }
+//         resolve(income);
+
+//     });
 
 /* USERS */
 let user = {
@@ -45,12 +61,14 @@ let user = {
     role: 'admin'
 };
 
-data.getUserByName(user.username)
-    .then((userFound) => {
-        if (!userFound) {
-            data.createUser(user);
-        }
-    });
+// data.createUser(user);
+
+// data.getUserByName(user.username)
+//     .then((userFound) => {
+//         if (!userFound) {
+//             data.createUser(user);
+//         }
+//     });
 
 
 /* SERVICES */
@@ -149,6 +167,41 @@ data.getAllAboutData()
         }
     });
 
+/* BILL CATEGORIES */
+let tv = {
+    name: 'TV'
+};
+let internet = {
+    name: 'Internet'
+};
+let houseRent = {
+    name: 'House rent'
+};
+let electricity = {
+    name: 'Electricity'
+};
+// data.createBillCategory(tv);
+// data.createBillCategory(internet);
+// data.createBillCategory(houseRent);
+// data.createBillCategory(electricity);
+
+/* BILL RECURRENCES */
+let monthly = {
+    name: 'Monthly'
+};
+let daily = {
+    name: 'Daily'
+};
+let yearly = {
+    name: 'Yearly'
+};
+let weekly = {
+    name: 'Weekly'
+};
+// data.createBillRecurrence(daily);
+// data.createBillRecurrence(weekly);
+// data.createBillRecurrence(monthly);
+// data.createBillRecurrence(yearly);
 
 /* TESTIMONIALS */
 let testimonial = {
