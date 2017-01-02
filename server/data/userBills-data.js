@@ -19,7 +19,7 @@ module.exports = function(models) {
         },
         getBillsByUserId(id) {
             return new Promise((resolve, reject) => {
-                UserBills.findOne({ user_id: id }, (err, userWithBills) => {                          
+                UserBills.findOne({ user_id: id }, (err, userWithBills) => {
                     if (err) {
                         return reject(err);
                     }
@@ -30,31 +30,32 @@ module.exports = function(models) {
                             bills: []
                         });
                         userWithBills.save();
-                                                
+
                     } else if(!userWithBills.bills) {
                         userWithBills.bills = [];
                         userWithBills.save();
                     }
 
-                    let bills = userWithBills.bills;
+                    let bills = JSON.parse(JSON.stringify(userWithBills.bills));
+
                     let responseObject = {
                         bills: bills
-                    }
-                   
+                    };
+
                     return resolve(responseObject);
                 });
             });
         },
         addNewBillToCurrentUser(billToAdd, userId) {
             return new Promise((resolve, reject) => {
-                UserBills.findOne({ user_id: userId }, (err, userWithBills) => {                                 
+                UserBills.findOne({ user_id: userId }, (err, userWithBills) => {
                     if (err) {
                         return reject(err);
-                    }                    
+                    }
 
                     userWithBills.bills.push(billToAdd);
                     userWithBills.save();
-                   
+
                     return resolve(userWithBills);
                 });
             });

@@ -5,7 +5,7 @@ import { DashboardRouterModule } from './dashboard.router';
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerModule } from 'ng2-datepicker';
-import {DataTableModule} from "angular2-datatable";
+import { DataTableModule } from "angular2-datatable";
 
 /* Components */
 import { DashboardComponent } from './dashboard.component';
