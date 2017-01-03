@@ -6,7 +6,7 @@ module.exports = function(environment) {
             cookieName: 'test cookie',
             sessionSecret: 'secret ala bala',
             webTokenSecret: 'secret mecret',
-            connectionString: 'mongodb://Azonic89:VASko2814mlyo89@ds151018.mlab.com:51018/cash-flow-db',
+            connectionString: 'mongodb://localhost:27017/cash-flow-db',
             port: 3003,
             email: 'eventsys.sup@gmail.com',
             password: 'ninjas123456'
