@@ -1,6 +1,6 @@
 'use strict';
 
-const environment = process.env.NODE_ENV || 'development',
+const environment = process.env.NODE_ENV || 'production',
     config = require('./config/config')(environment),
     app = require('./config/application')(config),
     data = require('./data')(),
