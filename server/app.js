@@ -1,6 +1,6 @@
 'use strict';
 
-const environment = process.env.NODE_ENV || 'development',
+const environment = process.env.NODE_ENV || 'production',
     config = require('./config/config')(environment),
     app = require('./config/application')(config),
     data = require('./data')(),
@@ -11,11 +11,11 @@ require('./auth')(app, config, data);
 require('./router')(app, config, data);
 
 app
-  .get('*', function(req, res) {
-    res
-      .status(200)
-      .sendFile(path.join(__dirname, '/../../dist/index.html'));
-  });
+    .get('*', function(req, res) {
+        res
+            .status(200)
+            .sendFile(path.join(__dirname, '/../../dist/index.html'));
+    });
 
 /* Testing data */
 
@@ -188,14 +188,14 @@ let electricity = {
 };
 
 data.getAllBillCategories()
-  .then((categories) => {
-    if (categories.length < 4) {
-      data.createBillCategory(tv);
-      data.createBillCategory(internet);
-      data.createBillCategory(houseRent);
-      data.createBillCategory(electricity);
-    }
-  });
+    .then((categories) => {
+        if (categories.length < 4) {
+            data.createBillCategory(tv);
+            data.createBillCategory(internet);
+            data.createBillCategory(houseRent);
+            data.createBillCategory(electricity);
+        }
+    });
 
 
 /* BILL RECURRENCES */
@@ -213,14 +213,14 @@ let weekly = {
 };
 
 data.getAllBillRecurrences()
-  .then((recurrences) => {
-    if (recurrences.length < 4) {
-      data.createBillRecurrence(daily);
-      data.createBillRecurrence(weekly);
-      data.createBillRecurrence(monthly);
-      data.createBillRecurrence(yearly);
-    }
-  });
+    .then((recurrences) => {
+        if (recurrences.length < 4) {
+            data.createBillRecurrence(daily);
+            data.createBillRecurrence(weekly);
+            data.createBillRecurrence(monthly);
+            data.createBillRecurrence(yearly);
+        }
+    });
 
 /* TESTIMONIALS */
 let testimonial = {
