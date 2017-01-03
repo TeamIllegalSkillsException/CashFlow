@@ -22,6 +22,10 @@ export class IncomesComponent implements OnInit {
   public catModel = '';
   public recModel = '';
 
+  public data: any[];
+  public filterQuery = "";
+  public rowsOnPage = 3;
+
   public submitted:boolean = false;
 
   @ViewChild('childModal') public childModal:ModalDirective;
@@ -43,7 +47,9 @@ export class IncomesComponent implements OnInit {
     this.incomeService.getUserIncome()
     .map(res => res.json())
     .subscribe(response => {
-      this.incomes = response;
+      console.log(response);
+      this.data = response.incomes;
+      console.log(this.data);
     })
   }
   public onSubmit(values:Object):void {
@@ -75,6 +81,18 @@ export class IncomesComponent implements OnInit {
   }
   public hideChildModal():void {
     this.childModal.hide();
+  }
+
+   public toInt(num: string) {
+      return +num;
+  }
+
+  public sortByWordLength = (a: any) => {
+     // return a.city.length;
+  }
+
+  public edit(item: any) {
+    
   }
 
 }

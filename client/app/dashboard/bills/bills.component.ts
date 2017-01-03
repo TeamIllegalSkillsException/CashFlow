@@ -24,16 +24,12 @@ export class BillsComponent implements OnInit {
   public recModel = '';
   public submitted:boolean = false;
 
-
-
-
-
-  public currentCategory;
-  public currentRecurrence; 
-  public currentAmount; 
-  public currentStartDueDate; 
-  public currentEndDueDate; 
-  public currentNotes; 
+  public currentCategory: any;
+  public currentRecurrence: any; 
+  public currentAmount: any; 
+  public currentStartDueDate: any; 
+  public currentEndDueDate: any; 
+  public currentNotes: any; 
    
   public isEditEnabled = false;
   public amountModel = 0;
@@ -41,8 +37,6 @@ export class BillsComponent implements OnInit {
   public endDateModel = new Date();
   public notesModel = '';
   public currentBillId = '';
-
-
 
   public data: any[];
   public filterQuery = "";
@@ -128,12 +122,12 @@ export class BillsComponent implements OnInit {
     this.catModel = item.category;
     this.recModel = item.recurrence;
     this.amountModel = +item.amount;
-    this.startDateModel = item.startDueDate.formatted;
-    this.endDateModel = item.endDueDate.formatted;
-   console.log(this.endDateModel);
+    // this.startDateModel = item.startDueDate.formatted;
+    // this.endDateModel = item.endDueDate.formatted;
+  //  console.log(this.endDateModel);
     this.notesModel = item.notes;
     this.currentBillId = item._id;
-    console.log(this.currentBillId);
+    // console.log(this.currentBillId);
 
     // RESET ngMODELS
   }
