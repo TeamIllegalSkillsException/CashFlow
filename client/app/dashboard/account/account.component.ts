@@ -122,4 +122,5 @@ export class AccountComponent implements OnInit {
 
     this.childModalEdit.show();
   }
+  
 }

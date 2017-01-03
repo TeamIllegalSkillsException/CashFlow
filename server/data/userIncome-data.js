@@ -47,7 +47,7 @@ module.exports = function(models) {
                         userWithIncome.save();
                     }
 
-                    let incomes = userWithIncome.incomes;
+                    let incomes = JSON.parse(JSON.stringify(userWithIncome.incomes));
                     let responseObject = {
                         incomes: incomes
                     }
