@@ -5,7 +5,7 @@ const helpers = require('../helpers');
 module.exports = function(data) {
     return {
         getUserIncomeDetails(req, res) {
-            return data.getAllUserIncomeData()
+            return data.getIncomeByUserId(req.user.id)
                 .then((listings) => {
                     if (!listings) {
                         throw new Error('No items available');
